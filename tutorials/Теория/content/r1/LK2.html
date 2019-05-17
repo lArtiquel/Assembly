@@ -1,0 +1,1654 @@
+﻿<!-- (C) 2017 03 Rozum Halina, BSUIR, Belarus -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html" charset="utf8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>LK2 &quot;ОПИС&quot;</title>
+<base target="_top">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr>
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr>
+  <td width="70%" colspan=2 align="center" valign="middle">
+               <H1 align="center">электронный ресурс по учебной дисциплине<BR>
+        &quot;ОСНОВЫ ПРОЕКТИРОВАНИЯ ИНФОРМАЦИОННЫХ СИСТЕМ&quot;<BR>
+         для направления специальности: </H1> 1-40 05 01-09 &quot;Информационные системы и технологии (в обеспечении промышленной безопасности)&quot;
+                </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../index.html">Оглавление</A> |
+	<A HREF="../../../Программа/programm.html" TITLE="Программа курса (Откроется в новом окне)">Программа</A> |
+							<strong>Теория</strong> |
+		<A HREF="../../../Практика/practice.html">Практика</A>|
+		<A HREF="../../../Контроль_знаний/test.html">Контроль знаний</A> |
+	<A HREF="../../../Об авторах/author.html">Об авторах</A></var> </td>
+  <tr>
+</table>
+ <div style="margin-left:5%; margin-right:5%;" width="80%" border="0" cellpadding="0" cellspacing="0">
+
+                <p></p>
+				<A HREF="../../../Теория/theory.html">Содержание</A>
+
+<p style="text-align: left;"><strong><span>Раздел 1. Процессоры
+INTEL<o:p></o:p></span></strong></p>
+
+                <p style="text-align: center;"><strong><span>Тема  2<o:p></o:p></span></strong></p> <p style="text-align: center;"><strong><span>Форматы команд. Директивы. Программы типа COM и EXE<o:p></o:p></span></strong></p>
+<ol>
+<li><a href="#_T1">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Форматы команд.<o:p></o:p></span></a></li>
+<li><a href="#_T2">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Директивы.<o:p></o:p></span></a></li>
+ <li><a href="#_T3">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Модели памяти.<o:p></o:p></span></a></li>
+ <li><a href="#_T4">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Загрузка и выполнение программ в DOS.<o:p></o:p></span></a></li>
+ <li><a href="#_T5">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXE- и COM-программы.<o:p></o:p></span></a></li>
+ <li><a href="#_T6">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Выход из программы.<o:p></o:p></span></a></li>
+ <li><a href="#_T7">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Пример COM-программы для MS-DOS на диалекте TASM.<o:p></o:p></span></a></li>
+ <li><a href="#_T8">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Пример EXE-программы для MS-DOS на диалекте TASM.<o:p></o:p></span></a></li>
+ <li><a href="#_T9">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Пример программы для Linux/x86 на диалекте NASM.<o:p></o:p></span></a></li>
+
+
+
+
+<li><a href="#_T10">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Литература.<o:p></o:p></span></a></li>
+</ol>
+
+<p style="text-align: center;"><b><a name="_T1">1. </a>Форматы команд<o:p></o:p></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;background:white'><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif'>Для операций с
+разными способами адресации и разными форматами данных необходимо введение
+различных форматов команд, которые по-разному задают местонахождение и
+количество операндов, и, естественно, имеют разную длину. Для широко
+распростран&#1104;нных сейчас двухадресных ЭВМ это такие форматы команд (в
+скобках указано их мнемоническое обозначение):<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt;line-height:normal;mso-list:l10 level1 lfo1;background:
+white'> <span style='font-size:14.0pt;font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>· </span></span> <span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>регистр – регистр (RR);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt;line-height:normal;mso-list:l10 level1 lfo1;background:
+white'> <span style='font-size:14.0pt;font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>· </span></span> <span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>регистр – память, память – регистр (RX);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt;line-height:normal;mso-list:l10 level1 lfo1;background:
+white'> <span style='font-size:14.0pt;font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>· </span></span> <span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>регистр – непосредственный операнд в
+команде (RI);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt;line-height:normal;mso-list:l10 level1 lfo1;background:
+white'> <span style='font-size:14.0pt;font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>· </span></span> <span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>память – непосредственный операнд в
+команде (SI);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt;line-height:normal;mso-list:l4 level1 lfo7;tab-stops:list -16.0pt 52.0pt;
+background:white'> <span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>· </span></span> <span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>память – память, т.е. оба операнда в
+основной памяти (SS).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;background:white'><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;background:white'><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif'>Многообразие
+форматов команд и данных позволяет писать более компактные и эффективные
+программы на языке машины, однако, как уже упоминалось, сильно усложняет
+центральный процессор ЭВМ.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;background:white'><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;background:white'><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:#252525;mso-fareast-language:RU;mso-bidi-font-weight:
+bold'>Типичный формат записи команд:<o:p></o:p></span></p>
+
+<div class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal;background:white'><span
+style='font-size:16.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:#252525;mso-fareast-language:RU;mso-bidi-font-weight:
+bold'>
+
+<hr size=2 width="100%" align=center>
+
+</span></div>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;background:white'><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:#252525;mso-fareast-language:RU;mso-bidi-font-weight:
+bold'><span style='mso-spacerun:yes'> </span>[метка:] [ [префикс] мнемокод
+[операнд {, операнд}] ] [;комментарий]<o:p></o:p></span></p>
+
+<div class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal;background:white'><span
+style='font-size:16.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:#252525;mso-fareast-language:RU;mso-bidi-font-weight:
+bold'>
+
+<hr size=2 width="100%" align=center>
+
+</span></div>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;background:white'><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:#252525;mso-fareast-language:RU;mso-bidi-font-weight:
+bold'>где мнемокод — непосредственно мнемоника инструкции процессору. К ней
+могут быть добавлены префиксы (повторения, изменения типа адресации и пр.).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;background:white'><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:#252525;mso-fareast-language:RU;mso-bidi-font-weight:
+bold'>В качестве операндов могут выступать константы, адреса регистров, адреса
+в оперативной памяти и пр. Различия между синтаксисом Intel и AT&amp;T касаются
+в основном порядка перечисления операндов и указания различных методов адресации.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;background:white'><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:#252525;mso-fareast-language:RU;mso-bidi-font-weight:
+bold'>Используемые мнемоники обычно одинаковы для всех процессоров одной
+архитектуры или семейства архитектур (среди широко известных — мнемоники
+процессоров и контроллеров x86, ARM, SPARC, PowerPC, M68k). Они описываются в
+спецификации процессоров. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;background:white'><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:#252525;mso-fareast-language:RU;mso-bidi-font-weight:
+bold'>Возможные исключения:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt;line-height:normal;mso-list:l2 level1 lfo9;tab-stops:list 18.0pt;
+background:white'> <span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;
+color:#252525;mso-fareast-language:RU;mso-bidi-font-weight:bold'><span
+style='mso-list:Ignore'>· </span></span> <span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:#252525;mso-fareast-language:RU;mso-bidi-font-weight:bold'>если ассемблер
+использует кроссплатформенный AT&amp;T-синтаксис (оригинальные мнемоники
+приводятся к синтаксису AT&amp;T);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt;line-height:normal;mso-list:l2 level1 lfo9;tab-stops:list 18.0pt;
+background:white'> <span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;
+color:#252525;mso-fareast-language:RU;mso-bidi-font-weight:bold'><span
+style='mso-list:Ignore'>· </span></span> <span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:#252525;mso-fareast-language:RU;mso-bidi-font-weight:bold'>если
+изначально существовало два стандарта записи мнемоник (система команд была
+наследована от процессора другого производителя).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;background:white'><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:#252525;mso-fareast-language:RU;mso-bidi-font-weight:
+bold'>Например, процессор Zilog Z80 наследовал систему команд Intel 8080,
+расширил её и поменял мнемоники (и обозначения регистров) на свой лад.
+Процессоры Motorola Fireball наследовали систему команд Z80, несколько её
+урезав. Вместе с тем, Motorola официально вернулась к мнемоникам Intel и в
+данный момент половина ассемблеров для Fireball работает с мнемониками Intel, а
+половина — с мнемониками Zilog.<o:p></o:p></span></p>
+
+
+
+<p style="text-align: center;"><b><a name="_T2">2. </a> Директивы<o:p></o:p></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>Программа на языке ассемблера может
+содержать директивы: инструкции, не переводящиеся непосредственно в машинные
+команды, а управляющие работой компилятора. Набор и синтаксис их значительно
+разнятся и зависят не от аппаратной платформы, а от используемого транслятора
+(порождая диалекты языков в пределах одного семейства архитектур). В качестве
+«джентльменского набора» директив можно выделить следующие:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt;line-height:normal;mso-list:l7 level1 lfo5;tab-stops:list 18.0pt'> <span
+style='font-size:14.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>· </span></span> <span
+style='font-size:14.0pt;font-family:"Times New Roman",serif'>определение данных
+(констант и переменных),<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt;line-height:normal;mso-list:l7 level1 lfo5;tab-stops:list 18.0pt'> <span
+style='font-size:14.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>· </span></span> <span
+style='font-size:14.0pt;font-family:"Times New Roman",serif'>управление
+организацией программы в памяти и параметрами выходного файла,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt;line-height:normal;mso-list:l7 level1 lfo5;tab-stops:list 18.0pt'> <span
+style='font-size:14.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>· </span></span> <span
+style='font-size:14.0pt;font-family:"Times New Roman",serif'>задание режима
+работы компилятора,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt;line-height:normal;mso-list:l7 level1 lfo5;tab-stops:list 18.0pt'> <span
+style='font-size:14.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>· </span></span> <span
+style='font-size:14.0pt;font-family:"Times New Roman",serif'>всевозможные
+абстракции (то есть элементы языков высокого уровня) — от оформления процедур и
+функций (для упрощения реализации парадигмы процедурного программирования) до
+условных конструкций и циклов (для парадигмы структурного программирования),<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt;line-height:normal;mso-list:l7 level1 lfo5;tab-stops:list 18.0pt'> <span
+style='font-size:14.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>· </span></span> <span
+style='font-size:14.0pt;font-family:"Times New Roman",serif'>макросы.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>Директивы. В некоторых учебных пособиях
+директивы называют командами Ассемблеру, что хорошо отражает их назначение в
+программе. Эти предложения, как уже упоминалось, за редким исключением не
+порождают в машинной программе никакого кода, т.е. команд или переменных.
+Директивы используются программистом для того, чтобы давать программе Ассемблер
+определённые указания, задавать синтаксические конструкции и управлять работой
+Ассемблера при компиляции (переводе) программы на язык машины. В качестве
+примера рассмотрим директивы для объявления начала и конца описания сегмента с
+именем A:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>A segment<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'><span style='mso-spacerun:yes'> </span>...<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>A ends<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>Частным случаем директивы будем считать и
+предложение - метку, которая приписывает имя (метку) непосредственно следующему
+за ней предложению Ассемблера. Так, в приведённом ниже примере метка Next_Statement_Name
+является именем следующего за ней предложения, таким<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>образом, у этого предложения будет две
+метки (два имени):<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>Next_Statement_Name:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>L: mov ax,2<o:p></o:p></span></p>
+
+
+
+<p style="text-align: center;"><b><a name="_T3">3. </a> Модели памяти<o:p></o:p></b></p>
+
+
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>Для простых программ, содержащих по одному
+сегменту для кода, данных и стека, хотелось бы упростить её описание. Для этого
+были придуманы упрощенные директивы сегментации. И возникла потребность
+управлять размещением сегментов и функциях директивы ASSUME. Была придумана
+директива MODEL. Эта директива связывает сегменты, которые в случае
+использования упрощенных директив сегментации имеют предопределенные имена, с
+сегментными регистрами.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>
+<img border=0 width=538 height=110
+src="../../images/R1.files/image012.jpg" v:shapes="_x0000_i1034"> <o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>Рисунок.
+2.1. – Синтаксис директивы MODEL<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>Различные модификаторы модели: NEARSTACK,
+FARSTACK, USE16, USE32, DOS, OS2<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>Единственным обязательным параметром
+директивы MODEL является модель памяти. Этот параметр определяет набор
+сегментов программы, размеры сегментов данных и кода, способ связывания
+сегментов и сегментных регистров.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>Стандартные значения параметра модель
+памяти директивы MODEL.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;color:#00B050'>
+<img border=0 width=623 height=375
+src="../../images/R1.files/image014.jpg" v:shapes="_x0000_i1035"> <o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>Рисунок
+2.2. – Модели памяти<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;color:#00B050'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;color:black;background:white'>Как писалось
+выше, директива model позволяет использовать в программах на ассемблере<span
+class=apple-converted-space><span style='font-family:"Times New Roman",serif'>&nbsp;</span></span><strong><span
+style='font-family:"Times New Roman",serif'>упрощенные директивы сегментации</span></strong>.
+Вот они:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;color:#00B050'>
+<img border=0 width=624 height=344
+src="../../images/R1.files/image016.jpg" v:shapes="_x0000_i1036"> <o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:14.0pt;font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>Рисунок
+2.3. – Упрощенные директивы сегментации<o:p></o:p></span></b></p>
+
+<p style="text-align: center;"><b><a name="_T4">4. </a>Загрузка и выполнение программ в DOS</b></p>
+
+
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>Пусть в оперативную память компьютера
+загружен выполняемый модуль некоторой программы. Команды программы должны в
+установленном порядке считываться в микропроцессор и выполняться, при этом они
+используют данные, расположенные в памяти и регистрах микропроцессора. При
+загрузке программ в оперативную память</span><span style='font-size:14.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>DOS</span><span style='font-size:14.0pt;mso-bidi-font-size:
+11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>(дисковая операционная система) обычно
+выделяет для программы три сегмента памяти, имеющие самостоятельное назначение.
+Они содержат код, данные и стек программы. Некоторые сегменты могут и
+отсутствовать.</span><span style='font-size:14.0pt;mso-bidi-font-size:11.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>DOS</span><span lang=EN-US style='font-size:14.0pt;mso-bidi-font-size:11.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>инициализирует как
+минимум три сегментных регистра:</span><span style='font-size:14.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>CS</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>,</span><span style='font-size:14.0pt;mso-bidi-font-size:
+11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>DS</span><span lang=EN-US style='font-size:14.0pt;mso-bidi-font-size:11.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>и</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span><span lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>SS</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>. При этом совокупности байтов, представляющих команды
+процессора (код программы), и данные помещаются из файла на диске в оперативную
+память, а адреса этих сегментов записываются в</span><span style='font-size:
+14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span><span lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>CS</span><span lang=EN-US style='font-size:14.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>&nbsp;</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>и</span><span style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>&nbsp;</span><span lang=EN-US style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;mso-fareast-language:RU'>DS</span><span
+lang=EN-US style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>&nbsp;</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>соответственно. Сегмент стека либо выделяется в
+области, указанной в программе, либо совпадает (если он явно в программе не
+описан) с самым первым сегментом программы. Адрес сегмента стека помещается в
+регистр</span><span style='font-size:14.0pt;mso-bidi-font-size:11.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>SS</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>. Программа может иметь несколько кодовых сегментов и сегментов данных и в
+процессе выполнения специальными командами выполнять переключения между ними.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>Для того чтобы адресовать одновременно два
+сегмента данных, например, при выполнении операции пересылки из одной области
+памяти в другую, можно использовать регистр дополнительного сегмента</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span><span lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>ES</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>. Кодовый сегмент и сегмент стека всегда определяются
+содержимым своих регистров (</span><span lang=EN-US style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;mso-fareast-language:RU'>CS</span><span
+lang=EN-US style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>&nbsp;</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>и</span><span style='font-size:14.0pt;mso-bidi-font-size:
+11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>SS</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>), и поэтому в каждый момент выполнения программы всегда используется
+какой-то один кодовый сегмент и один сегмент стека. Причем если переключение
+кодового сегмента – довольно простая операция, то переключать сегмент стека
+можно только при условии четкого представления логики работы программы со
+стеком, иначе это может привести к зависанию системы.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>Все сегменты могут использовать различные
+области памяти, а могут частично или полностью перекрываться .<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>Кодовый сегмент должен обязательно
+описываться в программе, все остальные сегменты могут отсутствовать. В этом
+случае</span><span style='font-size:14.0pt;mso-bidi-font-size:11.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>DOS</span><span lang=EN-US style='font-size:14.0pt;mso-bidi-font-size:11.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>при загрузке программы в
+оперативную память инициирует регистры</span><span style='font-size:14.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>DS</span><span lang=EN-US style='font-size:14.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>&nbsp;</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>и</span><span style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>&nbsp;</span><span lang=EN-US style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;mso-fareast-language:RU'>ES</span><span
+lang=EN-US style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>&nbsp;</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>значением адреса префикса программного сегмента</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span><span lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>PSP</span><span style='font-size:14.0pt;mso-bidi-font-size:
+11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>(</span><span lang=EN-US style='font-size:
+14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;mso-fareast-language:RU'>Program</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'> </span><span lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>Segment</span><span lang=EN-US style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'> </span><span lang=EN-US style='font-size:
+14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;mso-fareast-language:RU'>Prefics</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>) – специальной области
+оперативной памяти размером 256 (100</span><span lang=EN-US style='font-size:
+14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;mso-fareast-language:RU'>h</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>)</span><i><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span></i><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>байт.</span><span style='font-size:14.0pt;mso-bidi-font-size:11.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>PSP</span><span lang=EN-US style='font-size:14.0pt;mso-bidi-font-size:11.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>может использоваться в
+программе для определения имен файлов и параметров из командной строки,
+введенной при запуске программы на выполнение, объема доступной памяти,
+переменных окружения системы и т.д. Регистр</span><span style='font-size:14.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>SS</span><span style='font-size:14.0pt;mso-bidi-font-size:
+11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>при этом инициализируется значением
+сегмента, находящегося сразу за</span><span style='font-size:14.0pt;mso-bidi-font-size:
+11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>PSP</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>, т.е. первого сегмента программы. При этом необходимо учитывать, что стек
+«растет вниз» (при помещении в стек содержимое регистра</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span><span lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>SP</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>, указывающего на вершину стека, уменьшается, а при
+считывании из стека – увеличивается). Таким</span><span style='font-size:14.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:lime;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>образом, при помещении в
+стек каких-либо значений они могут затереть</span><span style='font-size:14.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>PSP</span><span lang=EN-US style='font-size:14.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>&nbsp;</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>и программы, находящиеся в младших адресах памяти, что может привести к
+непредсказуемым последствиям. Поэтому рекомендуется всегда явно описывать
+сегмент стека в тексте программы, задавая ему размер, достаточный для
+нормальной работы.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>После инициализации в регистре</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span><span lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>IP</span><span lang=EN-US style='font-size:14.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>&nbsp;</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>находится смещение первой команды программы относительно начала кодового
+сегмента, адрес которого помещен в регистр</span><span style='font-size:14.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>CS</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>. Процессор, считывая эту команду,</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:lime;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>начинает выполнение
+программы, постоянно изменяя содержимое регистра</span><span style='font-size:
+14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span><span lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>IP</span><span lang=EN-US style='font-size:14.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>&nbsp;</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>и при необходимости</span><span style='font-size:14.0pt;mso-bidi-font-size:
+11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>CS</span><span lang=EN-US style='font-size:14.0pt;mso-bidi-font-size:11.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>для получения кодов
+очередных команд до тех пор, пока не встретит команду завершения программы.</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span><span lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>DS</span><span lang=EN-US style='font-size:14.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>&nbsp;</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>после загрузки программы установлен на начало</span><span style='font-size:
+14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span><span lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>PSP</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>, поэтому для его использования в первых двух командах
+программы выполняется загрузка</span><span style='font-size:14.0pt;mso-bidi-font-size:
+11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>DS</span><span lang=EN-US style='font-size:14.0pt;mso-bidi-font-size:11.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>значением сегмента
+данных.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span style='font-size:13.5pt;font-family:"Courier New";
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:13.5pt;mso-bidi-font-size:
+11.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span lang=EN-US
+style='font-size:13.5pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;mso-fareast-language:RU'>MOV&nbsp; AX,DATA<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span lang=EN-US style='font-size:13.5pt;
+font-family:"Courier New";mso-fareast-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;mso-fareast-language:RU'>&nbsp;&nbsp;&nbsp;&nbsp;
+MOV&nbsp; DS,AX<o:p></o:p></span></p>
+
+
+
+<p style="text-align: center;"><b><a name="_T5">5. </a>EXE- и COM-программы</b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>DOS может загружать и выполнять
+программные файлы двух типов – COM и EXE.</span><span style='font-size:10.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>Ввиду сегментации адресного пространства
+процессора 8086 и того факта, что переходы (JMP) и вызовы (CALL) используют относительную
+адресацию, оба типа программ могут выполняться в любом месте памяти. Программы
+никогда не пишутся в предположении, что они будут загружаться с определенного
+адреса (за исключением некоторых самозагружающихся, защищенных от копирования
+программ).</span><span style='font-size:13.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>Файл COM-формата – это двоичный образ кода
+и данных программы. Такой файл должен занимать менее 64K и не содержать
+перемещаемых адресов сегментов.</span><span style='font-size:10.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>Файл EXE-формата содержит специальный
+заголовок, при помощи</span><span style='font-size:14.0pt;mso-bidi-font-size:
+11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:lime;mso-fareast-language:RU'>&nbsp;</span><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>которого загрузчик выполняет настройку
+ссылок на сегменты в загруженном модуле.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>Перед загрузкой COM- или EXE-программы DOS
+определяет сегментный адрес, называемый префиксом программного сегмента (PSP),
+как базовый для программы. Затем DOS выполняет следующие шаги:</span><span
+style='font-size:10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-</span><span style='font-size:7.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:7.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>создает копию текущего
+окружения DOS (область памяти, содержащая ряд строк в формате</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span><span lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>ASCIIZ</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>, которые могут использоваться приложениями для
+получения некоторой системной информации и для передачи данных между
+программами) для программы;</span><span style='font-size:10.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-</span><span style='font-size:7.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:7.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>помещает путь, откуда
+загружена программа, в конец окружения;</span><span style='font-size:10.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-</span><span style='font-size:7.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:7.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>заполняет поля PSP
+информацией, полезной для загружаемой программы (количество памяти, доступное
+программе; сегментный адрес окружения DOS; текущие векторы прерываний INT 22H
+INT 23H и INT 24H и т.д).</span><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><i><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>EXE-программы.</span></i><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>EXE-программы содержат несколько программных сегментов, включая сегмент
+кода, данных и стека. EXE-файл загружается, начиная с адреса PSP:0100</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>h</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>. В процессе загрузки считывается информация</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:lime;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>заголовка EXE в начале
+файла и выполняется перемещение адресов сегментов. Это означает, что ссылки
+типа<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span lang=EN-US style='font-size:13.5pt;
+font-family:"Courier New";mso-fareast-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;mso-fareast-language:RU'>mov</span><span
+style='font-size:13.5pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span style='font-size:13.5pt;
+mso-bidi-font-size:11.0pt;font-family:"Courier New";mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+lang=EN-US style='font-size:13.5pt;font-family:"Courier New";mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>ax</span><span style='font-size:13.5pt;font-family:"Courier New";
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>,</span><span lang=EN-US style='font-size:13.5pt;font-family:"Courier New";
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>data</span><span style='font-size:13.5pt;font-family:
+"Courier New";mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>_</span><span lang=EN-US style='font-size:13.5pt;font-family:"Courier New";
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>seg</span><span style='font-size:13.5pt;font-family:
+"Courier New";mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span lang=EN-US style='font-size:13.5pt;
+font-family:"Courier New";mso-fareast-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;mso-fareast-language:RU'>mov</span><span
+style='font-size:13.5pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span style='font-size:13.5pt;
+mso-bidi-font-size:11.0pt;font-family:"Courier New";mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+lang=EN-US style='font-size:13.5pt;font-family:"Courier New";mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>ds</span><span style='font-size:13.5pt;font-family:"Courier New";
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>,</span><span lang=EN-US style='font-size:13.5pt;font-family:"Courier New";
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>ax</span><span style='font-size:13.5pt;font-family:
+"Courier New";mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>и<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span lang=EN-US style='font-size:13.5pt;
+font-family:"Courier New";mso-fareast-font-family:"Times New Roman";color:black;
+mso-ansi-language:EN-US;mso-fareast-language:RU'>call</span><span
+style='font-size:13.5pt;mso-bidi-font-size:11.0pt;font-family:"Courier New";
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span><span lang=EN-US style='font-size:13.5pt;font-family:"Courier New";
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>my</span><span style='font-size:13.5pt;font-family:
+"Courier New";mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>_</span><span lang=EN-US style='font-size:13.5pt;font-family:"Courier New";
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>far</span><span style='font-size:13.5pt;font-family:
+"Courier New";mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>_</span><span lang=EN-US style='font-size:13.5pt;font-family:"Courier New";
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>proc</span><span style='font-size:13.5pt;font-family:
+"Courier New";mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>должны быть приведены (пересчитаны), чтобы
+учесть тот факт, что программа была загружена в произвольно выбранный сегмент.</span><span
+style='font-size:10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>После перемещения управление передается
+загрузочному модулю посредством инструкции далекого перехода (FAR JMP) к адресу
+CS:IP, извлеченному из заголовка EXE.</span><span style='font-size:13.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>В момент получения управления программой
+EXE -формата:</span><span style='font-size:13.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-</span><span style='font-size:7.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:7.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>DS и ES указывают на
+начало PSP</span><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-</span><span style='font-size:7.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:7.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>CS, IP, SS и SP
+инициализированы значениями, указанными в</span><span style='font-size:14.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:lime;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>заголовке EXE</span><span
+style='font-size:10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-</span><span style='font-size:7.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:7.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>поле PSP MemTop (вершина
+доступной памяти системы в параграфах) содержит значение, указанное в заголовке
+EXE. Обычно вся доступная память распределена программе.</span><span
+style='font-size:10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><i><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>COM-программы.</span></i><i><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span></i><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>COM-программы содержат единственный сегмент (или, во всяком случае, не
+содержат явных ссылок на другие сегменты). Образ COM-файла считывается с диска
+и помещается в память, начиная с PSP:0100</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>h</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>. В общем случае, COM-программа может использовать множественные сегменты,
+но она должна сама вычислять сегментные адреса, используя PSP как базу.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>COM-программы предпочтительнее
+EXE-программ, когда дело касается небольших ассемблерных утилит. Они быстрее
+загружаются, ибо не требуется перемещения сегментов, и занимают меньше места на
+диске, поскольку заголовок EXE и сегмент стека отсутствуют в загрузочном
+модуле.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>После загрузки двоичного образа</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;</span><span lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>COM</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-программы:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-</span><span style='font-size:7.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:7.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>CS, DS, ES и SS
+указывают на PSP;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-</span><span style='font-size:7.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:7.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>SP указывает на конец
+сегмента PSP (обычно 0</span><span lang=EN-US style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-ansi-language:EN-US;mso-fareast-language:RU'>FFFE</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>H, но может быть и
+меньше, если полный 64K сегмент недоступен);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-</span><span style='font-size:7.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:7.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>слово по смещению 06H в
+PSP (доступные байты в программном сегменте) указывает, какая часть
+программного сегмента доступна;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-</span><span style='font-size:7.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:7.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>вся память системы за
+программным сегментом распределена программе;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-</span><span style='font-size:7.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:7.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>слово 00H помещено
+(PUSH) в стек.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-</span><span style='font-size:7.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:7.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>IP содержит 100H (первый
+байт модуля) в результате команды JMP PSP:100</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>H</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>.<o:p></o:p></span></p>
+
+<p style="text-align: center;"><b><a name="_T6">6. </a> Выход из программы</b></p>
+
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>Завершить программу можно следующими
+способами:</span><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-</span><span style='font-size:7.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:7.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>через функцию 4CH (EXIT)
+прерывания 21</span><span lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>H</span><span style='font-size:14.0pt;mso-bidi-font-size:
+11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>в любой момент, независимо от значений
+регистров;</span><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:"Times New Roman";color:black;
+mso-fareast-language:RU'>-</span><span style='font-size:7.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style='font-size:7.0pt;
+mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-fareast-language:RU'>через функцию 00H
+прерывания 21</span><span lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-ansi-language:EN-US;
+mso-fareast-language:RU'>H</span><span style='font-size:14.0pt;mso-bidi-font-size:
+11.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>или прерывание INT 20H, когда CS указывает
+на PSP.</span><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>Функция DOS 4</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>C</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>H позволяет возвращать родительскому процессу код выхода, который может
+быть проверен вызывающей программой или командой COMMAND.COM &quot;IF
+ERRORLEVEL&quot;.</span><span style='font-size:13.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>Можно также завершить программу и оставить
+ее постоянно резидентной (TSR), используя либо INT 27H , либо функцию 31H
+(KEEP) прерывания</span><span style='font-size:14.0pt;mso-bidi-font-size:11.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>&nbsp;</span><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";
+color:black;mso-fareast-language:RU'>21</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";color:black;mso-ansi-language:EN-US;mso-fareast-language:
+RU'>H</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'>. Последний способ имеет те преимущества, что резидентный код может быть
+длиннее 64K, и что в этом случае можно сформировать код выхода для
+родительского процесса.</span><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:black;mso-fareast-language:
+RU'><o:p></o:p></span></p>
+
+
+<p style="text-align: center;"><b><a name="_T7">Пример</a> COM-программы для MS-DOS на диалекте TASM<o:p></o:p></b></p>
+
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>.MODEL TINY<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>CODE SEGMENT<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>ASSUME CS:CODE, DS:CODE<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>ORG 100h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>START:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>       </span><span
+style='mso-spacerun:yes'> </span>mov ah,9<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>mov dx,OFFSET Msg<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>int 21h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>int 20h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>Msg DB 'Hello
+World',13,10,'$'<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>CODE ENDS<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>END START<o:p></o:p></span></p>
+
+
+
+<p style="text-align: center;"><b><a name="_T8">Пример</a> EXE-программы для MS-DOS на диалекте TASM</b></p>
+
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>.MODEL SMALL<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>.DATA<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>msg DB 'Hello
+World',13,10,'$'<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>.CODE<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>START:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>      </span><span
+style='mso-spacerun:yes'>  </span>mov ax, @DATA<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>mov ds, ax<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>mov ax, 0900h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>lea dx, msg<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>int 21h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>mov ax, 4C00h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>int 21h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>END START<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p style="text-align: center;"><b><a name="_T9">Пример</a> программы для Linux/x86 на диалекте NASM<o:p></o:p></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'><span style='mso-spacerun:yes'> </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>SECTION .data<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>msg: db &quot;Hello, world&quot;,10<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>len: equ $-msg<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'> </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>SECTION .text<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>global _start<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>_start: mov edx, len<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>mov ecx, msg<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>mov ebx, 1<span
+style='mso-spacerun:yes'>    </span>; stdout<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>mov eax, 4<span
+style='mso-spacerun:yes'>    </span>; write(2)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>int 0x80<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>mov ebx, 0<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span>mov eax, 1<span
+style='mso-spacerun:yes'>    </span>; exit(2)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>        </span></span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif'>int 0x80<o:p></o:p></span></p>
+
+<p style="text-align: center;"><b><a name="_T10">Литература<o:p></o:p></a></b></p>
+
+
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>[1]</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>&nbsp;</span><span style='font-size:14.0pt;mso-bidi-font-size:11.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman"'>[Электронный</span><span
+lang=EN-US style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>&nbsp;</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman"'>ресурс].</span><span lang=EN-US
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>&nbsp;</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman"'>–</span><span lang=EN-US
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>&nbsp;</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman"'>Режим</span><span lang=EN-US
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>&nbsp;</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman"'>доступа: </span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>http</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif'>://</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>www</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif'>.</span><span lang=EN-US style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>intuit</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif'>.</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>ru</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif'>/</span><span lang=EN-US style='font-size:14.0pt;
+font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>studies</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif'>/</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>courses</span><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>/2192/31/</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>lecture</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif'>/982?</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>page</span><span style='font-size:14.0pt;font-family:
+"Times New Roman",serif'>=3<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>[2]</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>&nbsp;</span><span style='font-size:14.0pt;mso-bidi-font-size:11.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman"'>[Электронный</span><span
+lang=EN-US style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>&nbsp;</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman"'>ресурс].</span><span lang=EN-US
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>&nbsp;</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman"'>–</span><span lang=EN-US
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>&nbsp;</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman"'>Режим</span><span lang=EN-US
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>&nbsp;</span><span
+style='font-size:14.0pt;mso-bidi-font-size:11.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman"'>доступа: </span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif'>http://indigobits.com/assembler/41-modeli-pamyati-direktiva-opredeleniya-modeli-pamyati-uproshhennye-direktivy-segmentacii.html<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>[3]</span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>&nbsp;</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white;mso-bidi-font-style:italic'>Галисеев&nbsp;Г.&nbsp;В.</span><span
+class=apple-converted-space><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white'>&nbsp;</span></span><span style='font-size:
+14.0pt;font-family:"Times New Roman",serif;color:#252525;background:white'>Ассемблер
+для Win 32. Самоучитель.&nbsp;—<span class=apple-converted-space><span
+style='font-family:"Times New Roman",serif'>&nbsp;</span></span>М.:<span
+class=apple-converted-space><span style='font-family:"Times New Roman",serif'>&nbsp;</span></span></span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;background:white'>Диалектика<span
+style='color:#252525'>, 2007.&nbsp;— 368&nbsp;с.&nbsp;<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;color:#252525;background:white'>[4]</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white;mso-ansi-language:EN-US'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;color:#252525;
+background:white;mso-bidi-font-style:italic'>Зубков С. В.</span><span
+class=apple-converted-space><span lang=EN-US style='font-size:14.0pt;
+font-family:"Times New Roman",serif;color:#252525;background:white;mso-ansi-language:
+EN-US'>&nbsp;</span></span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white'>Ассемблер для </span><span lang=EN-US
+style='font-size:14.0pt;font-family:"Times New Roman",serif;color:#252525;
+background:white;mso-ansi-language:EN-US'>DOS</span><span style='font-size:
+14.0pt;font-family:"Times New Roman",serif;color:#252525;background:white'>, </span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white;mso-ansi-language:EN-US'>Windows</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;color:#252525;
+background:white'> и </span><span lang=EN-US style='font-size:14.0pt;
+font-family:"Times New Roman",serif;color:#252525;background:white;mso-ansi-language:
+EN-US'>UNIX</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white'>.</span><span lang=EN-US style='font-size:14.0pt;
+font-family:"Times New Roman",serif;color:#252525;background:white;mso-ansi-language:
+EN-US'>&nbsp;</span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white'>— М. ДМК Пресс; СПб. Питер, 2006.&nbsp;—
+608&nbsp;с.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;color:#252525;background:white'>[5]</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white;mso-ansi-language:EN-US'>&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;color:#252525;
+background:white;mso-bidi-font-style:italic'>Кип Ирвин.</span><span
+class=apple-converted-space><span lang=EN-US style='font-size:14.0pt;
+font-family:"Times New Roman",serif;color:#252525;background:white;mso-ansi-language:
+EN-US'>&nbsp;</span></span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white'>Язык</span><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;color:#252525;background:white;mso-ansi-language:
+EN-US'> </span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white'>ассемблера</span><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;color:#252525;background:white;mso-ansi-language:
+EN-US'> </span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white'>для</span><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;color:#252525;background:white;mso-ansi-language:
+EN-US'> </span><span style='font-size:14.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white'>процессоров</span><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif;color:#252525;background:white;mso-ansi-language:
+EN-US'> <span lang=EN-US>Intel = Assembly Language for Intel-Based Computers.&nbsp;—<span
+class=apple-converted-space><span style='font-family:"Times New Roman",serif'>&nbsp;</span></span></span></span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;color:#252525;
+background:white'>М</span><span lang=EN-US style='font-size:14.0pt;font-family:
+"Times New Roman",serif;color:#252525;background:white;mso-ansi-language:EN-US'>.:<span
+class=apple-converted-space><span style='font-family:"Times New Roman",serif'>&nbsp;</span></span></span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;background:white'>Вильямс</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white;mso-ansi-language:EN-US'>, 2005.&nbsp;– 912&nbsp;</span><span
+style='font-size:14.0pt;font-family:"Times New Roman",serif;color:#252525;
+background:white'>с</span><span lang=EN-US style='font-size:14.0pt;font-family:
+"Times New Roman",serif;color:#252525;background:white;mso-ansi-language:EN-US'>.</span><span
+lang=EN-US style='font-size:14.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>[6] Дэвид Харрис, Сара Харрис. Цифровая
+схемотехника и архитектура компьютера, 2-е издание, перевод командой компаний и
+университетов России, Украины, США и Великобритании, Morgan Kaufman, 2013. –
+1621 с.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:14.0pt;
+font-family:"Times New Roman",serif'>[7]&nbsp;И.В. Лукьянова. Конспект лекций
+по курсу «Конструирование программ и языки программирования» часть 2 Язык
+программирования ассемблер, Минск, 2006. – 78 с.<o:p></o:p></span></p>
+
+
+
+
+
+         </div>
+                <p>&nbsp;</p>
+				<A HREF="../../../Теория/theory.html">Содержание</A>
+				<div style="position: fixed; right: 0; bottom: 0">
+	<a href="#" id="toTop"><img src="../../../Оболочка/js/to_top_ye.GIF" width="32" height="32" border="0" align="absmiddle"></a> </div>
+                <p>&nbsp;</p>
+        </div>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><B><strong>(С)  БГУИР</strong></var></td>
+  </tr>
+</table>
+</BODY></HTML>

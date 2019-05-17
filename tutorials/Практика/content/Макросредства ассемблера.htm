@@ -1,0 +1,1236 @@
+
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Общая
+идея макросредств заключается в том, что включением в исходный текст программы
+предложений специального языка макросредств (макроязыка) мы в какой-то степени
+управляем процессом трансляции программы. Макроязык позволяет выполнять или не
+выполнять трансляцию отдельных участков программы в зависимости от некоторого
+нами же определяемого условия (условная трансляция); осуществлять размножение
+участка исходного текста программы, в том числе, с модификацией каждого
+повторения (блоки повторения); включать в программу написанные отдельно
+фрагменты с настройкой их текста в соответствии с заданными параметрами
+(макрокоманды). Объекты, создаваемые с помощью директив макроязыка, обычно
+называют макросами. Иногда, правда, термин макрос относят только к одному
+конкретному виду макросредств, именно, к макрокоманде. Использование макросов
+упрощает составление исходного текста программы и иногда делает этот текст
+более наглядным, хотя в отдельных случаях, как, например, в случае директив
+условной трансляции, наоборот, может привести к существенному усложнению
+исходного текста. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;line-height:normal'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Блоки повторения<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Блоки
+повторения заставляют транслятор повторить заданный блок исходного текста
+указанное число раз. Повторяемый блок может состоять из директив описания
+данных (и тогда он включается в состав сегмента данных) или из команд
+процессора (и тогда он описывается в программном сегменте). Например, следующий
+фрагмент сегмента данных позволяет образовать массив, состоящий из кодов ASCII
+прописных русских букв:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>sym='A</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'>' ;<i
+style='mso-bidi-font-style:normal'>Начальное значение временной переменной</i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>symbols</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'>: ;<i
+style='mso-bidi-font-style:normal'>Имя массива для ссылок на него</i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>rept</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> 32 ;<i
+style='mso-bidi-font-style:normal'>Повторять столько раз</i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>db</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> <span class=SpellE>sym</span> ;<i
+style='mso-bidi-font-style:normal'>Повторяемая директива</i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>sym=sym+l</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> ;<i
+style='mso-bidi-font-style:normal'>Изменение переменной</i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>endm</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> ;<i
+style='mso-bidi-font-style:normal'>Конец блока повторения</i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Из
+приведенного фрагмента видно, <span class=SpellE>чтоблок</span> повторения
+начинается с директивы ассемблера <span class=SpellE><b style='mso-bidi-font-weight:
+normal'>rept</b></span> (от <span class=SpellE>repetition</span>, повторение),
+а заканчивается директивой <span class=SpellE><b style='mso-bidi-font-weight:
+normal'>endm</b></span> (<span class=SpellE>end</span> <span class=SpellE>macro</span>,
+конец макроса). Реально в сегменте данных выделяется 32 байт, заполненных
+числами от 81h до 9Fh, которые предполагается рассматривать, как
+последовательность русских букв. Того же результата можно было достигнуть с
+помощью следующего предложения:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>symbols</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> <span
+class=SpellE>db</span> &quot;А&quot;, &quot;Б&quot;, &quot;В&quot;,
+&quot;Г&quot;, и т.д. до буквы Я<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>или
+проще, хотя и менее наглядно:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>symbols</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> <span
+class=SpellE>db</span> 128,129,130,131, и т.д. до числа 159.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>При
+подключении к компьютеру измерительного или управляющего оборудования иногда
+возникает необходимость замедлить работу процессора при обращении к портам
+этого оборудования. Замедление осуществляется включением в текст программы
+одной или, если требуется, нескольких команд безусловного перехода на следующее
+предложение:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>in</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> AL,300h ;<span
+style='mso-spacerun:yes'>   </span><i style='mso-bidi-font-style:normal'>Первое
+обращение к оборудованию</i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>jmp</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> <span class=SpellE>a</span> ;<span
+style='mso-spacerun:yes'>        </span><span
+style='mso-spacerun:yes'>    </span><i style='mso-bidi-font-style:normal'>Задержка
+на время</i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>a:
+<span class=SpellE>jmp</span> <span class=SpellE>b</span> ;<span
+style='mso-spacerun:yes'>     </span><span style='mso-spacerun:yes'>    </span><i
+style='mso-bidi-font-style:normal'>выполнения</i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>b:
+<span class=SpellE>jmp</span> с ;<span style='mso-spacerun:yes'>        
+</span><i style='mso-bidi-font-style:normal'>трех команд <span class=SpellE>jmp</span></i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>c:
+<span class=SpellE>in</span> AL,301h ;<i style='mso-bidi-font-style:normal'>Следующее
+обращение к оборудованию<o:p></o:p></i></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Для
+того, чтобы не создавать много ненужных, в сущности, меток, такого рода
+предложения часто записывают следующим образом:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>in</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> AL, 300h ;<i style='mso-bidi-font-style:
+normal'>Первое обращение к оборудованию</i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><span
+style='mso-spacerun:yes'> </span><span class=SpellE>jmp</span> $+2 ;<i
+style='mso-bidi-font-style:normal'>Задержка на время</i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>jmp</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> $+2 ;<i style='mso-bidi-font-style:
+normal'>выполнения</i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>jmp</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> $+2 ;<i style='mso-bidi-font-style:
+normal'>трех команд <span class=SpellE>jmp</span></i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>in</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> AL,301h ;<i style='mso-bidi-font-style:
+normal'>Следующее обращение к оборудованию</i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Здесь
+используется обозначение счетчика <b style='mso-bidi-font-weight:normal'>текущего
+адреса S.</b> При трансляции любой команды в счетчике текущего адреса
+содержится адрес этой команды (смещение ее первого байта). Команда короткого
+перехода занимает 2 байт, поэтом}' команда <span class=SpellE><b
+style='mso-bidi-font-weight:normal'>jmp</b></span><b style='mso-bidi-font-weight:
+normal'> $+2</b> осуществляет переход на команду, идущую следом. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Часто
+в подобных случаях ограничиваются одной командой <span class=SpellE><b
+style='mso-bidi-font-weight:normal'>jmp</b></span><b style='mso-bidi-font-weight:
+normal'>,</b> которая создает необходимую задержку в доли микросекунды. В тех
+случаях, однако, когда устройство сопряжения с оборудованием работает заметно
+медленнее процессора, приходится включать между командами обращения к портам
+5-6 команд <span class=SpellE><b style='mso-bidi-font-weight:normal'>jmp</b></span><b
+style='mso-bidi-font-weight:normal'>.</b> Такой фрагмент можно оформить в виде
+блока повторения:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>rept</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> 6 <span
+class=SpellE>jmp</span> $+2 <span class=SpellE>endm</span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Это,
+пожалуй, проще, чем писать <b style='mso-bidi-font-weight:normal'>6</b> команд <span
+class=SpellE><b style='mso-bidi-font-weight:normal'>jmp</b></span><b
+style='mso-bidi-font-weight:normal'>.</b> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;line-height:normal'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Макрокоманды<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Программы,
+написанные на языке ассемблера, часто содержат повторяющиеся участки текста с
+одинаковой структурой. Такой участок текста можно оформить в виде
+макроопределения, характеризующегося произвольным именем и необязательным
+списком формальных аргументов. После того, как такое определение сделано,
+появление в программе строки, содержащей имя макроопределения и список
+фактических аргументов (все это вместе называют макрокомандой), приводит к
+генерации всего требуемого текста, называемого макрорасширением. Варьируя
+фактические аргументы, можно, сохраняя неизменной структуру макрорасширения,
+изменить отдельные его элементы. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Макроопределение
+</span></b><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>должно
+начинаться строкой с именем макроопределения и директивой <span class=SpellE><b
+style='mso-bidi-font-weight:normal'>macro</b></span><b style='mso-bidi-font-weight:
+normal'>,</b> в поле аргументов которой указывается список формальных
+аргументов. Заканчивается макроопределение директивой <span class=SpellE>endm</span>.
+<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Пусть
+в программе требуется неоднократно сохранять в стеке содержимое трех регистров,
+но в каждом конкретном случае номера регистров и их порядок отличаются. Оформим
+эти действия в виде макроопределения:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-ansi-language:
+EN-US'>psh</span></span><span lang=EN-US style='font-size:12.0pt;font-family:
+"Times New Roman","serif";mso-ansi-language:EN-US'> <span class=SpellE>macroa,b,c</span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push a<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push b<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push </span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'>с</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman","serif";
+mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>endm</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Появление
+в исходном тексте программы строки<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>psh</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> АХ, ВХ, СХ<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>приведет
+к генерации следующего фрагмента текста:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push AX push BX
+push CX<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Если
+же в исходном тексте имеется строка<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>psh</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> DX, ES, ВР<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>то
+соответствующее макрорасширение будет иметь вид:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push DX<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push ES<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push BP<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>В
+качестве фактических аргументов могут выступать любые обозначения ассемблера,
+допустимые для данной команды. В частности, макровызов<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>psh</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> <span class=SpellE>mem</span>,
+[BX], ES: [17h]<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>приведет
+к следующему макрорасширению:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push <span
+class=SpellE>mem</span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push [BX]<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push ES : [17h]<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Если
+какие-то строки макроопределения должны быть помечены (например, с целью
+организации циклов), то обозначения меток следует объявить локальными с помощью
+оператора <span class=SpellE><b style='mso-bidi-font-weight:normal'>local</b></span><b
+style='mso-bidi-font-weight:normal'>.</b> В этом случае ассемблер, генерируя
+макрорасширения, будет создавать собственные обозначения меток, не
+повторяющиеся при повторных вызовах одной и той же макрокоманды:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>delay macro<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>local point<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-ansi-language:
+EN-US'>mov</span></span><span lang=EN-US style='font-size:12.0pt;font-family:
+"Times New Roman","serif";mso-ansi-language:EN-US'> CX,200<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>point: loop
+point<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>endm</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Макрос
+<span class=SpellE><b style='mso-bidi-font-weight:normal'>delay</b></span><b
+style='mso-bidi-font-weight:normal'> </b>создает задержку фиксированной
+длительности. Если в текст программы включить две макрокоманды <span
+class=SpellE>delay</span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>…<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>delay</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>…<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>delay</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>то
+их макрорасширения, подставленные в текст программы, будут выглядеть следующим
+образом:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>…<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-ansi-language:
+EN-US'>mov</span></span><span lang=EN-US style='font-size:12.0pt;font-family:
+"Times New Roman","serif";mso-ansi-language:EN-US'> CX, 20000<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>??0000: loop
+??0000<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>… <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-ansi-language:
+EN-US'>mov</span></span><span lang=EN-US style='font-size:12.0pt;font-family:
+"Times New Roman","serif";mso-ansi-language:EN-US'> CX, 20000<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>??0000:
+<span class=SpellE>loop</span> ??0000<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>При
+повторных подстановках макроопределения транслятор заменяет обозначение метки <span
+class=SpellE>point</span> на различающиеся обозначения ??0000, ??0001 и т.д.,
+обеспечивая тем самым правильное выполнение команд циклов и переходов. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Макрокоманды
+схожи с подпрограммами в том отношении, что в обоих случаях мы описываем
+некоторый программный фрагмент один раз, а обращаемся к нему многократно,
+возможно, с передачей различных параметров. Однако эти вычислительные средства
+различаются как по способу использования, так и по своим возможностям. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Подпрограммы
+позволяют сократить объем выполнимого файла за счет описания повторяющихся
+участков программы лишь однажды. При каждом вызове подпрограммы командой <span
+class=SpellE>call</span> происходит переход на один и тот же фрагмент
+программы, содержащий подпрограмму, а после выполнения подпрограммы - возврат
+назад в точку вызова. Текст подпрограммы полностью определяется на этапе ее
+написания, и изменения в ходе выполнения подпрограммы возможны только за счет
+передачи ей тех или иных конкретных значений. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Механизм
+использования макроса иной. Каждая макрокоманда, встретившаяся транслятору в
+тексте программы, заменяется им на полный текст макроопределения. Если
+макрокоманда содержит параметры, то в процессе этой замены происходит
+подстановка параметров в текст макроопределения. Образованное таким образом
+макрорасширение составляет часть текста программы, неотличимо от остальных
+предложений программы и не нуждается в каких-либо вызовах. В силу этих
+обстоятельств макрокоманды оказываются несколько эффективнее подпрограмм по
+скорости выполнения, особенно, если учесть время, требуемое для подготовки
+параметров перед вызовом подпрограммы (например, проталкивание их в стек). Вряд
+ли стоит, однако, проводить такое сравнение. Подпрограммы и макрокоманды имеют
+различные области применения. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Подпрограммы
+служат для сокращения объема программы, повышения ее наглядности и упрощения
+перестройки алгоритма выполнения всего программного комплекса путем изменения
+состава и порядка вызываемых подпрограмм. При этом активное использование подпрограмм
+может уменьшить размер всей программы в десятки раз. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Смысл
+использования макрокоманд совсем иной. Макрокоманды позволяют упростить процесс
+написания программы и, можно сказать, являются средством автоматизации
+программирования. При этом язык макрокоманд предоставляет большие возможности
+по изменению текста макрорасширения в зависимости от указываемых в макрокоманде
+параметров. Проиллюстрируем эти возможности на простом примере макрокоманды
+вывода на экран символа. Такой макрокомандой можно пользоваться в процессе
+отладки сложных программ, чтобы получать информацию о содержимом любых ячеек
+памяти. Пример оформлен в виде законченной программы, которая носит чисто
+демонстрационный характер.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>;Пример
+2-1. Использование макрокоманды <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>sym</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> <span class=SpellE>macroc</span>
+;Имя и формальный аргумент <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>push</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> AX ;Сохраним
+используемые <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>push</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> DX ;в
+макроопределении регистры <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>mov</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> АН, 02h ;Функция DOS вывода
+символа <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>mov</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> <span class=SpellE>DL,c</span>
+;Заберем символ <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>int</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> 21h ;Вызов DOS <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>pop</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> DX ;Восстановим <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>pop</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> AX ;регистры <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-ansi-language:
+EN-US'>endm</span></span><span lang=EN-US style='font-size:12.0pt;font-family:
+"Times New Roman","serif";mso-ansi-language:EN-US'> ;</span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Конец</span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-ansi-language:
+EN-US'> </span><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>макроопределения</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman","serif";
+mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>code segment <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>assume <span
+class=SpellE>cs:code</span> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>main</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> <span
+class=SpellE>proc</span> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>sym</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> '<span class=SpellE>w</span>'
+;Символ указан непосредственно <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>sym</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> ES : 0 ;Вывод первого байта PSP <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>sym</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> <span class=SpellE>CS:msg</span>
+;Вывод первой буквы из <span class=SpellE>msg</span> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>lea</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> <span class=SpellE>BX,msg-t-l</span>
+;Адрес второй буквы из <span class=SpellE>msg</span> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>sym</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> [BX] ;Вывод второй буквы <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>mov</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> AX, 40h ;Настроим DS <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>mov</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> DS,AX ;на начало памяти <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>sym</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> DS:49h ;Вывод номера видеорежима
+<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>mov</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> AX,4C00h ;Завершение программы <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>int</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> 21h <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>main <span
+class=SpellE>endp</span> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-ansi-language:
+EN-US'>msg</span></span><span lang=EN-US style='font-size:12.0pt;font-family:
+"Times New Roman","serif";mso-ansi-language:EN-US'> db 'OK' <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>code ends<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Тексты
+макроопределений обычно размещаются в самом начале программы, что дает
+возможность вызывать макрокоманды из любых точек программы. Содержательная
+часть макроса <span class=SpellE>sym</span> состоит в вызове функции 02h DOS,
+которая выводит на экран символ из регистра DL. Поскольку макрос использует
+регистры АХ и DX, они в начале макроса сохраняются в стеке, а перед его
+завершением восстанавливаются. В качестве параметра макрокоманды можно
+использовать любое обозначение ассемблера, которое может интерпретироваться,
+как адрес символа. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Сама
+программа умышленно построена несколько нестандартным образом. В ней имеется
+единственный сегмент с текстом программы, в конце которого помещена строка
+данных (слово 'ОК'). Такое расположение данных допустимо, однако для обращения
+к ним необходимо использовать замену сегмента (как это сделано в третьей строке
+программы), так как программный сегмент адресуется через регистр CS. Сегмент
+стека в программе отсутствует, что не очень хорошо, но для небольших программ
+допустимо. Фактически под стек будет использован самый низ сегмента команд,
+начиная с адреса <span class=SpellE>FFFEh</span>. Поскольку наша программа
+имеет размер, существенно меньше 64К, такое расположение стека не приведет ни к
+каким неприятностям (при большом размере программы стек мог бы начать затирать
+нижние строки программы). <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>В
+программе проиллюстрировано использование в качестве фактического аргумента
+макрокоманды различных конструкций языка: непосредственного обозначения символа
+(что, наверное, лишено смысла), прямого обращения к различным участкам памяти
+по абсолютным адресам через регистры ES и DS, адресации с использованием
+символического обозначения поля данных. На рис. 2.18 приведен вывод программы.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Рис.
+2.18. Вывод программы 2.1.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Как
+уже отмечалось, при загрузке программы в память в регистры DS и ES заносится
+сегментный адрес префикса программы, поэтому адресация через ES позволяет
+прочитать содержимое PSP. Префикс содержит, главным образом, данные,
+необходимые системе для обслуживания текущей программы, но, кроме того, и
+несколько команд. В частности, префикс начинается с команды CD 20h, которая уже
+давно не используется, но в префиксе присутствует ради обеспечения
+совместимости со старыми версиями DOS. Первый байт этой команды, если его
+рассматривать, как код символа, соответствует элементу двойной горизонтальной
+рамки (длинный знак равенства). <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Занеся
+в регистр DS число 40h, мы настроили его на начало области данных BIOS, которая
+начинается с абсолютного адреса 400h, занимает 256 байт и содержит
+разнообразные данные, используемые BIOS в процессе обслуживания аппаратуры
+компьютера. Так, например, по адресу 0 от начала этой области хранится базовый
+адрес первого последовательного порта; по адресу 8 - адрес первого
+параллельного порта, а по адресу 491i - код текущего видеорежима. При работе в
+DOS видеоадаптер обычно настраивается на режим 3 (80x25 символов, 16 цветов).
+Будучи выведен на экран, код 3 образует изображение червонного туза. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>В
+тех случаях, когда макрокоманды составляются для конкретной программы, они
+включаются в текст программы так, как это было сделано в примере 2.1. Однако
+часто программист оформляет в виде макрокоманд стандартные процедуры общего
+назначения, например, программную задержку или вывод на экран строки текста. В
+этом случае тексты макроопределений целесообразно поместить в макробиблиотеку. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Макробиблиотека
+представляет собой файл с текстами макроопределений. Макроопределения
+записываются в этот файл точно в таком же виде, как и в текст программы. Ниже
+приведен текст файла макробиблиотеки с произвольным именем MYMACRO.MAC,
+содержащей две макрокоманды.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>;Макрокоманда
+<span class=SpellE>endpr</span> завершения программы <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>endpr</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> <span
+class=SpellE>macro</span> ;Макрокоманда без параметров <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-ansi-language:
+EN-US'>mov</span></span><span lang=EN-US style='font-size:12.0pt;font-family:
+"Times New Roman","serif";mso-ansi-language:EN-US'> AX,4C00h <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-ansi-language:
+EN-US'>int</span></span><span lang=EN-US style='font-size:12.0pt;font-family:
+"Times New Roman","serif";mso-ansi-language:EN-US'> 2 In <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-ansi-language:
+EN-US'>endm</span></span><span lang=EN-US style='font-size:12.0pt;font-family:
+"Times New Roman","serif";mso-ansi-language:EN-US'> ;</span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Конец</span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-ansi-language:
+EN-US'> </span><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>макрокоманды</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman","serif";
+mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>;Макрокоманда
+<span class=SpellE>delay</span> настраиваемой программной задержки <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>delay</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> <span
+class=SpellE>macro</span> <span class=SpellE>time</span> ;Параметр - число
+шагов <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>locallabell,Iabel2
+;Локальные метки <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>push</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> CX ;Сохраним
+внешний счетчик <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>mov</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> <span class=SpellE>CX,time</span>
+;Получим фактический параметр <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Iabel2
+: <span class=SpellE>push</span> CX ;Сохраним его в стеке <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>mov</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> CX, 0 ;Пусть будет 64К шагов <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>labell</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'>: <span
+class=SpellE>loop</span> <span class=SpellE>lanell</span> ;Внутренний цикл <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>pop</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> CX ;Извлечем внешний счетчик <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>loop</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> Iabel2 ;Внешний
+цикл <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>pop</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> CX ;Восстановим CX программы <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>endm</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> ;Конец
+макрокоманды<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Для
+того чтобы транслятору были доступны макрокоманды из файла MYMACRO.MAC, его
+следует на этапе трансляции подсоединить к исходному тексту программы
+директивой ассемблера <span class=SpellE>include</span>:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>include</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> <span
+class=SpellE>my</span> <span class=SpellE>macro</span>, <span class=SpellE>mac</span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Все
+макрокоманды, включенные в этот файл, можно использовать в любом месте
+программы. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Директивы
+условной трансляции <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Директивы
+условной трансляции (условного ассемблирования) позволяют иметь в исходном
+тексте программы различные варианты отдельных фрагментов программы, и путем
+задания определенных условий управлять процессом трансляции. Таким образом
+можно, например, включать или исключать из текста программы служебные,
+отладочные фрагменты или настраивать программу для выполнения на заданном
+процессоре. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Пусть,
+например, в процессе отладки сложной программы мы используем подпрограмму <span
+class=SpellE>regs</span> вывода на экран содержимого всех регистров процессора.
+Включая в разные места программы вызов этой подпрограммы, мы имеем возможность
+контролировать ход ее выполнения, в том числе и такие тонкие моменты, как,
+например, расположение программы в памяти или интенсивность использование стека.
+Для управления процессом трансляции предусмотрим константу <span class=SpellE>debug</span>
+(отладка), ненулевое значение которой будет требовать отладочного варианта
+трансляции, а нулевое - рабочего. Начало программы, а также участки с вызовом
+отладочной подпрограммы будут выглядеть следующим образом:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>;<span
+class=SpellE>debug=l</span> ;Удалите символ ';'для отладочной трансляции<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>;debug=0
+;Удалите ';' для рабочей трансляции<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>...
+;Текст программы<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>if</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> <span class=SpellE>debug</span>
+;Транслировать только если <span class=SpellE>debug=l</span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>call</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> <span
+class=SpellE>regs;Вызов</span> отладочной подпрограммы<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>endif</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> ;Конец блока
+условной трансляции<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>…
+;Продолжение программы<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>if</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> <span class=SpellE>debug</span>
+;Следующее включение отладочного блока<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>call</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> <span
+class=SpellE>regs</span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>endif</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>...
+;Продолжение программы<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Можно
+отлаживать программу в отладочном варианте, а затем удалить все вызовы
+вспомогательной подпрограммы <span class=SpellE>regs</span> вручную и получить
+рабочий вариант, однако на практике обычно (или даже всегда) оказывается, что
+после эксплуатации программы в течение некоторого времени в ней обнаруживаются
+незамеченные ранее ошибки, что приводит к необходимости снова вставлять в нее
+отладочные строки. Часто эту процедуру приходится повторять многократно.
+Использование в программе директив условной трансляции сокращают процедуру
+преобразования программы из отладочного варианта в рабочий или наоборот до
+операции стирания одного символа &quot;;&quot; в начале программы и устраняют
+вероятность случайного внесения в программу новых ошибок в процессе удаления
+или вставки отладочных строк. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Пример
+применения директив условной трансляции. Как уже отмечалось, современные
+процессоры предоставляют программисту значительное количество дополнительных
+команд, которые можно использовать в программах реального режима, но только,
+разумеется, если компьютер оснащен соответствующим процессором. Нетрудно
+составить универсальную программу', которую можно выполнять как на современных
+процессорах (в более эффективном режиме), так и на более старых (с некоторой
+потерей эффективности), если включить в нее директивы условной трансляции этих
+дополнительных команд. К таким командам, в частности, относятся команды
+сохранения в стеке всех регистров общего назначения <span class=SpellE>pusha</span>
+и восстановления всех регистров <span class=SpellE>рора</span>. Приведем пример
+условной трансляции этих команд, в котором используется конструкция макроязыка <span
+class=SpellE>if</span>... <span class=SpellE>else</span>... <span class=SpellE>endif</span>:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>i386=l <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>if i386 <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>.386 <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-ansi-language:
+EN-US'>endif</span></span><span lang=EN-US style='font-size:12.0pt;font-family:
+"Times New Roman","serif";mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>code segment
+use16 <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>assume <span
+class=SpellE>CS:code</span> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>main proc <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>… <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>if</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> i386 <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>push</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> ;Сохранение
+всех регистров одной командой <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>else <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push AX <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push CX <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push DX <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push BX <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push BP <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>push SI <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>push</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> DI <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>endif</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>.
+. . ;Использование регистров после <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>;сохранения
+их значений <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>if</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> 1386 <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>рора</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'> ;Восстановление
+всех регистров одной командой <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>else <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>pop DI <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>pop SI <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>pop BP <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>pop BX <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>pop DX <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>pop CX <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>pop</span></span><span style='font-size:
+12.0pt;font-family:"Times New Roman","serif"'> AX <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span class=SpellE><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>endif</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Если
+в начале программы имеется объявление i386=1, то, во-первых, в программу будет
+включена директива .386, позволяющая использовать в программе дополнительные
+команды, а во-вторых, в последующих условных блоках будут транслироваться те их
+участки, которые содержат команды процессора 80386. Если же объявление i386=1
+изъять, то в условных блоках будут транслироваться эквивалентные по существу,
+но менее эффективные последовательности команд МП86.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

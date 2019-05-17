@@ -1,0 +1,1390 @@
+﻿<!-- (C) 2017 03 Rozum Halina, BSUIR, Belarus -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html" charset="utf8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>LK8 &quot;ОПИС&quot;</title>
+<base target="_top">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr>
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr>
+  <td width="70%" colspan=2 align="center" valign="middle">
+               <H1 align="center">электронный ресурс по учебной дисциплине<BR>
+        &quot;ОСНОВЫ ПРОЕКТИРОВАНИЯ ИНФОРМАЦИОННЫХ СИСТЕМ&quot;<BR>
+         для направления специальности: </H1> 1-40 05 01-09 &quot;Информационные системы и технологии (в обеспечении промышленной безопасности)&quot;
+                </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../index.html">Оглавление</A> |
+	<A HREF="../../../Программа/programm.html" TITLE="Программа курса (Откроется в новом окне)">Программа</A> |
+							<strong>Теория</strong> |
+		<A HREF="../../../Практика/practice.html">Практика</A>|
+		<A HREF="../../../Контроль_знаний/test.html">Контроль знаний</A> |
+	<A HREF="../../../Об авторах/author.html">Об авторах</A></var> </td>
+  <tr>
+</table>
+<div style="margin-left:5%; margin-right:5%;" width="80%" border="0" cellpadding="0" cellspacing="0">
+
+                <p></p>
+				<A HREF="../../../Теория/theory.html">Содержание</A>
+				<p></p>
+
+    <p style="text-align: center;"><strong><span>Тема 8<o:p></o:p></span></strong></p>
+    <p style="text-align: center;"><strong><span>Управление процессами и системами прерываний<o:p></o:p></span></strong></p>
+<ol>
+<a href="#_T1">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Литература.<o:p></o:p></span></a>
+
+
+</ol>
+
+
+
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Далее продолжим изучение переходов, т.е.
+нарушений естественного порядка выполнения команд программы. Как уже
+упоминалось, некоторые переходы производятся не при выполнении команд
+программы, а могут делаться центральным процессором автоматически при
+возникновении определенных условий. Если компьютер обладает такими
+возможностями, то говорят, что в этом компьютере реализована система прерываний
+(иногда эту систему называют ещё аппаратом прерываний). Заметим, что самые
+первые компьютеры (их относят к ЭВМ первого и второго поколений) такими
+возможностями не обладали, однако все современные ЭВМ имеют систему прерываний,
+и сейчас Вам предстоит изучить, что это такое.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Сначала введём понятие события (возникшей
+ситуации), которое может касаться как выполняемой на ЭВМ программы (внутренние
+события), так и функционирования периферийных устройств (внешние события).
+Внутренние события могут возникать в центральном процессоре и оперативной
+памяти (например, деление на ноль, попытка выполнить машинную команду с
+несуществующим кодом операции, сбой в работе оперативной памяти, выполнение
+некоторых особых команд и т.д.). Внешние события могут возникать в периферийных
+устройствах (например, нажата кнопка мыши, на печатающем устройстве кончилась
+бумага, пришел сигнал на сетевую карту, диск закончил обмен данными с
+оперативной памятью и др.). Чаше всего бывает так, что при возникновении
+некоторого события продолжать выполнение текущей программы может быть либо
+бессмысленно (деление на ноль), либо нежелательно, так как нужно срочно
+предпринять какие-то действия, для выполнения которых текущая программа просто
+не предназначена. Например, надо отреагировать на нажатие кнопки мыши, на
+сигнал от встроенного таймера, на сообщение, пришедшее по линии связи от
+другого компьютера, и т.д.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Не надо думать, что события в компьютере –
+это нечто экзотическое, и они происходят редко. Действительно, некоторые из
+событий (например, деление на ноль) происходят нечасто, в то время как другие
+(например, события во встроенных в компьютере часах, которые говорят о том, что
+истек очередной квант времени) могут происходить несколько сот или даже тысяч
+раз в секунду.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>В архитектуре современных компьютеров
+предусмотрено, что каждое устройство, в котором произошло событие (центральный
+процессор, оперативная память, устройства ввода/вывода) генерирует при этом
+особый сигнал прерывания – электрический импульс, который приходит на
+специальную электронную схему центрального процессора. Сигнал прерывания,
+связанный с каждым из событий, обычно имеет свой номер, чтобы центральный процессор
+мог отличить его от сигналов, связанных с другими событиями. По месту
+возникновения сигналы прерывания классифицируются как внутренние (в центральном
+процессоре и оперативной памяти) и внешние (в периферийных устройствах).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Получив сигнал прерывания, центральный
+процессор автоматически (не выполняя никаких команд какой-либо программы!)
+предпринимает некоторые действия, которые называются аппаратной реакцией на
+этот сигнал. Надо сказать, что, хотя такая реакция, конечно, сильно зависит от
+архитектуры конкретного компьютера, всё же можно указать какие-то общие черты
+этого процесса, присущие большинству ЭВМ. Сейчас будет рассмотрено, что обычно
+входит в аппаратную реакцию центрального процессора на сигнал прерывания.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Сначала надо сказать, что центральный процессор
+«смотрит», пришел ли сигнал прерывания, только после выполнения очередной
+команды, таким образом, этот сигнал ждёт завершения текущей команды. Здесь,
+однако, надо рассказать о двух «нетипичных» командах в архитектуре младшей
+модели рассматриваемого компьютера, это команды с мнемоническими кодами
+операций hlt и wait. Команда hlt останавливает выборку команд центральным
+процессором, и только сигнал прерывания может вывести компьютер из этого
+«ничегонеделания». Обычно эта команда используется для «выключения»
+центрального процессора, если ни одна из программ не готова к счёту, это
+позволяет, в частности, снизить энергопотребление, что может оказаться важным,
+например, при работе портативного компьютера от аккумуляторов. Команда wait в
+младшей модели нашего семейства приостанавливает выполнение программы в
+центральном процессоре и ждёт окончания команд для операции с вещественными
+числами, которые выполняются в отдельном арифметическом сопроцессоре (эти
+команды в данной книге не рассматриваются).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>К описанному выше правилу начала
+аппаратной реакции на сигнал прерывания по завершению выполнения текущей
+команды необходимо сделать существенное замечание. Дело в том, что большинство
+современных ЭВМ отступают от принципа Фон Неймана последовательного выполнения команд.
+Напоминаем, что согласно одному из положений этого принципа, следующая команда
+начинала выполняться только после полного завершения текущей команды.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Современные ЭВМ могут одновременно
+выполнять несколько команд одной или даже разных программ. Примерами
+компьютеров, обладающих такими возможностями, являются так называемые
+конвейерные ЭВМ, они могут одновременно выполнять около десяти команд текущей
+программы. Для конвейерных ЭВМ необходимо уточнить, когда начинается аппаратная
+реакция на сигнал прерывания. Обычно это происходит после полного завершения
+любой из выполняющихся в данный момент команд. Выполнение остальных команд
+прекращается и в дальнейшем их необходимо будет повторить с самого начала.
+Понятно, что конвейерные ЭВМ весьма «болезненно» относятся к сигналам
+прерывания, так как при этом приходится заново повторять несколько последних,
+частично выполненных, команд прерванной программы. При частом приходе сигналов
+прерываний это может сильно снизить скорость выполнения программ. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Сигналы прерываний приходят на специальную
+электронную схему ЦП, обычно она называется (программируемым) контроллером
+прерываний. Именно у этого контроллера ЦП «спрашивает», есть ли сигнал
+прерывания.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Итак, если есть сигнал прерывания, то
+после окончания текущей команды центральный процессор читает из контроллера
+номер сигнала прерывания (для нашего компьютера это целое беззнаковое число
+формата i8). Для некоторых из этих номеров пришедший сигнал прерывания
+игнорируется, и центральный процессор продолжает выполнение текущей программы.
+Говорят, что прерывания с такими номерами в данный момент времени запрещены или
+замаскированы. Для компьютера нашей архитектуры можно замаскировать все
+прерывания от внешних устройств (кроме прерывания с номером 2), установив в
+ноль значение специального флага прерывания с именем IF в регистре флагов FLAGS
+(это можно сделать, выполнив команду cli ).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Маскировать исключения, т.е. сигналы
+прерываний о событиях в центральной части компьютера (например, деление на
+ноль, плохой код операции, сбой оперативной памяти и т.д.) нельзя, так как
+продолжение выполнения текущей программы при этом не имеет смысла. Обычно можно
+замаскировать каждое прерывание от внешних устройств по отдельности, для этого
+надо установить в ноль соответствующий этому прерыванию бит в специальном
+регистре маски прерываний. Таким образом, прерывания с определёнными номерами
+можно закрывать (маскировать) и открывать (разрешать, снимать с них маску). В
+рассматриваемой архитектуре можно выборочно заблокировать прерывания от внешних
+устройств путем управления контроллером прерываний (у него есть маска
+прерываний).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>В том случае, если прерывание игнорируется
+(замаскировано), сигнал прерывания, тем не менее, продолжает оставаться на
+входе соответствующей схемы центрального процессора до тех пор, пока
+маскирование этого сигнала не будет снято, или же на этот вход центрального
+процессора ни придёт следующий сигнал прерывания. В последнем случае первый
+сигнал обычно безвозвратно потеряется, что может быть очень опасно, так как
+компьютер не прореагировал должным образом на некоторое событие, и оно прошло
+для него незамеченным. Чтобы снизить такую опасность, контроллер прерываний
+обычно запоминает приходящие сигналы в небольшой аппаратно реализованной
+очереди для их дальнейшей обработки. Отсюда следует, что маскировать сигналы
+прерываний от внешних устройств можно только на некоторое весьма короткое
+время, после чего необходимо открыть возможность реакции на такие прерывания.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Теперь следует понять, зачем вообще может
+понадобиться маскировать некоторые прерывания. Дело в том, что, если пришедший
+сигнал прерывания не замаскирован, то, как вскоре станет ясно, центральный
+процессор прерывает выполнение текущей программы и переключается на выполнение
+некоторой в общем случае другой программы. Это может быть нежелательно и даже
+опасно, если текущая программа была занята срочной работой, которую нельзя
+прерывать даже на короткое время. Например, эта программа может обрабатывать
+некоторое важное событие, или же управлять каким-либо быстрым процессом во внешнем
+устройстве (линия связи с космическим аппаратом, химический реактор и т.д.). <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>С другой стороны, необходимо понять, что
+должны существовать и специальные немаскируемые сигналы прерывания от внешних
+устройств. В качестве примера такого сигнала можно привести сигнал о том, что
+выключилось электрическое питание компьютера. Надо сказать, что в этом случае
+компьютер останавливается не мгновенно, какую-то долю секунды он ещё может
+работать за счет энергии, накопленной на электрических конденсаторах в блоке
+питания. Этого времени хватит на выполнение нескольких сотен тысяч или даже
+миллионов команд и можно принять важные решения: послать сигнал тревоги, спасти
+ценные данные в энергонезависимой памяти, переключится на резервный блок
+питания и т.д. Кроме того, необходимо понять, что бессмысленно маскировать внутренние
+сигналы прерываний, т.к. после такого сигнала продолжать выполнение текущей
+программы бессмысленно (деление на ноль, плохой код операции, отказ памяти и
+т.д.). Кроме того, как скоро станет ясно, внутренние прерывания возникают и при
+выполнении некоторых специальных команд, основным назначением этих команд как
+раз и является выдача сигнала прерывания (вскоре эти команды будут изучены).
+Для данной архитектуры все сигналы о событиях в центральной части компьютера
+замаскировать нельзя, и, как уже упоминалось, существует только одно немаскируемое
+прерывание от внешних устройств с номером 2. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Продолжим теперь рассмотрение аппаратной
+реакции на незамаскированное прерывание. Сначала центральный процессор автоматически
+запоминает в некоторой области памяти (обычно в текущем, а для старших моделей
+в отдельном системном стеке) самую необходимую (минимальную) информацию о
+прерванной программе. Во многих книгах по архитектуре ЭВМ это называется малым
+упрятыванием информации о считающейся в данный момент программе, что хорошо
+отражает смысл такого действия. Для младшей модели данного компьютера в стек
+последовательно записываются значения трёх «самых важных» регистров
+центрального процессора: это регистр флагов (FLAGS), кодовый сегментный регистр
+(CS) и счётчик адреса (IP). Как видим, эти действия при минимальном упрятывании
+похожи на действия при выполнении команды перехода с запоминанием возврата
+call. Да и назначение у них одно – обеспечить возможность возврата в прерванное
+место текущей программы. Из этого, как уже неоднократно говорилось, следует,
+что в младших моделях семейства стек должен быть у любой программы, даже если
+она сама им и не пользуется.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>После выполнения минимального упрятывания,
+центральный процессор по определённым правилам находит (вычисляет) адрес
+оперативной памяти, куда надо передать управление для обработки сигнала
+прерывания с данным номером. Говорят, что на этом месте оперативной памяти
+находится процедура обработки прерывания (Interrupt Service Routine, Interrupt
+Handler), т.е. подпрограмма реакции, обработчик сигнала прерывания с данным
+номером. Для компьютера нашей архитектуры определение адреса начала
+процедуры-обработчика прерывания с номером N производится по следующему
+правилу. В начале оперативной памяти расположен так называемый вектор
+прерываний – массив из 256 элементов (по числу возможных номеров прерываний от
+0 до 255). Каждый элемент этого массива состоит из двух машинных слов (т.е.
+имеет формат m32) и содержит дальний адрес процедуры-обработчика. Таким
+образом, адрес процедуры- обработчика находится в двух словах, расположенных в
+памяти по физическим адресам 4*N и 4*N+2. Можно сказать, что для перехода на
+процедуру-обработчика прерывания с номером N необходимо выполнить безусловный переход.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>jmp dword ptr [4*N]; IP:=[4*N], CS:=[4*N+2]</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Таким образом, можно сказать, что
+прерывание вызывает дальний прямой двойной косвенный переход. Заметим, что на
+самом деле это аналог команды дальнего вызова процедуры, так как в стек уже
+занесена информация о точке возврата в прерванную программу.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Непосредственно перед переходом на
+процедуру-обработчика центральный процессор закрывает (маскирует) внешние
+прерывания, так что процедура-обработчик начинает своё выполнение в режиме
+запрета таких прерываний. Это гарантирует, что, начав свою работу,
+процедура-обработчик не будет тут же (после выполнения первой же команды)
+прервана другим внешним сигналом прерывания. Для нашей архитектуры центральный
+процессор устанавливает в ноль флаги IF и TF регистра флагов. Как уже
+говорилось, значение флага IF=0 маскирует все прерывания от внешних устройств,
+кроме прерывания с номером 2. На старших моделях семейства это прерывание тоже
+можно закрыть, но не с помощью флага IF, а с использованием нужного порта
+контроллера прерываний, о работе с портами будет рассказано далее. Флаг TF
+устанавливается равным нулю потому, что при значении TF=1 центральный процессор
+всегда посылает сам себе (немаскируемый) сигнал прерывания с номером N=1 после
+выполнения каждой команды. Этот флаг используется при работе
+программ-отладчиков для пошагового выполнения (трассировки) отлаживаемой
+программы. На этом аппаратная реакция на незамаскированное прерывание
+заканчивается.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Заметим, что некоторым аналогом аппаратной
+реакции ЭВМ на прерывание в живой природе является безусловный рефлекс.
+Безусловный рефлекс позволяет живому существу «автоматически» (а,
+следовательно, быстро, «не раздумывая») реагировать на произошедшее событие.
+Например, если человек обжигает пальцы на огне, то сначала он автоматически
+отдергивает руку, а лишь потом начинает разбираться, что же собственно
+произошло. Так и компьютер по сигналу прерывания может автоматически, «не
+раздумывая» переключиться на процедуру-обработчика этого сигнала. Отсюда можно
+сделать вывод, что одно из назначений системы прерываний – обеспечить быструю
+реакцию компьютера на события, возникающие как в его центральной части, так и
+на периферии (в устройствах ввода/вывода).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Итак, после завершения аппаратной реакции
+на незамаскированный сигнал прерывания начинает работать процедура-обработчик
+прерывания с данным номером, эта процедура выполняет, как говорят, программную
+реакцию на прерывание. Аналогом программной реакции на прерывание в живой
+природе можно считать условный рефлекс. Как у живого организма можно выработать
+условный рефлекс на некоторый внешний раздражитель (сигнал), так и компьютер
+можно «научить», как реагировать на то или иное событие, написав
+процедуру-обработчика сигнала прерывания с номером, соответствующим этому
+событию.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Из рассмотренной выше схемы аппаратной
+реакции на сигнал прерывания можно сделать вывод о том, что наш компьютер будет
+правильно работать только тогда, когда его вектор прерывания заполнен не
+случайными числами, а «правильными» адресами процедур-обработчиков прерываний.
+Об этом должна позаботиться операционная система нашего компьютера в самом
+начале его работы.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Рассмотрим теперь схему работы
+процедуры-обработчика прерывания. Напомним, что эта процедура начинает
+выполняться в режиме с закрытыми прерываниями от внешних устройств. Как уже
+говорилось выше, долго работать в таком режиме очень опасно, и следует как
+можно скорее разрешить (открыть) такие прерывания (для нашего компьютера это
+установка в единицу флага IF, это можно сделать, выполнив команду sti ).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Действия, выполняемые в режиме с закрытыми
+прерываниями, обычно называются минимальной программной реакцией на прерывание.
+Как правило, минимальная программная реакция включает в себя следующие
+действия.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt;line-height:normal;mso-list:l7 level1 lfo15'><span
+style='font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>· </span></span> <span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>Для прерванной
+программы запоминается вся информация, необходимая для возобновления счета этой
+программы с прерванного места. Необходимо запомнить все адресуемые регистры (в
+том числе сегментные регистры и регистры для работы с вещественными числами), а
+также некоторые системные регистры (последнее сильно зависит от архитектуры
+конкретного компьютера). Вся эта информация запоминается в специальной области
+памяти, связанной с прерванной программой, обычно эта область памяти называется
+информационным полем, полем сохранения, дескриптором процесса или контекстом
+процесса. Информационные поля всех процессов хранятся в хорошо защищенном месте
+памяти (обычно в ядре операционной системы), в старших моделях рассматриваемого
+семейства эта область обычно называется сегментом состояния (выполняющихся)
+задач (Task State Segment – TSS). Заметим также, что обычно в начале своей
+работы процедура-обработчик переключается на свой собственный стек, а не
+использует далее стек прерванной программы.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt;line-height:normal;mso-list:l7 level1 lfo15'> <span
+style='font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>· </span></span> <span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>Выполняются самые
+необходимые действия, связанные с произошедшим событием. Например, если нажата
+или отпущена клавиша на клавиатуре, то это надо где-то зафиксировать (например,
+запомнить в очереди введенных с клавиатуры символов). Если этого не сделать на
+этапе минимальной реакции и открыть прерывания, то процедура-обработчик может
+быть надолго прервана новым сигналом прерывания. Этот сигнал произведет
+переключение на какую-то другую процедуру-обработчик, за время её работы уже
+может быть нажата другая клавиша, а информация о нажатой ранее клавише, таким
+образом, может быть безвозвратно потеряна.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>После выполнения минимальной программной
+реакции процедура-обработчик включает (разрешает) внешние прерывания – в нашей
+архитектуре устанавливает флаг IF=1. Далее производится полная программная
+реакция на прерывания, т.е. процедура-обработчик выполняет все необходимые
+действия, связанные с происшедшим событием. Вообще говоря, допускается, что на
+этом этапе выполнение нашей процедуры-обработчика может быть прервано другим
+сигналом прерывания. В частности, это может быть и сигнал с таким же номером N,
+при этом произойдёт повторный вход в начало этой же самой
+процедуры-обработчика. Те программы, которые допускают такой «принудительный»
+повторный вход в своё начало (не путать это с рекурсивным вызовом!), называются
+повторно-входимыми или «по-иностранному» реентерабельными. Для реентерабельных
+программ при каждом входе в их начало должна резервироваться новая область
+памяти под хранение контекста этой программы при её прерывании. Программы
+обработки прерываний для младших моделей нашего семейства могли и не быть
+реентерабельными, что порождало определённые проблемы, которые здесь
+обсуждаться не будут.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Закончив полную обработку сигнала
+прерывания, процедура-обработчик должна вернуть управление программе,
+прерванной сигналом прерывания. Если прерванных (готовых к продолжению своего
+счёта) программ больше одной, то часто может понадобиться произвести возврат не
+в последнюю по времени прерванную программу, а в какую-нибудь другую из этих
+программ. Поэтому в современных ЭВМ после окончания своей работы
+процедура-обработчик прерывания передает управление специальной системной
+программе – <i style='mso-bidi-font-style:normal'>диспетчеру задач </i>(Task
+Manager) и уже диспетчер определяет, которая из прерванных программ должна быть
+продолжена. Каждой выполняемой программе (точнее, процессу) присвоен числовой
+приоритет, и диспетчер продолжает выполнение готовой к счету программы с
+наибольшим приоритетом.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Для возобновления счета прерванной
+программы сначала необходимо из её контекста восстановить значение всех её
+регистров (кроме регистров FLAGS, CS и IP). Заметим, что после восстановления
+значений регистров SS и SP восстановилось и состояние стека программы, которое
+этот стек имел после завершения аппаратной реакции на прерывание. После этого
+надо произвести возврат на следующую команду прерванной программы, для чего в
+нашем компьютере можно использовать специальную команду языка машины – команду
+выхода из прерывания<o:p></o:p></span></p>
+
+<p class=Heading1 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif'>iret</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+RU'><o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Эта команда без параметров является
+ещ&#1104; одним видом команд безусловного перехода и выполняется по схеме:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>Изстека</span></b><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>(IP); <b
+style='mso-bidi-font-weight:normal'>Изстека</b>(CS); <b style='mso-bidi-font-weight:
+normal'>Изстека</b>(FLAGS)<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Напомним, что из области сохранения уже
+восстановлены регистры SS<span style='letter-spacing:-3.8pt'> </span>и SP<span
+style='letter-spacing:-3.9pt'> </span>прерванной программы, т.е. из её стека
+можно читать данные.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>При возобновлении счета прерванной
+программы возможен случай, когда необходимо повторить последнюю команду,
+вызвавшую прерывание. Ясно, что для этого диспетчер программ перед выполнением
+команды <b style='mso-bidi-font-weight:normal'>iret </b>должен скорректировать
+в стеке значение регистра IP, который, как известно, уже указывает на <i
+style='mso-bidi-font-style:normal'>следующую </i>команду.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Из рассмотренной выше схемы механизма
+обработки прерываний можно сделать один важный вывод. Для «обычной» программы
+прерывание проходит <u>незамеченным</u>, если только эта программа специально
+не следит за показанием встроенных в компьютер часов (в последнем случае она
+может заметить, что физическое время её счета «почему-то» увеличилось). Иногда
+для подчеркивания этого факта говорят, что механизм прерываний <i
+style='mso-bidi-font-style:normal'>прозрачен </i>для выполняемой программы
+обычного пользователя.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>В Таблице 8.1 изображено начало вектора
+прерываний для компьютера младшей модели изучаемой архитектуры.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'><span
+style='mso-spacerun:yes'>             </span>Таблица 8.1. Начало вектора
+прерываний<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='margin-left:32.05pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid black .5pt;mso-yfti-tbllook:480;mso-padding-alt:0cm 0cm 0cm 0cm;
+ mso-border-insideh:.5pt solid black;mso-border-insidev:.5pt solid black'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:11.5pt'>
+  <td width=64 valign=top style='width:48.15pt;border:solid black 1.0pt;
+  mso-border-alt:solid black .5pt;padding:0cm 0cm 0cm 0cm;height:11.5pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span lang=EN-US style='font-size:12.0pt'>Номер<o:p></o:p></span></p>
+  </td>
+  <td width=341 valign=top style='width:255.75pt;border:solid black 1.0pt;
+  border-left:none;mso-border-left-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+  padding:0cm 0cm 0cm 0cm;height:11.5pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span lang=EN-US style='font-size:12.0pt'>Описание
+  события<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;height:11.55pt'>
+  <td width=64 valign=top style='width:48.15pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+  padding:0cm 0cm 0cm 0cm;height:11.55pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span lang=EN-US style='font-size:12.0pt'>N=0<o:p></o:p></span></p>
+  </td>
+  <td width=341 valign=top style='width:255.75pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
+  mso-border-alt:solid black .5pt;padding:0cm 0cm 0cm 0cm;height:11.55pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span style='font-size:12.0pt;mso-ansi-language:
+  RU'>Деление на ноль (</span><span lang=EN-US style='font-size:12.0pt'>Divide</span><span
+  lang=EN-US style='font-size:12.0pt;mso-ansi-language:RU'> </span><span
+  lang=EN-US style='font-size:12.0pt'>Error</span><span style='font-size:12.0pt;
+  mso-ansi-language:RU'>)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;height:12.3pt'>
+  <td width=64 valign=top style='width:48.15pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+  padding:0cm 0cm 0cm 0cm;height:12.3pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span lang=EN-US style='font-size:12.0pt'>N=1<o:p></o:p></span></p>
+  </td>
+  <td width=341 valign=top style='width:255.75pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
+  mso-border-alt:solid black .5pt;padding:0cm 0cm 0cm 0cm;height:12.3pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span lang=EN-US style='font-size:12.0pt'>Установлен
+  флаг TF=1<span style='letter-spacing:-4.2pt'> </span>(Debug)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;height:12.45pt'>
+  <td width=64 valign=top style='width:48.15pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+  padding:0cm 0cm 0cm 0cm;height:12.45pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span lang=EN-US style='font-size:12.0pt'>N=2<o:p></o:p></span></p>
+  </td>
+  <td width=341 valign=top style='width:255.75pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
+  mso-border-alt:solid black .5pt;padding:0cm 0cm 0cm 0cm;height:12.45pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span lang=EN-US style='font-size:12.0pt'>Немаск</span><span
+  style='font-size:12.0pt;mso-ansi-language:RU'>и</span><span lang=EN-US
+  style='font-size:12.0pt'>руемое внешнее прерывание<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;height:12.3pt'>
+  <td width=64 valign=top style='width:48.15pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+  padding:0cm 0cm 0cm 0cm;height:12.3pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span lang=EN-US style='font-size:12.0pt'>N=3<o:p></o:p></span></p>
+  </td>
+  <td width=341 valign=top style='width:255.75pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
+  mso-border-alt:solid black .5pt;padding:0cm 0cm 0cm 0cm;height:12.3pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span lang=EN-US style='font-size:12.0pt'>Выполнена
+  команда <b style='mso-bidi-font-weight:normal'>int<span style='letter-spacing:
+  -4.15pt'> </span></b>(Breakpoint)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5;height:12.2pt'>
+  <td width=64 valign=top style='width:48.15pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+  padding:0cm 0cm 0cm 0cm;height:12.2pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span lang=EN-US style='font-size:12.0pt'>N=4<o:p></o:p></span></p>
+  </td>
+  <td width=341 valign=top style='width:255.75pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
+  mso-border-alt:solid black .5pt;padding:0cm 0cm 0cm 0cm;height:12.2pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span style='font-size:12.0pt;mso-ansi-language:
+  RU'>Выполнена команда </span><b style='mso-bidi-font-weight:normal'><span
+  lang=EN-US style='font-size:12.0pt'>into</span></b><b style='mso-bidi-font-weight:
+  normal'><span lang=EN-US style='font-size:12.0pt;mso-ansi-language:RU'> <span
+  style='letter-spacing:-3.5pt'><span style='mso-spacerun:yes'> </span></span></span></b><span
+  style='font-size:12.0pt;mso-ansi-language:RU'>при </span><span lang=EN-US
+  style='font-size:12.0pt'>OF</span><span style='font-size:12.0pt;mso-ansi-language:
+  RU'>=1<span style='letter-spacing:-3.65pt'> </span>(</span><span lang=EN-US
+  style='font-size:12.0pt'>Overflow</span><span style='font-size:12.0pt;
+  mso-ansi-language:RU'>)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;height:11.55pt'>
+  <td width=64 valign=top style='width:48.15pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+  padding:0cm 0cm 0cm 0cm;height:11.55pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span lang=EN-US style='font-size:12.0pt'>N=5<o:p></o:p></span></p>
+  </td>
+  <td width=341 valign=top style='width:255.75pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
+  mso-border-alt:solid black .5pt;padding:0cm 0cm 0cm 0cm;height:11.55pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><b style='mso-bidi-font-weight:normal'><span
+  lang=EN-US style='font-size:12.0pt'>. . .<o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7;height:11.55pt'>
+  <td width=64 valign=top style='width:48.15pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;
+  padding:0cm 0cm 0cm 0cm;height:11.55pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span lang=EN-US style='font-size:12.0pt'>N=6<o:p></o:p></span></p>
+  </td>
+  <td width=341 valign=top style='width:255.75pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .5pt;mso-border-left-alt:solid black .5pt;
+  mso-border-alt:solid black .5pt;padding:0cm 0cm 0cm 0cm;height:11.55pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span style='font-size:12.0pt;mso-ansi-language:
+  RU'>Команда с плохим КОП (</span><span lang=EN-US style='font-size:12.0pt'>Invalid</span><span
+  lang=EN-US style='font-size:12.0pt;mso-ansi-language:RU'> </span><span
+  lang=EN-US style='font-size:12.0pt'>Opcode</span><span style='font-size:12.0pt;
+  mso-ansi-language:RU'>)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8;height:11.5pt'>
+  <td width=405 colspan=2 valign=top style='width:303.95pt;border-top:none;
+  border-left:solid black 1.0pt;border-bottom:solid windowtext 1.0pt;
+  border-right:solid black 1.0pt;mso-border-top-alt:solid black .5pt;
+  mso-border-alt:solid black .5pt;mso-border-bottom-alt:solid windowtext .5pt;
+  padding:0cm 0cm 0cm 0cm;height:11.5pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt'><span lang=EN-US style='font-size:12.0pt'>. . .<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:9;mso-yfti-lastrow:yes;height:11.4pt'>
+  <td width=405 colspan=2 valign=top style='width:303.95pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 0cm 0cm 0cm;height:11.4pt'>
+  <p class=TableParagraph style='margin:0cm;margin-bottom:.0001pt;text-align:
+  justify;text-indent:35.45pt;tab-stops:50.9pt'><span lang=EN-US
+  style='font-size:12.0pt;position:relative;top:-.5pt;mso-text-raise:.5pt'>N=18<span
+  style='mso-tab-count:1'>   </span></span><span lang=EN-US style='font-size:
+  12.0pt'>Ошибка аппаратуры (Machine<span style='letter-spacing:-.7pt'> </span>Check)<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;tab-stops:177.3pt'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>Продолжим теперь
+изучение переходов, вызванных специальными командами прерываний, выполнение
+каждой такой команды в нашей архитектуре всегда вызывает прерывание (исключением
+является команда </span><span lang=EN-US style='font-size:12.0pt;font-family:
+"Times New Roman",serif;mso-ansi-language:EN-US'>into</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>, которая вызывает
+прерывание не всегда. Каждая команда прерывания реализует <i style='mso-bidi-font-style:
+normal'>дальний прямой двойной косвенный переход </i>(как<span
+style='mso-spacerun:yes'>  </span>уже упоминалось ранее, косвенный переход
+двойной, так как в самой команде указывается не адрес памяти, где хранится
+место перехода, а только заданный по умолчанию номер в векторе прерываний, и
+указанный адрес памяти <i style='mso-bidi-font-style:normal'>вычисляется </i>по
+этому<span style='letter-spacing:-.75pt'> </span>номеру).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;tab-stops:177.3pt'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>Сначала рассмотрим
+некоторые команды прерывания, о которых упоминается в Таблице 8.1. Команда int
+является самой короткой (длиной в один байт) командой, которая всегда вызывает
+прерывание с номером N=3. В основном эта команда используется при работе
+отладчика – специальной программы, облегчающей программисту разработку новых
+программ. Отладчик, в частности, может ставить в отлаживаемый программный код
+так называемые контрольные точки – это те места, в которых отлаживаемая
+программа должна передать управление отладчику. Для такой передачи хорошо
+подходит короткая команда int, если программа-отладчик реализована в виде
+обработчика прерывания с номером N=3 (так как эта команда самая короткая по
+длине, то её можно временно подставить на место любой машинной команды в
+отлаживаемой программе).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;tab-stops:177.3pt'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>Команда into
+реализует условное прерывание: при выполнении этой команды прерывание
+происходит только в том случае, если флаг OF=1, иначе продолжается
+последовательное выполнение программы. Основное назначение команды into –
+эффективно реализовать надежное программирование при обработке целых знаковых
+чисел. Как Вы уже знаете, при выполнении операций сложения и вычитания со
+знаковыми числами возможна ошибка, при этом флаг переполнения OF
+устанавливается в единицу, но выполнение программы продолжается. Кроме того,
+вспомним, что флаг переполнения устанавливается в единицу и при операциях
+умножения, если значащие биты результата попадают в старшую часть произведения.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;tab-stops:177.3pt'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>При надежном
+программировании проверку флага переполнения необходимо ставить после каждой
+такой команды. Для такой проверки хорошо подходит команда into, так как это
+самая короткая (однобайтная) команда условного перехода по значению OF=1. При
+этом, правда, обработку аварийной ситуации должна производить
+процедура-обработчик прерывания с номером N=4.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;tab-stops:177.3pt'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>Рассмотрим в
+качестве примера простейшую реализацию такой процедуры-обработчика прерывания
+от команды into. Для простоты эта процедура-обработчик будет фрагментом нашей
+программы и располагаться в е&#1104; сегменте кода. При возникновении ошибки
+будет просто выдаваться аварийная диагностика, и продолжаться выполнение нашей
+программы (естественно, с неверным результатом). Заметим, что обработчик
+прерывания не является процедурой в смысле языка Ассемблер, и тем более не
+выполняет стандартных соглашений о связях. Тем не менее, следует понять, что
+необходимо соблюдать одно условие: если некоторая программа меняет вектор
+прерываний (например, размещая там адрес своей процедуры-обработчика), то перед
+окончанием счета такая программа должна восстановить прежний вид этого вектора
+прерываний. Так и сделано в приведённом ниже примере.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:41.5pt 71.5pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>include </span></b><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>io.asm data<span
+style='mso-tab-count:1'>    </span><b style='mso-bidi-font-weight:normal'>segment
+</b>A<span style='mso-tab-count:1'>      </span><b style='mso-bidi-font-weight:
+normal'>dw<span style='mso-tab-count:1'>       </span></b>?<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:41.5pt 71.5pt'><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif'>Old<span style='mso-tab-count:1'>      </span><b
+style='mso-bidi-font-weight:normal'>dw<span style='mso-tab-count:1'>      </span></b>?;
+для сохранения адреса<span style='letter-spacing:-.7pt'> </span>старой<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:41.5pt 68.65pt 71.5pt'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif'>dw<span style='mso-tab-count:1'>      </span></span></b><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>?;<span
+style='letter-spacing:-.35pt'> </span>процедуры-обработчика<span
+style='letter-spacing:-.35pt'> </span><b style='mso-bidi-font-weight:normal'>into
+</b>Diagn<span style='letter-spacing:-.1pt'> </span><b style='mso-bidi-font-weight:
+normal'>db<span style='mso-tab-count:2'>              </span></b>'Ошибка –<span
+style='letter-spacing:-.4pt'> </span>большое<span style='letter-spacing:-.25pt'>
+</span>значение!$' data<span style='mso-tab-count:1'>              </span><b
+style='mso-bidi-font-weight:normal'>ends<o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:68.65pt'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>stack <b style='mso-bidi-font-weight:normal'>segment stack dw<span
+style='mso-tab-count:1'>        </span></b>32 <b style='mso-bidi-font-weight:
+normal'>dup<span style='letter-spacing:-.2pt'> </span></b>(?)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>stack <b
+style='mso-bidi-font-weight:normal'>ends<o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:41.5pt'><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>code<span
+style='mso-tab-count:1'>    </span><b style='mso-bidi-font-weight:normal'>segment<o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:71.5pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>assume </span></b><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>cs:code,
+ds:data, ss:stack start:<b style='mso-bidi-font-weight:normal'>mov<span
+style='mso-tab-count:1'> </span></b>ax,data<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:68.65pt'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>mov<span
+style='mso-tab-count:1'>    </span></span></b><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>ds,ax<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:68.65pt 110.65pt'><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif'>; инициализация
+процедуры-обработчика <b style='mso-bidi-font-weight:normal'>into mov<span
+style='mso-tab-count:1'>       </span></b>ax,0;<span style='mso-tab-count:1'>    </span>установить
+es<span style='letter-spacing:-.35pt'> </span>на<span style='letter-spacing:
+-.2pt'> </span>сегмент, <b style='mso-bidi-font-weight:normal'>mov<span
+style='mso-tab-count:1'>                       </span></b>es,ax; содержащий
+вектор<span style='letter-spacing:-.8pt'> </span>прерываний<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>Addr_into <b
+style='mso-bidi-font-weight:normal'>equ word ptr </b>es:[4*4]<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>;
+сохранения адреса старой процедуры <b style='mso-bidi-font-weight:normal'>into<o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:77.65pt'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>mov<span
+style='mso-tab-count:1'>       </span></span></b><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>ax,Addr_into<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:77.65pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>mov<span style='mso-tab-count:1'>       </span></span></b><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>Old,ax<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:77.65pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>mov<span style='mso-tab-count:1'>       </span></span></b><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>ax,Addr_into+2<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:77.65pt'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>mov<span
+style='mso-tab-count:1'>       </span></span></b><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Old+2,ax;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>; занесение нового адреса процедуры <b
+style='mso-bidi-font-weight:normal'>into<o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></b></p>
+
+<div style='mso-element:para-border-div;border:solid windowtext 1.0pt;
+mso-border-alt:solid windowtext .5pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt;border:none;mso-border-alt:solid windowtext .5pt;
+padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt'><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif'>cli; закрыть внешние прерывания<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt;border:none;mso-border-alt:solid windowtext .5pt;
+padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt'><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif'>mov Addr_into,offset Error; Начало
+процедуры-обработчика<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt;border:none;mso-border-alt:solid windowtext .5pt;
+padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt'><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif'>mov Addr_into+2,code; <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt;border:none;mso-border-alt:solid windowtext .5pt;
+padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt'><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif'>sti; открыть внешние прерывания<o:p></o:p></span></p>
+
+</div>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>;
+собственно начало программы<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>inint </span></b><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>A<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:83.65pt'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>mov<span
+style='mso-tab-count:1'>         </span></span></b><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>ax,A<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:83.65pt'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>add<span
+style='mso-tab-count:1'>          </span></span></b><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif'>ax,A; Возможно<span
+style='letter-spacing:-.65pt'> </span>переполнение<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>into<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:119.65pt'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>imul<span
+style='letter-spacing:-.1pt'> </span></span></b><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>A;<span style='mso-tab-count:1'>                </span>Возможны
+значащие биты в<span style='letter-spacing:-.55pt'> </span>DX<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>into<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:77.65pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>mov<span style='mso-tab-count:1'>       </span></span></b><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>A,ax<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>outint </span></b><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>X<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>;
+приступаем к завершению программы<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>;
+восстановление старого адреса обработчика <b style='mso-bidi-font-weight:normal'>into<o:p></o:p></b></span></p>
+
+<div style='mso-element:para-border-div;border:solid windowtext 1.0pt;
+mso-border-alt:solid windowtext .5pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:80.5pt;border:none;mso-border-alt:solid windowtext .5pt;
+padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>Voz:<span
+style='mso-tab-count:1'>       </span>cli; закрыть внешние прерывания<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:80.5pt;border:none;mso-border-alt:solid windowtext .5pt;
+padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>mov<span
+style='mso-tab-count:1'>        </span></span></b><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>ax,Old<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:80.5pt;border:none;mso-border-alt:solid windowtext .5pt;
+padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>mov<span style='mso-tab-count:1'>        </span></span></b><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>Addr_into,ax<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:80.5pt;border:none;mso-border-alt:solid windowtext .5pt;
+padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>mov<span style='mso-tab-count:1'>        </span></span></b><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>ax,Old+2<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:80.5pt;border:none;mso-border-alt:solid windowtext .5pt;
+padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>mov<span
+style='mso-tab-count:1'>        </span></span></b><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Addr_into+2,ax<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;border:none;mso-border-alt:solid windowtext .5pt;
+padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>sti</span></b><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>; открыть внешние
+прерывания<o:p></o:p></span></p>
+
+</div>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>finish<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>; Наша процедура-обработчик Error:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>; - Минимальная программная реакция – <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><span style='mso-spacerun:yes'>    
+</span>push ds; Сохранение нужных регистров push dx<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><span style='mso-spacerun:yes'>    
+</span>sti; Открыть внешние прерывания<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>; - Полная программная реакция -<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>     </span>mov dx,data<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'> </span><span
+style='mso-spacerun:yes'>    </span>mov ds,dx<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>     </span>mov dx,offset Diagn<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><span style='mso-spacerun:yes'>     </span>outstr </span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><span style='mso-spacerun:yes'>    
+</span></span><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>newline</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><span style='mso-spacerun:yes'>    
+</span>pop dx; Восстановление регистров<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><span style='mso-spacerun:yes'>    
+</span>pop ds<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><span style='mso-spacerun:yes'>    
+</span>iret; Возврат из прерывания code<span style='mso-tab-count:1'>         </span>ends<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal;tab-stops:177.3pt'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><span style='mso-spacerun:yes'>    
+</span>end start</span><span lang=EN-US style='font-size:12.0pt;font-family:
+"Times New Roman",serif;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;tab-stops:177.3pt'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>Приведенная
+программа снабжена достаточным количеством комментариев, так что Вы должны
+понять логику её работы. Обратите внимание, что при выполнении некоторых групп
+команд работу нашей программы нельзя прерывать, иначе, например, может
+возникнуть ситуация, когда в вектор прерывания не занесется полностью вся
+необходимая информация (одно машинное слово вместо двух), а уже произойдет
+переключение на другую программу по пришедшему сигналу прерывания. В
+программировании такие участки программы называются критическими секциями
+(critical section), в показанной выше примере критические секции заключены в
+рамки. Надо позаботиться о том, чтобы при выполнении каждой критической секции
+работа не была прервана. Для этого в начале каждой такой секции стоит команда
+запрета прерывания от внешних устройств cli , а в конце секции – команда
+открытия таких прерываний sti.<span style='mso-spacerun:yes'> 
+</span>Разумеется, внутри критических секций не должно быть команд, которые
+могут сами вызвать прерывания.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>После выдачи диагностики об ошибке наша
+процедура-обработчик могла бы не продолжать выполнение программы, а, например,
+завершать выполнение этой программы. Для этого вместо предложения<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>iret</span></b><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>; возврат из
+прерывания<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>надо поставить два предложения<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>add </span></b><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>SP,3*2; Очистка
+стека от IP, CS и FLAGS<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>jmp </span></b><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>Voz<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Необходимо заметить, что с появлением
+развитых языков высокого уровня у программистов отпала необходимость писать
+собственные обработчики прерывания. Дело в том, что в этих языках реализован
+свой механизм обработки исключительных ситуаций, при этом для каждой такой
+ситуации программист может написать свою процедуру обработки этой ситуации. При
+возникновении сигнала прерывания системная процедура-обработчик этого сигнала
+сначала пытается вызвать соответствующую процедуру, написанную программистом, и
+только если такой процедуры нет, то про- изводит стандартную обработку сигнала
+прерывания.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>И, наконец, рассмотрим команду языка
+машины, которая всегда вызывает прерывание с номером N, заданным в качестве её
+операнда:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>int </span></b><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>op1<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Здесь op1=N имеет формат i8. По своей
+сути, это команда дальнего абсолютного двойного косвенного перехода. Она
+выполняется почти так же, как команда дальнего безусловного перехода jmp dword
+ptr [4*N] . Пожалуй, единственным отличием здесь является то, что команде int
+для доступа к памяти не требуется сегментный регистр данных. Она всегда
+обращается в фиксированный сегмент (вектор прерывания), расположенный в самом
+начале оперативной памяти. В рассматриваемой архитектуре такие прерывания
+называются программными исключениями. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Заметим, что с помощью команды int можно
+вызвать прерывание с любым номером, например прерывание, соответствующее делению
+на ноль или плохому коду операции. Более того, прерывания с номерами, большими
+3110, в данной архитектуре можно вызвать, только выполняя команду int N с
+соответствующим параметром-номером прерывания, поэтому их часто так и называют
+– программные прерывания. Используя программные прерывания, легко отлаживать
+процедуры-обработчики прерываний, но основное назначение таких команд другое.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;tab-stops:177.3pt'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>Дело в том, что в
+большинстве программ необходимо выполнять некоторые широко распространенные
+действия (обмен данными с внешними устройствами, выполнение определенных
+стандартных операций и многое другое). Естественно желание реализовать такие
+широко распространенные для большинства программ действия в виде некоторого
+общедоступного набора процедур, чтобы не реализовывать эти действия в каждой
+программе, а просто вызывать для этого необходимые стандартные процедуры.
+Обычно процедуры, реализующие эти действия, оформляются в виде библиотеки
+стандартных процедур и всегда находятся в оперативной памяти компьютера. Так
+как адреса этих процедур могут меняться (например, при их модификации), то
+лучше всего присвоить каждой такой процедуре свой номер N и оформлять такие
+процедуры в виде обработчиков прерываний с этим номером. Это освобождает
+остальные программы от необходимости знать конкретное месторасположение таких
+процедур в памяти, достаточно знать только их номера. В этом случае вызов
+конкретной процедуры с номером N следует производить командой int N .<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;tab-stops:177.3pt'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>Исходя из
+описанного выше, такие команды прерывания (а часто и соответствующие им
+процедуры) называют системными вызовами (системными функциями операционной
+системы), а соответствующую библиотеку стандартных процедур – Базовой системой
+процедур ввода/вывода (английское сокращение BIOS – Base Input/Output System).
+Параметры для таких процедур обычно передаются на регистрах, т.е. для системных
+вызовов не выполняются стандартные соглашения о связях.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;tab-stops:177.3pt'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>В качестве примера
+рассмотрим системный вызов int 21h , который в этой архитектуре реализует
+многие операции ввода/вывода. Так, для вывода строки текста на экран в качестве
+параметров следует передать номер конкретного действия (код операции) на
+регистре ah (для вывода строки ah=9) и физический адрес начала выводимой строки
+на регистрах. Выводимая строка должна кончаться служебным символом '$', который
+является признаком конца строки и сам не выводится. Исходя из этого на место
+нашей макрокоманды вывода строки текста<o:p></o:p></span></p>
+
+<p class=Heading1 style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif'>outstr</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+RU'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>можно подставить <i style='mso-bidi-font-style:
+normal'>команды </i>языка машины<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>mov </span></b><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>ah,9<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>int </span></b><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>21h<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>В качестве примера опишем на Ассемблере
+процедуру без параметров со стандартными соглашениями о связях, использующую
+системный вызов. Эта процедура при её выполнении выдает короткий звуковой
+сигнал на встроенный в компьютер динамик:<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>Beep <b style='mso-bidi-font-weight:normal'>proc<o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>push </span></b><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>ax<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>push </span></b><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>dx<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;tab-stops:71.65pt 119.65pt'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif'>mov<span style='mso-tab-count:1'>     </span></span></b><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>al,7;<span
+style='mso-tab-count:1'>         </span>символ -<span style='letter-spacing:
+-.3pt'> </span>звуковой<span style='letter-spacing:-.2pt'> </span>сигнал <b
+style='mso-bidi-font-weight:normal'><span style='mso-spacerun:yes'> </span>mov<span
+style='mso-tab-count:1'> </span></b>ah,02h; номер функции<span
+style='letter-spacing:-.6pt'> </span>вывода<span style='letter-spacing:-.2pt'> </span>символа
+<b style='mso-bidi-font-weight:normal'>int<span style='mso-tab-count:1'>                        </span></b>21h;<span
+style='mso-tab-count:1'>         </span>системный<span style='letter-spacing:
+-.35pt'> </span>вызов<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;tab-stops:71.65pt'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>pop<span
+style='mso-tab-count:1'>      </span></span></b><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>dx<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;tab-stops:71.65pt'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>pop<span
+style='mso-tab-count:1'>      </span></span></b><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>ax<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>ret<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>Beep <b style='mso-bidi-font-weight:normal'>endp<o:p></o:p></b></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal;tab-stops:177.3pt'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>Вообще говоря,
+процедура Beep при своем вызове выполняет те же действия, что и макрокоманда outch
+7 вывода служебного (управляющего) символа с номером 7.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>В дальнейшем при изучении мультипрограммного
+режима работы ЭВМ будет рассказано ещ&#1104; об одном важном назначении
+системных вызовов.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Процедуры обработки прерываний реализуют
+особый стиль программирования, их иногда называют процедурами обратного вызова
+(call back procedure) или процедурами-демонами.<span style='position:relative;
+top:-5.0pt;mso-text-raise:5.0pt'> </span>Такая процедура при своей <i
+style='mso-bidi-font-style:normal'>инициализации </i>(размещении в памяти)
+оставляет в определ&#1104;нном месте адрес своего начала. Далее вызов этой
+процедуры-демона производится из процедур-обработчиков прерываний при
+возникновении соответствующих условий путем (дальнего) косвенного перехода на
+эту процедуру.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>В качестве примера рассмотрим расчет платы
+за междугородний телефонный разговор, при котором за каждую новую минуту
+разговора к общей сумме прибавляется некоторая величина – тариф за минуту
+разговора с данным городом. При наступлении льготного периода времени (обычно
+ночью и в выходные дни) срабатывает будильник (специальная системная
+программа-обработчик прерываний от встроенного в ЭВМ таймера), который вызывает
+процедуру-демона пересчета тарифа.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Процедуры-демоны широко используются в
+современных вычислительных системах, например, при приходе электронного письма
+вызывается системная процедура – почтовый демон и т.д. Заметим, что в некоторые
+языки высокого уровня включены аналогичные возможности, например, в языке С
+можно писать так называемые функции-реакции на сигналы со стороны других
+вычислительных процессов. Заметим также, что очень похожий стиль «событийного»
+программирования используется и в операционной системе Windows.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>В заключение этого по необходимости
+краткого рассмотрения прерываний следует заметить, что появление в компьютерах
+системы прерываний было, несомненно, одним из важнейших событий в развитии
+архитектуры вычислительных машин. Вспомним, что ничего подобного в
+рассмотренных ранее учебных машинах не было. Там при возникновении аварийных
+ситуаций в центральной части машины (деление на ноль, команда с несуществующим
+кодом операции и т.д.) просто происходил останов машины, а в устройствах ввода<b
+style='mso-bidi-font-weight:normal'>/</b>вывода не происходило ничего такого,
+что могло бы<span style='mso-spacerun:yes'>   </span>«заинтересовать»
+центральный процессор. Точнее, если в устройствах ввода<b style='mso-bidi-font-weight:
+normal'>/</b>вывода первых ЭВМ происходила аварийная ситуация, например, сбой в
+работе, то устройство управления просто останавливало машину, и для
+возобновления работы требовалось вмешательство человека-оператора.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Как Вы вскоре узнаете, появление системы
+прерываний было одним из необходимых условий, обеспечивающим работу ЭВМ в так
+называемом мультипрограммном режиме. Недаром появившиеся компьютеры с системой
+прерываний (и некоторыми другими важными аппаратными особенностями, о которых
+будет говориться далее) стали относить к следующему, третьему поколению ЭВМ. <o:p></o:p></span></p>
+
+<p style="text-align: center;"><b><a name="_T1"> </a> Литература</b></p>
+
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>[1]</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>&nbsp;</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif'>Таненбаум Э., Остин Т. Архитектура компьютера. 6-е
+изд. СПб.: Питер, 2014. – 816 с.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>[2]</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>&nbsp;</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>Дэвид
+Харрис, Сара Харрис. Цифровая схемотехника и архитектура компьютера, 2-е
+издание, перевод командой компаний и университетов России, Украины, США и
+Великобритании, Morgan Kaufman, 2013.&nbsp;– 1621 с.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>[</span><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>3</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>]</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>&nbsp;</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif'>И.В. Лукьянова. Конспект лекций по курсу
+«Конструирование программ и языки программирования» часть 2 Язык
+программирования ассемблер, Минск, 2006. – 78 с.<o:p></o:p></span></p>
+
+
+
+
+
+
+         </div>
+                <p>&nbsp;</p>
+				<A HREF="../../../Теория/theory.html">Содержание</A>
+				<div style="position: fixed; right: 0; bottom: 0">
+	<a href="#" id="toTop"><img src="../../../Оболочка/js/to_top_ye.GIF" width="32" height="32" border="0" align="absmiddle"></a> </div>
+                <p>&nbsp;</p>
+        </div>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><B><strong>(С)  БГУИР</strong></var></td>
+  </tr>
+</table>
+</BODY></HTML>

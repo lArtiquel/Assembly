@@ -1,0 +1,408 @@
+﻿<!-- (C) 2017 03 Rozum Halina, BSUIR, Belarus -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html" charset="utf8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>LK5 &quot;ОПИС&quot;</title>
+<base target="_top">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr>
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr>
+  <td width="70%" colspan=2 align="center" valign="middle">
+               <H1 align="center">электронный ресурс по учебной дисциплине<BR>
+        &quot;ОСНОВЫ ПРОЕКТИРОВАНИЯ ИНФОРМАЦИОННЫХ СИСТЕМ&quot;<BR>
+         для направления специальности: </H1> 1-40 05 01-09 &quot;Информационные системы и технологии (в обеспечении промышленной безопасности)&quot;
+                </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../index.html">Оглавление</A> |
+	<A HREF="../../../Программа/programm.html" TITLE="Программа курса (Откроется в новом окне)">Программа</A> |
+							<strong>Теория</strong> |
+		<A HREF="../../../Практика/practice.html">Практика</A>|
+		<A HREF="../../../Контроль_знаний/test.html">Контроль знаний</A> |
+	<A HREF="../../../Об авторах/author.html">Об авторах</A></var> </td>
+  <tr>
+</table>
+<div style="margin-left:5%; margin-right:5%;" width="80%" border="0" cellpadding="0" cellspacing="0">
+
+                <p></p>
+				<A HREF="../../../Теория/theory.html">Содержание</A>
+				<p></p>
+
+    <p style="text-align: center;"><strong><span>Тема  5<o:p></o:p></span></strong></p>
+    <p style="text-align: center;"><strong><span>Макросредства и процедуры<o:p></o:p></span></strong></p>
+<ol>
+<a href="#_T1">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Введение.<o:p></o:p></span></a>
+<li><a href="#_T2">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Макродирективы.<o:p></o:p></span></a></li>
+ <li><a href="#_T3">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Литература.<o:p></o:p></span></a></li>
+
+
+</ol>
+
+   <p style="text-align: center;"><b><a name="_T1"> </a> Введение</b></p>
+
+
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'>Сейчас будет начато изучение очень важной и достаточно
+сложной темы – макросредств в языках программирования. Знакомство с этим
+понятием будет производиться постепенно, используя примеры из макросредств
+языка Ассемблера</p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'>Вообще говоря, макросредства могут включаться не только в
+язык Ассемблера, но и в языки высокого уровня. Стоит заметить, однако, что не
+случайно будут изучаться именно макросредства языка Ассемблера, а не
+макросредства каких-нибудь языков программирования высокого уровня (Паскаля, С
+и т.д.). Всё дело в том, что макросредства в языках высокого уровня чаще всего
+примитивны (не развиты), и не обеспечивают всех тех возможностей, которые
+должны быть изучены в рамках этой темы (потом будут упомянуты причины, почему
+так получилось). Именно поэтому для уровня университетского образования
+приходится рассматривать достаточно развитые макросредства в языке Ассемблера.
+Макросредства по своей сути являются алгоритмическим языком, встраиваемый в
+некоторый другой язык программирования, который в этом случае будет называться
+макроязыком. Например, изучаемые нами макросредства встроены в язык Ассемблера,
+который поэтому называется Макроассемблером. Таким образом, программа на
+Макроассемблере в общем случае содержит в себе запись двух алгоритмов: один на
+макроязыке, а второй – собственно на языке Ассемблера. Как известно, у каждого
+алгоритма обязательно должен быть свой исполнитель. Например, исполнитель
+алгоритма на языке Паскаль в научной литературе называют Паскаль-машиной, это
+компьютер вместе с набором служебных программ. Исполнитель алгоритма на
+макроязыке называется Макропроцессором, а исполнителем алгоритма на Ассемблере
+является, в конечном счете, компьютер. Здесь важно, чтобы Вы не путали Макропроцессор
+с процессором компьютера: макропроцессор – это специальная программа, а не
+часть аппаратуры ЭВМ. Результатом работы Макропроцессора (будем пока считать,
+что этот исполнитель работает первым, а компилятор с Ассемблера – вторым)
+является программный модуль на «чистом» языке Ассемблера, уже без макросредств.
+В связи с этим заметим, что в некоторых языках программирования (например, в
+языке С), макропроцессор так и называется – препроцессор, чтобы подчеркнуть,
+что при обработке программы он выполняется первым. Иногда говорят, что
+Макропроцессор, получив входной модуль на языке Макроассемблера, генерирует
+модуль на Ассемблере, что хорошо отражает суть дела. Надо подчеркнуть, что
+программа Ассемблера относится к трансляторам (переводчикам) с языка Ассемблер
+на язык объектных модулей. В то же время Макропроцессор не стоит называть
+переводчиком с языка Макроассемблера на язык Ассемблера, лучше считать, что
+текст на языке Ассемблера получается не в процессе перевода, а путем генерации
+этого текста как выходных данных алгоритма, заданного макросредствами.<span
+style='color:black'><o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Макросредства языка ассемблера
+позволяют формировать в исходной программе блоки предложений
+(макроопределения), имеющие одно общее имя, и затем многократно использовать
+это имя для представления всего блока. В процессе ассемблирования компилятор
+автоматически замещает каждое распознаваемое макроимя (макрокоманду)
+последовательностью предложений в соответствии с макроопределением, в
+результате чего формируется макрорасширение.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Макрокоманда может встречаться в
+исходной программе столько раз, сколько это необходимо. Макроопределение в
+исходном файле должно предшествовать его первому использованию в макрокоманде.
+Макроопределение может как непосредственно находиться в тексте программы, так и
+подключаться из другого файла директивой INCLUDE. В макроопределение могут быть
+переданы параметры, которые будут управлять макроподстановкой или задавать
+фрагменты текста.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>В программе на языке ассемблера
+макрокоманды выполняют в целом те же функции, что и процедуры, т.е. обеспечивают
+многократное и функционально законченное действие с параметрическим
+управлением. Различие заключается в следующем:<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>1)&nbsp;&nbsp;&nbsp;<span
+class=apple-converted-space>&nbsp;</span>Процедура присутствует в исходной
+программе один раз, тогда как тело макроопределения дублируется столько раз,
+сколько соответствующих макрокоманд содержит исходный файл.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>2)&nbsp;&nbsp;&nbsp;<span
+class=apple-converted-space>&nbsp;</span>Текст процедуры статичен и неизменен в
+то время, как состав макрорасширения может зависеть от параметров макрокоманды.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Следует помнить, что параметры
+макрокоманды – это значения времени ассемблирования, а параметры процедуры
+принимают какие-то определенные значения лишь в процессе выполнения программы.<o:p></o:p></span></p>
+
+<p style="text-align: center;"><b><a name="_T2">1.</a>Макродирективы</b></p>
+
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Макроопределение представляет
+собой блок исходных предложений, начинающийся директивой MACRO и
+заканчивающийся директивой ENDM. Формат макроопределения:<o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+style='color:black'>имя<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>MACRO</span><span
+class=apple-converted-space><span style='color:black'>&nbsp;</span></span><span
+style='color:black'>[[формальный-параметр,...]]<o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+style='color:black'>предложения<o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>ENDM</span><span
+style='color:black'><o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Именем макроопределения
+считается имя, указанное в директиве MACRO. Оно должно быть уникальным и может
+использоваться в исходном файле для вызова макроопределения. Формальные параметры
+представляют собой внутренние по отношению к данному макроопределению имена,
+которые используются для обозначения значений, передаваемых в макроопределение
+при его вызове. Может быть определено любое число формальных параметров, но все
+они должны помещаться на одной строке и разделяться запятыми.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>В теле макроопределения
+допустимы любые предложения языка ассемблера, в том числе и другие
+макродирективы. Допустимо любое число предложений, а каждый формальный параметр
+может быть использован любое число раз в этих предложениях.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Макроопределения могут быть
+переопределены. При этом нет необходимости заботиться об удалении из исходного
+файла первого макроопределения, так как каждое следующее макроопределение
+автоматически замещает предыдущее макроопределение с тем же именем.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Макроопределение может быть
+вызвано в любой момент простым указанием его имени в исходном файле. Ассемблер
+при этом копирует предложения макроопределения в точку вызова, замещая в этих
+предложениях формальные параметры на фактические параметры, задаваемые при
+вызове.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Общий вид макровызова:<o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+style='color:black'>имя [[фактический-параметр,...]]<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Имя должно быть именем ранее
+определенного в исходном файле макроопределения. Фактическим параметром может
+быть имя, число или другое значение. Допустимо любое число фактических
+параметров, но все они должны помещаться на одной строке. Элементы списка
+параметров должны разделяться запятыми, пробелами, или TAB-символами.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Компилятор замещает первый
+формальный параметр на первый фактический параметр, второй формальный параметр
+на второй фактический параметр и т.д. Если фактических параметров в макровызове
+больше, чем формальных параметров в макроопределении, лишние фактические
+параметры игнорируются. Если же фактических параметров меньше, чем формальных,
+формальные параметры, для которых не заданы фактические, замещаются пустыми
+строками (пробелами). Для определения того, заданы или не заданы
+соответствующие фактические параметры могут быть использованы директивы IFB и
+IFNB.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>&nbsp;В макросредствах языка
+ассемблера имеется возможность передавать список значений в качестве одного
+параметра. Этот список должен быть заключен в одинарные угловые скобки &lt;
+&gt;, а сами элементы списка – разделяться запятыми, например:<o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>allocb</span><span
+class=apple-converted-space><span style='color:black'>&nbsp;</span></span><span
+style='color:black'>&lt;1,2,3,4&gt;<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>&nbsp;При написании
+макроопределений иногда возникает необходимость в задании меток инструкций или
+имен полей данных. Поскольку каждое макроопределение может использоваться
+многократно, возникают ситуации, когда несколько имен или меток определены
+многократно, что вызовет ошибку трансляции. Для обеспечения правильной обработки
+таких ситуаций в макроязыке предусмотрена директива LOCAL, позволяющая
+локализовать заданные имена исключительно в данном макрорасширении. Формат:<o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>LOCAL</span><span
+class=apple-converted-space><span style='color:black'>&nbsp;</span></span><span
+style='color:black'>формальное_имя,...<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Формальное_имя может затем
+использоваться в данном макроопределении с уверенностью, что при каждом
+макровызове его значение будет уникальным. В директиве LOCAL, если она
+присутствует, должно быть задано хотя бы одно имя, а если их несколько, они
+должны разделяться запятыми. Для обеспечения уникальности определенных
+директивой LOCAL имен ассемблер для каждого такого имени при каждом макровызове
+порождает реальное имя следующего вида:<o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+style='color:black'>??номер<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Номер представляет собой
+16-ричное число в пределах от 0000 до FFFF. Для предотвращения повторного
+определения имен программисту не рекомендуется определять в своей программе
+имена этого типа.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>&nbsp;Директива LOCAL может
+использоваться только в макроопределении, причем, там она должна предшествовать
+всем другим предложениям макроопределения, т.е. следовать непосредственно после
+MACRO.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Для удаления макроопределений
+служит директива PURGE. Формат:<o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>PURGE</span><span
+class=apple-converted-space><span style='color:black'>&nbsp;</span></span><span
+style='color:black'>имя_макроопределения,...<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Директивой PURGE удаляются все
+текущие макроопределения с указанными именами. Последующий вызов одного из этих
+макроопределений будет приводить к ошибке. Если имя-макроопределения
+представляет мнемонику инструкции или директивы, восстанавливается
+первоначальный смысл мнемоники в соответствии со значением данного ключевого
+слова. Директива PURGE часто используется для удаления ненужных
+макроопределений из подключаемой директивой INCLUDE библиотеки
+макроопределений. Библиотека макроопределений представляет собой обычный
+последовательный файл, который, в общем случае, может содержать большое число
+макроопределений. Комбинация директив INCLUDE и PURGE позволяет выбрать из них
+только нужные для данной программы, что сократит размер исходного файла.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Выход из текущего
+макроопределения до достижения директивы ENDM обеспечивается директивой EXITM,
+имеющей следующий формат:<o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>EXITM</span><span
+style='color:black'><o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Выход из макроопределения по
+директивам ENDM и EXITM заключается в прекращении генерации текущего
+макрорасширения и возврате в точку вызова текущего макроопределения в
+динамически внешнем макрорасширении или в исходной программе. Ниже приведен
+пример законченного макроопределения:<o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>add</span><span
+style='color:black'>&nbsp;<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>MACRO</span><span
+style='color:black'>&nbsp;&nbsp;&nbsp;<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>param</span><span
+style='color:black'><o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+style='color:black'>&nbsp;&nbsp;&nbsp;&nbsp;<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>IFB</span><span
+style='color:black'>&nbsp;<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>param</span><span
+style='color:black'><o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+style='color:black'>&nbsp;&nbsp;&nbsp;&nbsp;<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>EXITM</span><span
+style='color:black'><o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+style='color:black'>&nbsp;&nbsp;&nbsp;&nbsp;<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>ENDIF</span><span
+style='color:black'><o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+style='color:black'>&nbsp;&nbsp;&nbsp;&nbsp;<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>ADD</span><span
+style='color:black'>&nbsp;<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>AX</span><span
+style='color:black'>,</span><span lang=EN-US style='color:black;mso-ansi-language:
+EN-US'>param</span><span style='color:black'><o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-indent:35.45pt'><span
+style='color:black'>&nbsp;&nbsp;&nbsp;&nbsp;<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>ENDM</span><span
+style='color:black'><o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>&nbsp;В этом макроопределении
+осуществляется добавление величины, определяемой формальным параметром param, к
+содержимому регистра AX. Блок условного ассемблирования IFB обеспечивает выход
+из макроопределения, если при вызове параметр не был задан.<o:p></o:p></span></p>
+
+ <p style="text-align: center;"><b><a name="_T3"> </a> Литература </b></p>
+
+
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>[1]
+</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman"'>[Электронный&nbsp;ресурс].&nbsp;–&nbsp;Режим&nbsp;доступа:</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'> </span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+background:white;mso-ansi-language:EN-US'>ftp</span><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif;background:white'>://</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+background:white;mso-ansi-language:EN-US'>ftp</span><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif;background:white'>.</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+background:white;mso-ansi-language:EN-US'>asu</span><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif;background:white'>.</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+background:white;mso-ansi-language:EN-US'>ru</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;background:white'>/</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;background:white;
+mso-ansi-language:EN-US'>incoming</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;background:white'>/Овсянников%20А.В/</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+background:white;mso-ansi-language:EN-US'>Chapter</span><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif;background:white'>_11.</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+background:white;mso-ansi-language:EN-US'>pdf</span><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif;background:white'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;background:white'>[2] </span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>Дэвид Харрис, Сара
+Харрис. Цифровая схемотехника и архитектура компьютера, 2-е издание, перевод
+командой компаний и университетов России, Украины, США и Великобритании, Morgan
+Kaufman, 2013. – 1621 с.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+background:white'>[3] </span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>И.В.
+Лукьянова. Конспект лекций по курсу «Конструирование программ и языки
+программирования» часть 2 Язык программирования ассемблер, Минск, 2006. – 78 с.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+
+         </div>
+                <p>&nbsp;</p>
+				<A HREF="../../../Теория/theory.html">Содержание</A>
+				<div style="position: fixed; right: 0; bottom: 0">
+	<a href="#" id="toTop"><img src="../../../Оболочка/js/to_top_ye.GIF" width="32" height="32" border="0" align="absmiddle"></a> </div>
+                <p>&nbsp;</p>
+        </div>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><B><strong>(С)  БГУИР</strong></var></td>
+  </tr>
+</table>
+</BODY></HTML>

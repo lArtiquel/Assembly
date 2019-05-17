@@ -1,0 +1,721 @@
+<!-- (C) 2017 04 Rozum Halina, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>LB7 дисциплины  &quot;ОПИС&quot;</title>
+<base target="_top">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr>
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr>
+  <td width="70%" colspan=2 align="center" valign="middle">
+               <H1 align="center">электронный ресурс по учебной дисциплине<BR>
+        &quot;ОСНОВЫ ПРОЕКТИРОВАНИЯ ИНФОРМАЦИОННЫХ СИСТЕМ&quot;<BR>
+         для направления специальности: </H1> 1-40 05 01-09 &quot;Информационные системы и технологии (в обеспечении промышленной безопасности)&quot;
+                </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../index.html">Оглавление</A> |
+  <A HREF="../../../Программа/programm.html" TITLE="Программа курса (Откроется в новом окне)">Программа</A> |
+  <A HREF="../../../Теория/theory.html">Теория</a> |
+              <strong>Практика</strong> |
+  <A HREF="../../../Контроль_знаний/test.html">Контроль знаний</A> |
+  <A HREF="../../../Об авторах/author.html">Об авторах</A></var> </td>
+  <tr>
+</table>
+<table style="margin:0 auto;" width="90%" border="0" cellpadding="0" cellspacing="0">
+<td><A HREF="../../../Практика/practice.html">Практика</A>
+                  <p><b>ЛАБОРАТОРНАЯ  РАБОТА №7</b></p>
+
+<div class=WordSection11>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;line-height:normal'><b><span style='font-size:14.0pt;
+font-family:"Times New Roman","serif";text-transform:uppercase'>НТЕРФЕЙС С ЯЗЫКАМИ ВЫСОКОГО УРОВНЯ</span></b></p>
+
+
+
+
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'>Цель работы</span></b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-weight:bold;mso-bidi-font-style:
+italic'>: изучить возможности создания <span class=GramE>программ</span>
+интегрированных с языками высокого уровня.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-weight:bold;mso-bidi-font-style:
+italic'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><b><span style='font-size:12.0pt;mso-fareast-font-family:
+Helvetica-BoldOblique;mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:
+italic'>Теоретические сведения<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Helvetica-BoldOblique;mso-bidi-font-family:"Times New Roman";mso-bidi-font-weight:
+bold;mso-bidi-font-style:italic'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><i><span style='font-size:12.0pt;mso-fareast-font-family:
+Helvetica-BoldOblique;mso-bidi-font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>Передача параметров<o:p></o:p></span></i></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Helvetica-BoldOblique;mso-bidi-font-family:"Times New Roman";mso-bidi-font-weight:
+bold;mso-bidi-font-style:italic'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Большинство языков высокого уровня передают параметры
+вызываемой процедуре в стеке и ожидают возвращения параметров в регистре АХ
+(ЕАХ). Иногда используется <span class=GramE>DX:AX</span> (EDX:EAX), если
+результат не умещается в одном регистре, и ST(0), если результат – число с
+плавающей запятой.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>Конвенция <span
+class=SpellE>Pascal</span>.</span></b><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'> Самый очевидный способ
+выражения вызова процедуры или функции языка высокого уровня, после того как
+решено, что параметры передаются в стеке и возвращаются в регистре АХ/ЕАХ, <span
+class=GramE>–.это</span> способ, принятый в языке PASCAL (а также в BASIC,
+FORTRAN, ADA, OBERON, MODULA2), – просто поместить параметры в стек в
+естественном порядке:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>запись<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+class=SpellE><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>some_<span
+class=GramE>proc</span></span></span><span class=GramE><span lang=EN-US
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>(</span></span><span class=SpellE><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>a,b,c,d,e</span></span><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>превращается в:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=SpellE><span style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman"'>push</span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>    </span>a<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=SpellE><span style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman"'>push</span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>    </span>b<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=GramE><span lang=EN-US style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>push</span></span><span lang=EN-US style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'><span style='mso-tab-count:1'>    </span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>с</span><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=GramE><span lang=EN-US style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>push</span></span><span lang=EN-US style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'><span style='mso-tab-count:1'>    </span>d<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=GramE><span lang=EN-US style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>push</span></span><span lang=EN-US style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'><span style='mso-tab-count:1'>    </span>e<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+class=SpellE><span style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman"'>call</span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>      </span><span
+class=SpellE>some_proc</span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>Это значит, что процедура <span
+class=SpellE>some_proc</span>, во-первых, должна очистить стек по окончании
+работы (например, завершившись командой <span class=SpellE>ret</span> 10) и,
+во-вторых, параметры, переданные ей, находятся в стеке <span class=GramE>в
+.обратном</span> порядке<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=SpellE><span style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman"'>some_proc</span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>      </span><span class=SpellE>proc</span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span><span
+class=SpellE>push</span><span style='mso-tab-count:1'>    </span><span
+class=SpellE>bp</span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span><span
+class=SpellE>mov</span><span style='mso-tab-count:1'>     </span><span
+class=SpellE>bp</span>, <span class=SpellE>sp</span><span style='mso-tab-count:
+1'>  </span>; Создать стековый кадр.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>a<span style='mso-tab-count:1'>          </span><span
+class=SpellE>equ</span><span style='mso-tab-count:1'>      </span>[bp+12]<span
+style='mso-tab-count:1'>           </span>; Определения для простого доступа к
+параметрам.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=GramE><span lang=EN-US style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>b</span></span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'><span style='mso-tab-count:1'>          </span><span
+class=SpellE>equ</span><span style='mso-tab-count:1'>      </span>[bp+10]<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>с</span><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'><span style='mso-tab-count:1'>          </span><span
+class=SpellE>equ</span><span style='mso-tab-count:1'>      </span>[bp+8]<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=GramE><span lang=EN-US style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>d</span></span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'><span style='mso-tab-count:1'>          </span><span
+class=SpellE>equ</span><span style='mso-tab-count:1'>      </span>[bp+6]<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=GramE><span lang=EN-US style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>e</span></span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'><span style='mso-tab-count:1'>          </span><span
+class=SpellE>equ</span><span style='mso-tab-count:1'>      </span>[bp+4]<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>[текст процедуры, использующей параметры a, b, с, d, e]<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=GramE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>pop</span></span><span lang=EN-US style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><span
+style='mso-tab-count:1'>      </span><span class=SpellE>bp</span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'><span style='mso-tab-count:1'>            </span><span
+class=GramE>ret</span><span style='mso-tab-count:1'>        </span>10<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=SpellE><span class=GramE><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>some_proc</span></span></span><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US'><span style='mso-tab-count:1'>      </span><span class=SpellE>endp</span></span><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>Этот код в точности
+соответствует усложненной форме директивы </span><span lang=EN-US
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>proc</span><span style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman"'>,
+которую поддерживают все современные ассемблеры:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=SpellE><span class=GramE><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>some_proc</span></span></span><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US'> </span><span style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>р</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>r</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>ос</span><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'> PASCAL, a:word,
+b:word, c:word, d:word, e:word</span><span lang=EN-US style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>[текст процедуры, с <span class=GramE>параметрами</span> а,
+Ь, с, d, e. Так как ВР применяется в качестве указателя стекового кадра, его
+использовать нельзя!]</span><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span><span
+class=SpellE>ret</span><span style='mso-tab-count:2'>                   </span>;
+Эта команда RET будет заменена на RET 10.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=SpellE><span style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman"'>some_proc</span></span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'><span style='mso-tab-count:1'>      </span></span><span
+class=SpellE><span style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>endp</span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Главный недостаток этого подхода заключается в сложности
+создания функции с изменяемым числом параметров, аналогичных <span
+class=SpellE>printf</span> – функции языка С. Чтобы определить число
+параметров, переданных <span class=SpellE>printf</span>, процедура должна
+сначала прочитать первый параметр, но она не знает его расположения в стеке.
+Эту проблему решает подход, используемый <span class=GramE>в С</span>, где
+параметры передаются в обратном порядке.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>Конвенция С.</span></b><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'> Данный способ передачи параметров используется в первую
+очередь в языках С и </span><span lang=EN-US style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>C</span><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>++, а также в </span><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>PROLOG</span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'> и др. Параметры помещаются в стек в обратном порядке, а
+удаление параметров из стека (в противоположность </span><span lang=EN-US
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>PASCAL</span><span style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman"'>-конвенции)
+выполняет вызывающая процедура:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>запись</span><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><span
+style='mso-tab-count:1'>            </span><span class=SpellE>some_<span
+class=GramE>proc</span></span><span class=GramE>(</span><span class=SpellE>a,b,c,d,e</span>)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>превращается в:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:
+1'>            </span></span><span class=GramE><span lang=EN-US
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>push</span></span><span lang=EN-US
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'><span style='mso-tab-count:1'>    </span>e<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><span
+style='mso-tab-count:1'>            </span><span class=GramE>push</span><span
+style='mso-tab-count:1'>    </span>d<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><span
+style='mso-tab-count:1'>            </span><span class=GramE>push</span><span
+style='mso-tab-count:1'>    </span></span><span style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman"'>с</span><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><span
+style='mso-tab-count:1'>            </span><span class=GramE>push</span><span
+style='mso-tab-count:1'>    </span>b<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><span
+style='mso-tab-count:1'>            </span><span class=GramE>push</span><span
+style='mso-tab-count:1'>    </span>a<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><span
+style='mso-tab-count:1'>            </span><span class=GramE>call</span><span
+style='mso-tab-count:1'>      </span><span class=SpellE>some_proc</span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><span
+style='mso-tab-count:1'>            </span></span><span class=SpellE><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>add</span></span><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:
+1'>      </span>sp,10<span style='mso-tab-count:2'>               </span>;
+Освободить стек.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>Вызванная процедура может
+инициализироваться следующим образом:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=SpellE><span style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman"'>some_proc</span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>      </span><span
+class=SpellE>proc</span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:
+1'>            </span><span class=SpellE>push</span><span style='mso-tab-count:
+1'>    </span><span class=SpellE>bp</span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><span
+style='mso-tab-count:1'>            </span><span class=SpellE><span
+class=GramE>mov</span></span></span><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:
+1'>     </span></span><span class=SpellE><span lang=EN-US style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>bp</span></span><span style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman"'>, </span><span
+class=SpellE><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>sp</span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>  </span>; Создать стековый кадр.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=GramE><span lang=EN-US style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>a</span></span><span style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>          </span></span><span class=SpellE><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>equ</span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>      </span>[</span><span
+class=SpellE><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>bp</span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>+4]<span style='mso-tab-count:1'> </span>; Определения для простого
+доступа к параметрам.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=GramE><span lang=EN-US style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>b</span></span><span lang=EN-US style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'><span style='mso-tab-count:1'>          </span><span
+class=SpellE>equ</span><span style='mso-tab-count:1'>      </span>[bp+6]<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>с</span><span lang=EN-US
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'><span style='mso-tab-count:1'>          </span><span
+class=SpellE>equ</span><span style='mso-tab-count:1'>      </span>[bp+8]<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=GramE><span lang=EN-US style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>d</span></span><span lang=EN-US style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'><span style='mso-tab-count:1'>          </span><span
+class=SpellE>equ</span><span style='mso-tab-count:1'>      </span>[bp+10]<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=GramE><span lang=EN-US style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>e</span></span><span lang=EN-US style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'><span style='mso-tab-count:1'>          </span><span
+class=SpellE>equ</span><span style='mso-tab-count:1'>      </span>[bp+12]<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>[текст процедуры, использующей
+параметры </span><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>a</span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>, </span><span lang=EN-US style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>b</span><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>, с, </span><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>d</span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>, </span><span lang=EN-US style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>e</span><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>]<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:
+1'>            </span></span><span class=GramE><span lang=EN-US
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>pop</span></span><span lang=EN-US
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'><span style='mso-tab-count:1'>      </span><span
+class=SpellE>bp</span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><span
+style='mso-tab-count:1'>            </span><span class=GramE>ret</span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=SpellE><span class=GramE><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>some_proc</span></span></span><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'> <span
+class=SpellE>endp</span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Ассемблеры поддерживают и такой формат вызова посредством
+усложненной формы директивы </span><span lang=EN-US style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>proc</span><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'> с указанием языка С:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=SpellE><span class=GramE><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>some_proc</span></span></span><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US'><span style='mso-tab-count:1'>      </span>proc<span style='mso-tab-count:
+1'>     </span>C, a:word, b:word, c:word, d:word, e:word<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>[текст процедуры с <span class=GramE>параметрами</span> а,
+Ь, с, d, e. Так как ВР применяется как указатель стекового кадра, его
+использовать нельзя!]<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span><span
+class=SpellE>ret</span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=SpellE><span style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman"'>some_proc</span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>      </span><span class=SpellE>endp</span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>До сих пор этими формами записи процедур в ассемблере мы не
+пользовались потому, что они скрывают от нас следующий факт: регистр ВР служит
+для хранения параметров и его ни в коем случае нельзя изменять, а в случае </span><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>PASCAL</span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'> команда </span><span lang=EN-US style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>ret</span><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'> на самом деле – </span><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>ret</span><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman"'> </span><span lang=EN-US
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>N</span><span style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman"'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Преимущество по сравнению с </span><span lang=EN-US
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>PASCAL</span><span style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman"'>-конвенцией
+заключается в том, что освобождение стека от параметров <span class=GramE>в С</span>
+возлагается на вызывающую процедуру, а это позволяет лучше оптимизировать код
+программы. Например, если мы должны вызвать несколько функций, принимающих одни
+и те же параметры подряд, можно не заполнять стек каждый раз заново:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=GramE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>push</span></span><span lang=EN-US style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><span
+style='mso-tab-count:1'>    </span>param2<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'><span style='mso-tab-count:1'>            </span><span
+class=GramE>push</span><span style='mso-tab-count:1'>    </span>param1<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'><span style='mso-tab-count:1'>            </span><span
+class=GramE>call</span><span style='mso-tab-count:1'>      </span>proc1<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'><span style='mso-tab-count:1'>            </span><span
+class=GramE>call</span><span style='mso-tab-count:1'>      </span>proc2<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'><span style='mso-tab-count:1'>            </span><span
+class=GramE>add</span><span style='mso-tab-count:1'>      </span>sp,4</span><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>эквивалентно</span><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><span
+style='mso-tab-count:1'>            </span><span class=GramE>proc1(</span>param1,param2);<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'><span
+style='mso-tab-count:1'>            </span></span><span style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman"'>proc2(param<span
+class=GramE>1,param</span>2);<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>вот почему компиляторы с
+языка С создают более компактный и быстрый код нежели компиляторы с других
+языков.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Задание на лабораторную работу<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>Для получения
+задания на лабораторную работу обратиться к преподавателю.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+<A HREF="../../../Практика/practice.html">Практика</A>
+        <div style="position: fixed; right: 0; bottom: 0">
+  <a href="#" id="toTop"><img src="../../../Оболочка/js/to_top_ye.GIF" width="32" height="32" border="0" align="absmiddle"></a> </div>
+                <p>&nbsp;</p>
+        </table>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><B><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</BODY></HTML>

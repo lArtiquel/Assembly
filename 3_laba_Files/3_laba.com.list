@@ -1,0 +1,58 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+3_laba.com -- emu8086 assembler version: 4.08  
+ 
+[ 15.04.2019  --  0:38:03 ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       org 100h
+[   2]        :                                       
+[   3]    0100: 44 3A 5C 61 2E 74 78 74 00            f_name db 'D:\a.txt',0
+[   4]        :                                       
+[   5]    0109: BA 00 01                              mov dx,offset f_name ; put into dx filename offset
+[   6]    010C: B4 3D                                 mov ah,3Dh           ; call DOS 3Dh
+[   7]    010E: B0 00                                 mov al,00h           ; 00 - just reading
+[   8]    0110: CD 21                                 int 21h              ; open file
+[   9]    0112: 72 25                                 jc exit              ; if CF = 1(error open file) -> exit
+[  10]    0114: 8B D8                                 mov bx,ax            ; BX = file identifier
+[  11]    0116: BF 01 00                              mov di,01            ; DI = STDOUT identifier
+[  12]        :                                       
+[  13]    0119:                                       read_data:
+[  14]    0119: B9 00 04                              mov cx,1024          ; read block size
+[  15]    011C: BA 39 01                              mov dx,offset buffer ; buffer offset for data
+[  16]    011F: B4 3F                                 mov ah,3Fh           ; DOS 3Fh function to read data
+[  17]    0121: CD 21                                 int 21h              ; call 21h interruption
+[  18]    0123: 72 10                                 jc close_file        ; if CF = 1(error) -> close file
+[  19]    0125: 8B C8                                 mov cx,ax            ; save into cx number of reade bytes in ax
+[  20]    0127: E3 0C                                 jcxz close_file      ; if CX(num of readed bytes ==0) -> close file
+[  21]    0129: B4 40                                 mov ah,40h           ; DOS 40h write to file
+[  22]    012B: 87 DF                                 xchg bx,di           ; exchange -- BX = STDOUT identidier
+[  23]    012D: CD 21                                 int 21h              ; write to STDOUT
+[  24]    012F: 87 FB                                 xchg di,bx           ; exchange back BX = FILE identifier
+[  25]    0131: 72 02                                 jc close_file        ; CF = 1(error) -> close file
+[  26]    0133: EB E4                                 jmp short read_data  ; read another block
+[  27]        :                                       
+[  28]    0135:                                       close_file:
+[  29]    0135: B4 3E                                 mov ah,3Eh           ; put 3Eh func into acum
+[  30]    0137: CD 21                                 int 21h              ; call it
+[  31]        :                                       
+[  32]    0139:                                       exit:
+[  33]        :                                       
+[  34]    0139:                                       buffer:
+[  35]        :                                       
+[  36]        :                                       
+[  37]        :                                       
+[  38]        :                                       
+[  39]        :                                       
+[  40]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

@@ -1,0 +1,362 @@
+<!-- (C) 2017 04 Rozum Halina, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>LB8 дисциплины  &quot;ОПИС&quot;</title>
+<base target="_top">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr>
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr>
+  <td width="70%" colspan=2 align="center" valign="middle">
+               <H1 align="center">электронный ресурс по учебной дисциплине<BR>
+        &quot;ОСНОВЫ ПРОЕКТИРОВАНИЯ ИНФОРМАЦИОННЫХ СИСТЕМ&quot;<BR>
+         для направления специальности: </H1> 1-40 05 01-09 &quot;Информационные системы и технологии (в обеспечении промышленной безопасности)&quot;
+                </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../index.html">Оглавление</A> |
+  <A HREF="../../../Программа/programm.html" TITLE="Программа курса (Откроется в новом окне)">Программа</A> |
+  <A HREF="../../../Теория/theory.html">Теория</a> |
+              <strong>Практика</strong> |
+  <A HREF="../../../Контроль_знаний/test.html">Контроль знаний</A> |
+  <A HREF="../../../Об авторах/author.html">Об авторах</A></var> </td>
+  <tr>
+</table>
+<table style="margin:0 auto;" width="90%" border="0" cellpadding="0" cellspacing="0">
+<td><A HREF="../../../Практика/practice.html">Практика</A>
+                  <p><b>ЛАБОРАТОРНАЯ  РАБОТА №8</b></p>
+
+<div class=WordSection11>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;line-height:normal'><b><span style='font-size:14.0pt;
+font-family:"Times New Roman","serif";text-transform:uppercase'>РЕЗИДЕНТНЫЕ ПРОГРАММЫ</span></b></p>
+
+
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'>Цель работы</span></b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-weight:bold;mso-bidi-font-style:
+italic'>: изучить организацию и взаимодействие резидентных программ, вызов
+резидента как подпрограммы, с использованием прерываний.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-weight:bold;mso-bidi-font-style:
+italic'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><b><span style='font-size:12.0pt;mso-fareast-font-family:
+Helvetica-BoldOblique;mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:
+italic'>Теоретические сведения<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Helvetica-BoldOblique;mso-bidi-font-family:"Times New Roman";mso-bidi-font-weight:
+bold;mso-bidi-font-style:italic'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Программы, остающиеся в памяти после того, как управление
+возвращается в </span><span lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>DOS</span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>, называются резидентными. Превратить программу в
+резидентную просто – достаточно вызвать специальную системную функцию </span><span
+lang=EN-US style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>DOS</span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;tab-stops:49.65pt;
+mso-layout-grid-align:none;text-autospace:none'><i><span style='font-size:12.0pt;
+mso-fareast-font-family:Times-Italic;mso-bidi-font-family:"Times New Roman"'>Функция
+DOS 31h: </span></i><span style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman"'>Оставить программу резидентной<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;tab-stops:49.65pt;
+mso-layout-grid-align:none;text-autospace:none'><span class=GramE><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Вход:<span style='mso-tab-count:1'>  </span></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>АН = 31h<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;tab-stops:49.65pt;
+mso-layout-grid-align:none;text-autospace:none'><span style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>     </span>AL = код возврата<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;tab-stops:49.65pt;
+mso-layout-grid-align:none;text-autospace:none'><span style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>     </span>DX = размер резидента в 16-байтных
+параграфах (больше 06h), считая от начала PSP<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Кроме того, существует и иногда используется предыдущая
+версия этой функции – прерывание 27h:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><i><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Italic;mso-bidi-font-family:"Times New Roman"'>INT 27h: </span></i><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Оставить программу резидентной<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;tab-stops:49.65pt;
+mso-layout-grid-align:none;text-autospace:none'><span class=GramE><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Вход:<span style='mso-tab-count:1'>  </span></span></span><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>AH = 27h<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;tab-stops:49.65pt;
+mso-layout-grid-align:none;text-autospace:none'><span style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>     </span>DX = адрес последнего байта программы
+(считая от начала PSP) + 1<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Эта функция не может оставлять резидентными программы
+размером больше 64 Кб, но многие программы, написанные на ассемблере,
+соответствуют этому условию. Так как резидентные программы уменьшают объем
+основной памяти, их всегда пишут на ассемблере и оптимизируют для достижения
+минимального размера.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Никогда не известно, по каким адресам в памяти оказываются
+загруженные в разное время резидентные программы, поэтому единственным
+несложным способом получения <span class=GramE>управления .является</span>
+механизм программных и аппаратных прерываний. Принято разделять резидентные
+программы на активные и пассивные, в зависимости от того, перехватывают ли они
+прерывания от внешних устройств или получают управление, только если программа
+специально вызовет Команду INT с нужным номером прерывания и параметрами.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>Пассивная резидентная
+программа.</span></b><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'> В качестве резидентной
+программы рассмотрим именно пассивный резидент, который будет активизироваться
+при попытке программ вызывать INT 21h и запрещать удаление файлов с указанного
+диска.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman";mso-fareast-language:RU;mso-no-proof:yes'><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Рисунок_x0020_5" o:spid="_x0000_i1031" type="#_x0000_t75"
+ style='width:468pt;height:194.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="LB8.files/image001.emz" o:title=""/>
+</v:shape></span><span style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman";mso-fareast-language:RU;mso-no-proof:yes'><v:shape id="Рисунок_x0020_6"
+ o:spid="_x0000_i1030" type="#_x0000_t75" style='width:467.25pt;height:674.25pt;
+ visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="LB8.files/image002.emz" o:title=""/>
+</v:shape></span><span style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman";mso-fareast-language:RU;mso-no-proof:yes'><v:shape id="Рисунок_x0020_7"
+ o:spid="_x0000_i1029" type="#_x0000_t75" style='width:468pt;height:663.75pt;
+ visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="LB8.files/image003.emz" o:title=""/>
+</v:shape></span><span style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Если запустить эту программу с командной строкой <span
+class=GramE>D:,</span> никакой файл на диске D нельзя будет удалить командой <span
+class=SpellE>Del</span>, средствами оболочек типа <span class=SpellE>Norton</span>
+<span class=SpellE>Commander</span> и большинством программ для DOS. Действие
+этого запрета, однако, не будет распространяться на оболочку <span
+class=SpellE>Far</span>, которая использует системные функции <span
+class=SpellE>Windows</span> API, и на программы типа <span class=SpellE>Disk</span>
+<span class=SpellE>Editor</span>, обращающиеся с дисками при помощи функций
+BIOS (INT 13h). Несмотря на то, что мы освободили память, занимаемую окружением
+DOS (а это могло быть лишних 512 или даже 1024 байта), наша программа все равно
+занимает в памяти 352 байта потому, что первые 256 байт отводятся для блока
+PSP. Существует возможность оставить программу резидентной без PSP - для этого
+инсталляционная часть программы должна скопировать резидентную часть с помощью,
+например, <span class=SpellE>movs</span> в начало PSP. Но при этом возникает
+сразу несколько проблем: во-первых, команда INT 27h, так <span class=GramE>же</span>
+как и функция DOS 31h, использует данные из PSP для своей работы; во-вторых,
+код резидентной части должен быть написан для работы с нулевого смещения, а не
+со 100h, как обычно; и, в-третьих, некоторые программы, исследующие выделенные блоки
+памяти, определяют конец блока по адресу, находящемуся в PSP программы –
+владельца блока со смещением 2. С первой проблемой можно справиться вручную,
+создав отдельные блоки памяти для резидентной и инсталляционной частей
+программы, новый PSP для инсталляционной части и завершив программу обычной
+функцией 4Ch или INT 20h. Реальные программы, делающие это, существуют (например,
+программа поддержки нестандартных форматов дискет PU_1700), но мы не будем
+чрезмерно усложнять наш первый пример и скопируем резидентную часть не в
+позицию 0, а в позицию 80</span><span lang=EN-US style='font-size:12.0pt;
+mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>h</span><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>, то есть, начиная с
+середины PSP, оставив в нем все значения, необходимые для нормальной работы
+функций DOS.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Прежде чем это сделать, заметим, что и номер диска, и адрес
+предыдущего обработчика INT 21h изменяются только при установке резидента и
+являются константами во время всей его работы. Более того, каждое из этих чисел
+используется только по одному разу. В таких условиях оказывается, что можно
+вписать номер диска и адрес перехода на старый обработчик прямо в код
+программы. Кроме того, после этого наш резидент не будет больше ссылаться ни на
+какие переменные с конкретными адресами, а значит, его код становится
+перемещаемым, то есть его можно выполнять, скопировав в любую область памяти.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-fareast-language:RU;
+mso-no-proof:yes'><v:shape id="Рисунок_x0020_1" o:spid="_x0000_i1028" type="#_x0000_t75"
+ style='width:468pt;height:180.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="LB8.files/image004.emz" o:title=""/>
+</v:shape></span><span style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-fareast-language:RU;
+mso-no-proof:yes'><v:shape id="Рисунок_x0020_2" o:spid="_x0000_i1027" type="#_x0000_t75"
+ style='width:468pt;height:710.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="LB8.files/image005.emz" o:title=""/>
+</v:shape></span><span style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-fareast-language:RU;
+mso-no-proof:yes'><v:shape id="Рисунок_x0020_3" o:spid="_x0000_i1026" type="#_x0000_t75"
+ style='width:468pt;height:675.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="LB8.files/image006.emz" o:title=""/>
+</v:shape></span><span style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman";mso-fareast-language:RU;
+mso-no-proof:yes'><v:shape id="Рисунок_x0020_4" o:spid="_x0000_i1025" type="#_x0000_t75"
+ style='width:468pt;height:429pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="LB8.files/image007.emz" o:title=""/>
+</v:shape></span><span style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'>Теперь эта резидентная
+программа занимает в памяти только 208 байт.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Задание на лабораторную работу<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>Для получения
+задания на лабораторную работу обратиться к преподавателю.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+<A HREF="../../../Практика/practice.html">Практика</A>
+        <div style="position: fixed; right: 0; bottom: 0">
+  <a href="#" id="toTop"><img src="../../../Оболочка/js/to_top_ye.GIF" width="32" height="32" border="0" align="absmiddle"></a> </div>
+                <p>&nbsp;</p>
+        </table>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><B><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</BODY></HTML>

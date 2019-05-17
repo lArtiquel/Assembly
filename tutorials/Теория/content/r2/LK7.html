@@ -1,0 +1,1352 @@
+﻿<!-- (C) 2017 03 Rozum Halina, BSUIR, Belarus -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html" charset="utf8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>LK7 &quot;ОПИС&quot;</title>
+<base target="_top">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr>
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr>
+  <td width="70%" colspan=2 align="center" valign="middle">
+               <H1 align="center">электронный ресурс по учебной дисциплине<BR>
+        &quot;ОСНОВЫ ПРОЕКТИРОВАНИЯ ИНФОРМАЦИОННЫХ СИСТЕМ&quot;<BR>
+         для направления специальности: </H1> 1-40 05 01-09 &quot;Информационные системы и технологии (в обеспечении промышленной безопасности)&quot;
+                </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../index.html">Оглавление</A> |
+	<A HREF="../../../Программа/programm.html" TITLE="Программа курса (Откроется в новом окне)">Программа</A> |
+							<strong>Теория</strong> |
+		<A HREF="../../../Практика/practice.html">Практика</A>|
+		<A HREF="../../../Контроль_знаний/test.html">Контроль знаний</A> |
+	<A HREF="../../../Об авторах/author.html">Об авторах</A></var> </td>
+  <tr>
+</table>
+<div style="margin-left:5%; margin-right:5%;" width="80%" border="0" cellpadding="0" cellspacing="0">
+
+                <p></p>
+				<A HREF="../../../Теория/theory.html">Содержание</A>
+				<p></p>
+
+    <p style="text-align: center;"><strong><span>Тема  7<o:p></o:p></span></strong></p>
+    <p style="text-align: center;"><strong><span>Интерфейс модулей на языке ассемблера с программами на языках высокого уровня<o:p></o:p></span></strong></p>
+<ol>
+<a href="#_T1">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Введение.<o:p></o:p></span></a>
+<li><a href="#_T2">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Вызов ассемблерных программ из программ на языке С++.<o:p></o:p></span></a></li>
+ <li><a href="#_T3">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Вызов программ на языке С++ из программ на языке ассемблера.<o:p></o:p></span></a></li>
+ <li><a href="#_T4">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Встроенный ассемблер (режим inline в программах на языке С++).<o:p></o:p></span></a></li>
+ <li><a href="#_T5">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Литература.<o:p></o:p></span></a></li>
+
+</ol>
+
+   <p style="text-align: center;"><b><a name="_T1"> </a> Введение</b></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>Ассемблер предоставляет
+программисту полную свободу действий при разработке программы, что одновременно
+является и его достоинством, и недостатком, так как требует от разработчика
+знания системы команд данного компьютера и его операционной системы. Кроме
+того, несмотря на минимальный размер выполняемого фрагмента при максимальной
+скорости работы, время, необходимое для создания программы, резко возрастает с
+увеличением объема разрабатываемого проекта. Поэтому ассемблер был и остается
+языком программирования для профессионалов.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>В то же время программисты,
+работающие на языках высокого уровня, столкнувшись с ограничениями, которые
+неизбежны при использовании этих языков, не должны полностью переписывать свои
+программы на ассемблере. Чаще всего бывает достаточно перевода нескольких
+фрагментов кода, критичных по времени выполнения, чтобы все проблемы исчезли.<o:p></o:p></span></p>
+
+
+
+<p style="text-align: center;"><b><a name="_T2">1. </a> Вызов подпрограмм и
+передача параметров в языке С++</b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>Язык Borland C++ поддерживает
+два способа передачи параметров в вызываемую функцию: стандартный способ языка
+С и с использованием модификатора<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>pascal</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>.<o:p></o:p></span></p>
+
+<p class=MsoBodyText2 style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:justify;text-indent:35.45pt;line-height:normal'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Рассмотрим программу на языке С++, использующую первый способ передачи
+параметров.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>extern “C” void asm_f1(int *i1, int *i2, unsigned long
+l1);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>void main(void)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>{&nbsp;&nbsp; int i=5, j=7;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; unsigned long l=0x12345678;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp; asm_f1(&amp;i, &amp;j, l);<o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span lang=EN-US style='color:black;mso-ansi-language:
+EN-US'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>Строка</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span lang=EN-US style='color:black;mso-ansi-language:
+EN-US'>extern “C” void asm_f1(int *i1, int *i2, unsigned long l1);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>определяет, что программа<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>asm</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>_</span><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;color:black;mso-ansi-language:EN-US'>f</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>1
+описана в другом файле. Особенностью компилятора языка<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>C</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>++ является то, что если не заданы
+специальные режимы, он добавляет перед своими идентификаторами символ
+подчеркивания (_). Таким образом идентификатор<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>asm</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>_</span><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;color:black;mso-ansi-language:EN-US'>f</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>1
+после компиляции будет выглядеть как&nbsp;&nbsp; _</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>asm</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>_</span><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;color:black;mso-ansi-language:EN-US'>f</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>1. Это
+необходимо учесть при написании процедуры<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>asm</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>_</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>f</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>1 на языке ассемблера. Спецификатор “С”
+говорит о том, что используется интерфейс между программами, принятый в языке
+С. Строки<o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>&nbsp;&nbsp;&nbsp;&nbsp;<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='color:black;mso-ansi-language:EN-US'>int i=5, j=7;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; unsigned long l=0x12345678;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>объявляют и инициализруют
+переменные<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>i</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>и<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>j</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>целого
+типа и переменную<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>l</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>беззнакового
+длинного целого типа. Далее вызывается функция<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>asm</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>_</span><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;color:black;mso-ansi-language:EN-US'>f</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>1 на
+языке ассемблера и ей передаются три параметра:<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>i</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>,<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>j</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>и<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>l</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>. Передача параметров из вызывающей в
+вызываемую программу осуществляется через стек. В соответствии со способом,
+принятым в С, параметры передаются в стек справа налево, то есть сначала </span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>l</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>, потом &amp;</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>j</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>и
+далее &amp;</span><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>i</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>. Следом за параметрами в стек
+помещается адрес возврата, то есть адрес команды в языке<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>C</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>++, которая следует за командой<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>asm</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>_</span><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;color:black;mso-ansi-language:EN-US'>f</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>1(&amp;</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>i</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>, &amp;</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>j</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>,<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>l</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>);. Если для программы на языке С++ заданы
+малые модели памяти (</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black;mso-ansi-language:EN-US'>tiny</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>,<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>small</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>,<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>compact</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>), то таким адресом возврата
+является значение<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>IP</span><span
+class=apple-converted-space><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black'>&nbsp;</span></span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>(для следующей после<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>asm</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>_</span><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;color:black;mso-ansi-language:EN-US'>f</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>1
+команды). Если для программы на языке<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>C</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>++ заданы большие модели
+памяти (</span><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>medium</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>,<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>large</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>,<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>huge</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>), то адресом возврата
+является значение<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>CS</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>:</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>IP</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>(для
+следующей после<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>asm</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>_</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>f</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>1 команды). Следует учесть, что для
+процессора 8086 данные в стек заносятся только словами (по 2 байта). Переменные<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>i</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>и<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>j</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>требуют
+двух байт памяти. Их адреса &amp;</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black;mso-ansi-language:EN-US'>i</span><span
+class=apple-converted-space><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black'>&nbsp;</span></span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>и &amp;</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>j</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>(именно
+они заданы в программе) для малых моделей данных (</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>tiny</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>,<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>small</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>,<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>medium</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>) тоже требуют двух байт. Поэтому каждое
+значение &amp;</span><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>i</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>и
+&amp;</span><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>j</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>будет
+занесено в стек одной командой<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>push</span><span
+class=apple-converted-space><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black'>&nbsp;</span></span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>МП 8086. Переменная<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>l</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>требует
+четырех байт памяти и заносится в стек двумя командами<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>push</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>МП
+8086. Заметим, что малыми моделями памяти для кода являются<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>tiny</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>,<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>small</span><span
+class=apple-converted-space><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black'>&nbsp;</span></span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>и<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>compact</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>, а для данных<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>tiny</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>,<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>small</span><span
+class=apple-converted-space><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black'>&nbsp;</span></span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>и<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>medium</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>.Проанализируем выполняемый
+код, который будет построен компилятором языка С++ для этой программы. Для
+этого опишем полученный выполняемый код на языке ассемблера.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>push</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ;
+сохранение регистра<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>bp</span><span
+class=apple-converted-space><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black'>&nbsp;</span></span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>в стеке<o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span style='color:black'>&nbsp;; язык С++ сохраняет все локальные
+переменные в стеке (в нашем ; случае ими являются<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='color:black;mso-ansi-language:EN-US'>i</span><span style='color:black'>,<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='color:black;mso-ansi-language:EN-US'>j</span><span
+class=apple-converted-space><span style='color:black'>&nbsp;</span></span><span
+style='color:black'>и<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>l</span><span
+style='color:black'>). В результате после инструкций ;<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='color:black;mso-ansi-language:EN-US'>int</span><span lang=EN-US
+style='color:black'> </span><span lang=EN-US style='color:black;mso-ansi-language:
+EN-US'>i</span><span style='color:black'>=5,<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>j</span><span
+style='color:black'>=7;<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>unsigned</span><span
+lang=EN-US style='color:black'> </span><span lang=EN-US style='color:black;
+mso-ansi-language:EN-US'>long</span><span lang=EN-US style='color:black'> </span><span
+lang=EN-US style='color:black;mso-ansi-language:EN-US'>l</span><span
+style='color:black'>=0</span><span lang=EN-US style='color:black;mso-ansi-language:
+EN-US'>x</span><span style='color:black'>12345678; в область стека ; ; будут
+записаны следующие значения<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>mov</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>,<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>sp</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp; ; запись в регистр<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>bp<span class=apple-converted-space>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>адреса
+вершины стека &nbsp;&nbsp;&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>sub</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>sp</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>, 8&nbsp;&nbsp; ; выделение в стеке места
+для локальных переменных&nbsp;&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>mov</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>word</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>ptr</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>[</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>-2], 5&nbsp; ; сохранение в
+стеке значения<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>i</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>=5<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>mov</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>word</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>ptr</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>[</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>-4], 7&nbsp; ; сохранение в
+стеке значения<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>j</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>=7<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>mov</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>word</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>ptr</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>[</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>-8], 5678</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>h</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; ; сохранение в стеке младшей<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>; части значения<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>l</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>=0</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>x</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>5678<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>mov</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>word</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>ptr</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>[</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>-6], 1234</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>h</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; ; сохранение в стеке старшей<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>; части<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>l</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>=0x1234<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;; после инструкции<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>asm</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>_</span><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;color:black;mso-ansi-language:EN-US'>f</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>1(&amp;</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>i</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>, &amp;</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>j</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>,<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>l</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>); командами<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>push</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>в стек<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>; будут занесены передаваемые
+параметры. Это происходит в<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>; следующем фрагменте
+программы.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>push</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>word</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>ptr</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>[</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>-6]; значение 0</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>x</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>1234 в стек<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>push</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>word</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>ptr</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>[</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>-8]; значение 0</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>x</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>5678 в стек<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>lea</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>ax</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>, [</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>-4]&nbsp;&nbsp; &nbsp; ; адрес [</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>-4] в<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>ax</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>push</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>&nbsp;<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>ax</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; адрес [</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>-4] в стек<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>lea</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>ax</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>, [</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>-2]&nbsp;&nbsp; &nbsp; ; адрес [</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>-2] в<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>ax</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>push</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>&nbsp;<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>ax</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; адрес [</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>-2] в стек<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>call _asm_f1&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ; вызов
+функции _asm_f1<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>add</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>sp</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>,8&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; удаление из стека переданных
+параметров<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>mov</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>sp</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>,</span><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;color:black;mso-ansi-language:EN-US'>bp</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+; удаление из стека локальных переменных<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>pop</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>bp</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+; восстановление регистра<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>bp</span><span
+class=apple-converted-space><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black'>&nbsp;</span></span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>из стека<o:p></o:p></span></p>
+
+
+<p style="text-align: center;"><b><a name="_T3">2. </a> Вызов ассемблерных программ из программ на языке С++</b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>При объединении программных
+модулей, написанных на языках С++ и ассемблера, эти модули должны использовать
+одну и ту же модель памяти. Кроме того для каждого модуля необходимо указать,
+какие переменные, объявленные в нем, передаются в другую программу и какие
+переменные модуль получает из другой программы. Чтобы обеспечить это,
+необходимо выполнить следующие требования:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>1.&nbsp;&nbsp;&nbsp;&nbsp;<span
+class=apple-converted-space>&nbsp;</span>Если процедура на языке ассемблера
+вызывается из программы на языке С++, то такая процедура в языке ассемблера
+должна быть описана как<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>PUBLIC</span><span
+class=apple-converted-space><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black'>&nbsp;</span></span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>(должна появиться после директивы<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>PUBLIC</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>). Аналогичное описание необходимо и в том
+случае, когда две процедуры на ассемблере компилируются по отдельности.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>2.&nbsp;&nbsp;&nbsp;&nbsp;<span
+class=apple-converted-space>&nbsp;</span>Если необходимо обеспечить доступ к
+некоторым переменным из объединяемых программ, написанных на языках С++ и
+ассемблера, т.е. переменные должны быть глобальными, необходимо рассмотреть
+следующие случаи:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+class=apple-converted-space>&nbsp;</span>глобальная переменная объявлена в
+программе на языке ассемблера. В этом случае в программе на&nbsp; ассемблере
+она должна иметь атрибут<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>PUBLIC</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>, а в программе на С++&nbsp; -<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>extern</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+class=apple-converted-space>&nbsp;</span>глобальная переменная объявлена в
+программе на С++ как внешняя. Тогда в программе на&nbsp; ассемблере она должна
+иметь атрибут<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>EXTRN</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>Ниже приведен пример двух
+программ, первая из них написана на языке С++ и находится в файле<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>C</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>_</span><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;color:black;mso-ansi-language:EN-US'>ASM</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>1.</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>CPP</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>, а вторая написана на языке
+ассемблера и находится в файле<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>ASM</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>1.</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>ASM</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>. Вторая программа вызывается из первой.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>// вызывающая программа на
+языке С++<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>#include &lt;stdio.h&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>extern “C” void asm_f1(int*i1, int*i2, unsigned long
+l1);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>void main(void)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>{&nbsp;&nbsp;&nbsp; int i=5, j=7;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; unsigned long l=0x12345678;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; printf(“i=%d; j=%d; l=%lx\n”,
+i, j, l);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; asm_f1(&amp;i, &amp;j, l);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; printf(“i=%d; j=%d; l=%lx\n”,
+i, j, l);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>;&nbsp; вызываемая программа
+на языке ассемблера<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>.</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>model</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'> </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>small</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>.code<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>PUBLIC C asm_f1<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>asm_f1 PROC near<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; push bp<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; mov bp,sp<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; push si di<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; mov si, [bp+4]<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; mov di, [bp+6]<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; mov bx, [bp+8]<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; mov ax, [bp+10]<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; mov cx, [si]<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; xchg cx, [di]<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; mov [si], cx<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>pop di si<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>pop bp<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>ret<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>asm_f1&nbsp; endp<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>end</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>При вызове ассемблерной
+процедуры необходимо сохранять содержимое регистров, используемых процедурой.
+При возврате из процедуры значения регистров<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>BP</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>,<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>SP</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>,<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>CS</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>,<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>DS<span class=apple-converted-space>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>и<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>SS</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>должны
+иметь те же значения, что до вызова процедуры.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Если вызванная ассемблерная процедура должна возвратить в вызывающую ее функцию
+некоторое значение, необходимо следовать правилам, которые учитывают
+особенность получения программой на языке С++ возвращаемых значений. Если
+процедура возвращает 16-битное значение, то оно должно быть помещено в регистр<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>AX</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>. Для языка С++ это значения данных типа<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>char</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>,<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>short</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>, </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>int</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>,<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>enum<span class=apple-converted-space>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>и
+значения указателей типа<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>near</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>. Если процедура возвращает
+32-битное значение, то оно должно быть помещено в регистры<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>DX</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>:</span><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;color:black;mso-ansi-language:EN-US'>AX</span><span
+class=apple-converted-space><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black'>&nbsp;</span></span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>(старшая часть в<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>DX</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>). Для языка С++ это значения данных типа<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>long<span class=apple-converted-space>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>и
+значения указателей типа<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>far</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>. &nbsp;<o:p></o:p></span></p>
+
+<p style="text-align: center;"><b><a name="_T4">3. Вызов программ на языке
+С++ из программ на языке ассемблера</b>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>Как и выше, для каждой
+программы необходимо указать,&nbsp; какие переменные она передает в другой
+модуль и какие переменные она получает из другого модуля. Для этого необходимо
+выполнить следующее:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>1.&nbsp;&nbsp;&nbsp;&nbsp;<span
+class=apple-converted-space>&nbsp;</span>Если функция на языке С++ вызывается
+из программы на языке ассемблера, то такая функция в языке ассемблера должна
+быть описана как<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>EXTRN</span><span
+class=apple-converted-space><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black'>&nbsp;</span></span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>(должна появиться после директивы<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>EXTRN</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>2.&nbsp;&nbsp;&nbsp;&nbsp;<span
+class=apple-converted-space>&nbsp;</span>Описание всех глобальных переменных
+должно быть выполнено в соответствии с правилами, описанными в предыдущем
+параграфе.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>3.&nbsp;&nbsp;&nbsp;&nbsp;<span
+class=apple-converted-space>&nbsp;</span>Если функция на С++ возвращает
+значение, то оно будет помещено в регистры в соответствие с соглашениями языка
+С++.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><b><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>7.4. Встроенный ассемблер
+(режим<span class=apple-converted-space>&nbsp;</span></span></b><b><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>inline<span class=apple-converted-space>&nbsp;</span></span></b><b><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>в
+программах на языке С++)</span></b><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>Наряду с рассмотренными
+возможностями<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>Borland</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'> </span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>C</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>++ позволяет описывать
+ассемблерный код непосредственно в программе на языке С++. Любую ассемблерную
+команду можно записать в виде:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>а</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>sm<span class=apple-converted-space>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;код_операции&nbsp;
+операнды&nbsp; ; или новая строка<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Здесь&nbsp; «код_операции» задает команду языка ассемблера (например,<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>mov</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>), «операнды» – это операнды команды
+(например,<span class=apple-converted-space>&nbsp;</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>ax</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>,<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>bx</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>). Если с помощью одного слова<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>asm</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>необходимо
+задать много ассемблерных команд, то они заключаются в фигурные скобки.
+Комментарии можно записывать только в форме, принятой в языке С++. В программе
+на языке С++, использующей ассемблерные команды, необходимо задать директиву #</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>pragma</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'> </span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>inline</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Рассмотрим пример.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;#</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>include</span><span
+class=apple-converted-space><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black'>&nbsp;</span></span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>&lt;</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>iostream</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>.</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>h</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;color:black'>&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>#pragma inline<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>void main(void)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>{ &nbsp;&nbsp; int a=10, b=20, c;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp;
+cout&lt;&lt;”a=”&lt;&lt;a&lt;&lt;”b=”&lt;&lt;b&lt;&lt;’\n’;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; asm</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'> </span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>mov</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'> </span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:black;mso-ansi-language:EN-US'>ax</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>,10 ; // в<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>ax</span><span class=apple-converted-space><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>&nbsp;</span></span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black'>значение
+10<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;<span
+class=apple-converted-space>&nbsp;</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>asm mul a&nbsp;&nbsp;&nbsp;&nbsp; ; // умножение ax*a<o:p></o:p></span></p>
+
+<p class=a00 style='margin:0cm;margin-bottom:.0001pt;text-align:justify;
+text-indent:35.45pt'><span lang=EN-US style='color:black;mso-ansi-language:
+EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; c=_AX;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>cout&lt;&lt;”c=”&lt;&lt;c&lt;&lt;’\n’;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>asm {<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; mov ax, a<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; mov bx, b<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; xchg ax, bx<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; mov a,ax<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; mov b, bx<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>&nbsp;&nbsp;&nbsp;&nbsp; }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:black;
+mso-ansi-language:EN-US'>cout&lt;&lt; “ a= ”&lt;&lt; a &lt;&lt;”; b= ”&lt;&lt;
+b &lt;&lt;’\n’;<o:p></o:p></span></p>
+
+
+
+<p style="text-align: center;"><b><a name="_T5"> </a> Литература</b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>[1] </span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>[</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman"'>Электронный</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";mso-ansi-language:
+EN-US'> </span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman"'>ресурс</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>]. – </span><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman"'>Режим</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";mso-ansi-language:EN-US'> </span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman"'>доступа</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>: </span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+background:white;mso-ansi-language:EN-US'>ftp://ftp.asu.ru/incoming/%CE%E2%F1%FF%ED%ED%E8%EA%EE%E2%20%C0.%C2/Chapter_09.pdf<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;background:white'>[2] </span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>Дэвид Харрис, Сара
+Харрис. Цифровая схемотехника и архитектура компьютера, 2-е издание, перевод
+командой компаний и университетов России, Украины, США и Великобритании, Morgan
+Kaufman, 2013.</span><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>&nbsp;</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif'>– 1621 с.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;background:white'>[</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;background:white;
+mso-ansi-language:EN-US'>3</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif;background:white'>] </span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>И.В. Лукьянова. Конспект лекций по курсу
+«Конструирование программ и языки программирования» часть 2 Язык
+программирования ассемблер, Минск, 2006. – 78 с.<o:p></o:p></span></p>
+
+
+
+
+         </div>
+                <p>&nbsp;</p>
+				<A HREF="../../../Теория/theory.html">Содержание</A>
+				<div style="position: fixed; right: 0; bottom: 0">
+	<a href="#" id="toTop"><img src="../../../Оболочка/js/to_top_ye.GIF" width="32" height="32" border="0" align="absmiddle"></a> </div>
+                <p>&nbsp;</p>
+        </div>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><B><strong>(С)  БГУИР</strong></var></td>
+  </tr>
+</table>
+</BODY></HTML>

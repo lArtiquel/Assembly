@@ -1,0 +1,618 @@
+<!-- (C) 2017 04 Rozum Halina, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>LB5 дисциплины  &quot;ОПИС&quot;</title>
+<base target="_top">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr>
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr>
+  <td width="70%" colspan=2 align="center" valign="middle">
+               <H1 align="center">электронный ресурс по учебной дисциплине<BR>
+        &quot;ОСНОВЫ ПРОЕКТИРОВАНИЯ ИНФОРМАЦИОННЫХ СИСТЕМ&quot;<BR>
+         для направления специальности: </H1> 1-40 05 01-09 &quot;Информационные системы и технологии (в обеспечении промышленной безопасности)&quot;
+                </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../index.html">Оглавление</A> |
+  <A HREF="../../../Программа/programm.html" TITLE="Программа курса (Откроется в новом окне)">Программа</A> |
+  <A HREF="../../../Теория/theory.html">Теория</a> |
+              <strong>Практика</strong> |
+  <A HREF="../../../Контроль_знаний/test.html">Контроль знаний</A> |
+  <A HREF="../../../Об авторах/author.html">Об авторах</A></var> </td>
+  <tr>
+</table>
+<table style="margin:0 auto;" width="90%" border="0" cellpadding="0" cellspacing="0">
+<td><A HREF="../../../Практика/practice.html">Практика</A>
+                  <p><b>ЛАБОРАТОРНАЯ  РАБОТА № 5</b></p>
+
+<div class=WordSection11>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;line-height:normal'><b><span style='font-size:14.0pt;
+font-family:"Times New Roman","serif";text-transform:uppercase'>ПРЯМАЯ РАБОТА С ВИДЕОПАМЯТЬЮ</span></b></p>
+
+
+
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'>Цель работы</span></b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-weight:bold;mso-bidi-font-style:
+italic'>: изучить способы работы с видеопамятью, организацию и прямое обращение
+к видеобуферу.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-weight:bold;mso-bidi-font-style:
+italic'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Теоретические сведения<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Все, что изображено на мониторе - и графика, и текст,
+одновременно присутствует в памяти, встроенной в видеоадаптер. Чтобы
+изображение появилось на мониторе, оно должно быть записано в память
+видеоадаптера. Для этой цели отводится специальная область памяти, начинающаяся
+с абсолютного адреса 0B800h:0000h (для текстовых режимов) и заканчивающаяся 0B800h:0FFFFh.
+Все, что программы пишут в эту область памяти, немедленно пересылается в память
+видеоадаптера. В текстовых режимах для хранения каждого изображенного символа
+используются два байта: байт с ASCII-кодом символа и байт с его атрибутом, так
+что по адресу 0B800h:0000h лежит байт с кодом символа, находящимся в верхнем
+левом углу экрана; по адресу 0B800h:0001h расположен атрибут этого символа; по
+адресу 0B800h:0002h - код второго символа в верхней строке экрана и т. д. Таким
+образом, любая программа может вывести текст на экран простой командой
+пересылки данных, не прибегая ни к каким специальным функциям DOS или BIOS.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>; dirout.asm<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>; Выводит на экран все ASCII-символы без исключения,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>; используя прямой вывод на экран.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span><span
+class=GramE>.<span lang=EN-US style='mso-ansi-language:EN-US'>model</span></span><span
+style='mso-tab-count:1'> </span></span><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>tiny</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span><span
+class=GramE>.<span lang=EN-US style='mso-ansi-language:EN-US'>code</span></span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span>.386<span
+style='mso-tab-count:4'>                                        </span>; Будет использоваться
+регистр ЕАХ<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:5'>                                                           </span>;
+и команда </span><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>STOSD</span><span style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman"'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=GramE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>org</span></span><span style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:1'>       </span>100</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>h</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:3'>                           </span>;
+Начало СОМ-файла.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=GramE><span lang=EN-US style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>start</span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>mov</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>     </span></span><span lang=EN-US style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>ax</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>,0003</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>h</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>int</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>        </span>10</span><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US'>h</span><span style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:3'>                             </span>; Видеорежим 3 (очистка
+экрана).<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>cld</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:4'>                                          </span>; Обработка
+строк в прямом направлении.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:5'>                                                           </span>;
+Подготовка данных для вывода на экран:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>mov</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>     </span></span><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US'>eax</span></span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>,1</span><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>F</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>201</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>F</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>00</span><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>h</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>          </span>; первый символ 00 с атрибутом 1</span><span
+class=SpellE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>Fh</span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:5'>                                                           </span>;
+затем пробел (20</span><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>h</span><span style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman"'>) с атрибутом 1</span><span
+class=SpellE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>Fh</span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>mov</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>     </span></span><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US'>bx</span></span><span style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>,</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>OF</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>20</span><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>h</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:2'>                   </span>; Пробел с атрибутом 0</span><span
+class=SpellE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>Fh</span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>mov</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>     </span></span><span lang=EN-US style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>cx</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>, 255<span
+style='mso-tab-count:2'>                        </span>; Число символов минус
+1.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>mov</span></span></span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'><span style='mso-tab-count:1'>     </span>di, offset <span
+class=SpellE>ctable</span><span style='mso-tab-count:1'>          </span>; ES:DI
+- </span><span style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>начало</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US'> </span><span style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>таблицы</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=SpellE><span class=GramE><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>cloop</span></span></span><span style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman"'>:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>stosd</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:4'>                                       </span>; Записать
+символ и пробел </span><i><span style='font-size:12.0pt;mso-fareast-font-family:
+Courier-Oblique;mso-bidi-font-family:"Times New Roman"'>в </span></i><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>таблицу <span
+class=SpellE>ctable</span>.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>inc</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>       </span></span><span lang=EN-US style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>al</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:3'>                                 </span>; AL содержит
+следующий символ.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=GramE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>test</span></span><span style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:1'>      </span></span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>cx</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>,0</span><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US'>Fh</span></span><span style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:2'>             </span>; Если СХ не кратен 16,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>jnz</span></span></span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'><span style='mso-tab-count:1'>       </span><span
+class=SpellE>continue_loop</span><span style='mso-tab-count:1'> </span>; </span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>продолжить</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US'> </span><span style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>цикл</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'><span style='mso-tab-count:1'>            </span><span
+class=GramE>push</span></span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>    </span></span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>cx</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:3'>                                </span>;
+Иначе: сохранить значение счетчика.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>mov</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>     </span></span><span lang=EN-US style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>cx</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>,80-32<span
+style='mso-tab-count:2'>                     </span>; Число оставшихся до конца
+строки символов.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>xchg</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>    </span></span><span lang=EN-US style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>ax</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>,</span><span
+class=SpellE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>bx</span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=GramE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>rep</span></span><span style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:1'>       </span></span><span
+class=SpellE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>stosw</span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:3'>                          </span>; Заполнить остаток
+строки пробелами<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:5'>                                                           </span>;
+с атрибутом 0F.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>xchg</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>    </span></span><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US'>bx</span></span><span style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>,</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>ax</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:3'>                           </span>;
+Восстановить значение ЕАХ.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=GramE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>pop</span></span><span style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:1'>      </span></span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>cx</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:3'>                                </span>;
+Восстановить значение счетчика.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>continue</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>_</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>loop</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=GramE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>loop</span></span><span style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:1'>     </span></span><span
+class=SpellE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>cloop</span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>stosd</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:4'>                                       </span>; Записать
+последний (256-й) символ и пробел.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:5'>                                                           </span>;
+<span class=GramE>собственно</span> вывод на экран<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>mov</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>     </span></span><span lang=EN-US style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>ax</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>,0</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>B</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>800</span><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>h</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:2'>                  </span>; Сегментный адрес видеопамяти.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>mov</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>     </span></span><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US'>es</span></span><span style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>,</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>ax</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span>хо</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>r</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>       </span></span><span
+class=GramE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>di</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>,</span><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>di</span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:3'>                            </span>; </span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>DI</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'> = 0, адрес начала видеопамяти в </span><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US'>ES</span><span style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>:</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>DI</span><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'>;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>mov</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>     </span></span><span class=SpellE><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US'>si</span></span><span style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>,</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>offset</span><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman"'> </span><span class=SpellE><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>ctable</span></span><span style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:1'>            </span>;
+Адрес таблицы в </span><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>DS</span><span style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman"'>:</span><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US'>SI</span><span style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=SpellE><span class=GramE><span lang=EN-US style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>mov</span></span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:1'>     </span></span><span lang=EN-US style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>cx</span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>,15*80+32<span
+style='mso-tab-count:2'>              </span>; 15 строк по 80 символов,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:5'>                                                           </span>;
+последняя строка – 32.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=GramE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>rep</span></span><span style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:1'>       </span></span><span
+class=SpellE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>movsw</span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:3'>                        </span>; Скопировать таблицу <span
+class=SpellE>ctable</span> в видеопамять.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:1'>            </span></span><span
+class=GramE><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>ret</span></span><span style='font-size:12.0pt;
+mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:4'>                                           </span>;
+Завершение СОМ-файла.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=SpellE><span class=GramE><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>ctable</span></span></span><span style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman"'>:<span style='mso-tab-count:
+4'>                                     </span>; Данные для вывода на экран начинаются
+сразу<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:5'>                                                           </span>;
+за концом файла. В ЕХЕ-файле такие данные<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><span style='mso-tab-count:5'>                                                           </span>;
+определяют в <span class=GramE>сегменте .<span class=SpellE>data</span></span>?<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span class=GramE><span lang=EN-US style='font-size:
+12.0pt;mso-bidi-font-family:"Times New Roman";mso-ansi-language:EN-US'>end</span></span><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><span
+style='mso-tab-count:2'>                  </span><span class=SpellE>start</span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-bidi-font-family:
+"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>В указанной программе при подготовке данных для копирования
+в видеопамять учитывалось следующее: в архитектуре <span class=SpellE>Intel</span>
+при записи слова (или двойного слова) в память старший байт располагается по
+старшему адресу. Так что при записи в память двойного слова 1F201F00h сначала
+записывается самый младший байт 00</span><span lang=EN-US style='font-size:
+12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US'>h</span><span style='font-size:12.0pt;mso-fareast-font-family:
+Times-Roman;mso-bidi-font-family:"Times New Roman"'> (ASCII-код текущего
+символа), потом 1Fh, используемый в этом примере атрибут, далее 20h (код
+пробела) и лишь затем, по самому старшему адресу, - самый старший байт&quot;, 1Fh,
+атрибут для этого пробела. Кроме того, в данном примере использовались
+некоторые 32-битные команды (MOV и STOSD). Ими можно пользоваться из 16-битной
+программы (разумеется, если процессор 80386 и выше), но не стоит этим
+злоупотреблять, потому что каждая из команд оказывается длиннее на 1 байт и
+выполняется дольше на 1 такт.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>Задание на
+лабораторную работу<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>Для получения задания
+на лабораторную работу обратиться к преподавателю.<o:p></o:p></span></p>
+
+</div>
+
+<A HREF="../../../Практика/practice.html">Практика</A>
+        <div style="position: fixed; right: 0; bottom: 0">
+  <a href="#" id="toTop"><img src="../../../Оболочка/js/to_top_ye.GIF" width="32" height="32" border="0" align="absmiddle"></a> </div>
+                <p>&nbsp;</p>
+        </table>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><B><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</BODY></HTML>

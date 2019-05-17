@@ -1,0 +1,40 @@
+org 100h
+
+f_name db 'D:\a.txt',0
+
+mov dx,offset f_name ; put into dx filename offset
+mov ah,3Dh           ; call DOS 3Dh
+mov al,00h           ; 00 - just reading
+int 21h              ; open file
+jc exit              ; if CF = 1(error open file) -> exit
+mov bx,ax            ; BX = file identifier
+mov di,01            ; DI = STDOUT identifier
+
+read_data:
+mov cx,1024          ; read block size
+mov dx,offset buffer ; buffer offset for data
+mov ah,3Fh           ; DOS 3Fh function to read data
+int 21h              ; call 21h interruption
+jc close_file        ; if CF = 1(error) -> close file
+mov cx,ax            ; save into cx number of reade bytes in ax
+jcxz close_file      ; if CX(num of readed bytes ==0) -> close file
+mov ah,40h           ; DOS 40h write to file
+xchg bx,di           ; exchange -- BX = STDOUT identidier
+int 21h              ; write to STDOUT
+xchg di,bx           ; exchange back BX = FILE identifier
+jc close_file        ; CF = 1(error) -> close file
+jmp short read_data  ; read another block
+
+close_file:
+mov ah,3Eh           ; put 3Eh func into acum
+int 21h              ; call it
+
+exit:
+
+buffer:
+
+
+
+
+
+

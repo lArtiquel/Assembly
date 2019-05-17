@@ -1,0 +1,1151 @@
+﻿<!-- (C) 2017 03 Rozum Halina, BSUIR, Belarus -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html" charset="utf8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>LK6 &quot;ОПИС&quot;</title>
+<base target="_top">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr>
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr>
+  <td width="70%" colspan=2 align="center" valign="middle">
+               <H1 align="center">электронный ресурс по учебной дисциплине<BR>
+        &quot;ОСНОВЫ ПРОЕКТИРОВАНИЯ ИНФОРМАЦИОННЫХ СИСТЕМ&quot;<BR>
+         для направления специальности: </H1> 1-40 05 01-09 &quot;Информационные системы и технологии (в обеспечении промышленной безопасности)&quot;
+                </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../index.html">Оглавление</A> |
+	<A HREF="../../../Программа/programm.html" TITLE="Программа курса (Откроется в новом окне)">Программа</A> |
+							<strong>Теория</strong> |
+		<A HREF="../../../Практика/practice.html">Практика</A>|
+		<A HREF="../../../Контроль_знаний/test.html">Контроль знаний</A> |
+	<A HREF="../../../Об авторах/author.html">Об авторах</A></var> </td>
+  <tr>
+</table>
+<div style="margin-left:5%; margin-right:5%;" width="80%" border="0" cellpadding="0" cellspacing="0">
+
+                <p></p>
+				<A HREF="../../../Теория/theory.html">Содержание</A>
+				<p></p>
+
+    <p style="text-align: center;"><strong><span>Тема  6<o:p></o:p></span></strong></p>
+    <p style="text-align: center;"><strong><span>Взаимодействие с аппаратурой<o:p></o:p></span></strong></p>
+<ol>
+<li><a href="#_T1">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Введение.<o:p></o:p></span></a></li>
+<li><a href="#_T2">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Режим свободного доступа.<o:p></o:p></span></a></li>
+ <li><a href="#_T3">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Режим ожидания готовности.<o:p></o:p></span></a></li>
+ <li><a href="#_T4">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Режим прерываний.<o:p></o:p></span></a></li>
+ <li><a href="#_T5">
+ <span style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight: bold'>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Литература.<o:p></o:p></span></a></li>
+
+
+</ol>
+
+   <p style="text-align: center;"><b><a name="_T1"> </a> Введение</b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Программирование аппаратуры – как штатных
+периферийных устройств компьютера, таких, как видеосистема, клавиатура,
+последовательный или параллельный интерфейс и др., так и нестандартных
+измерительных или управляющих устройств, подключаемых к компьютеру, если он
+используется для автоматизации научных исследований или управления
+технологическим процессом – является одним из важнейших и наиболее оправданных
+применения языка ассемблера. Во-первых, от программ управления аппаратурой
+часто требуется максимальное быстродействие. Во-вторых, эти программы,
+призванные управлять аппаратурой на низком уровне, путем обращения к регистрам
+и их отдельными битам, часто ничего не выигрывают от использования языков
+высокого уровня, в которых те же операции реализуются с помощью процедур языка,
+менее наглядных и эффективных, чем &quot;чистые&quot; команды процессора. <span
+style='mso-spacerun:yes'>        </span>В-третьих, при программировании
+аппаратуры, особенно, экспериментальной, важно жестко соблюдать временную и
+событийную последовательность команд и сигналов, воспринимаемых программируемым
+устройством, что естественным образом достигается при использовании языка
+ассемблера, в котором каждое предложение языка реализуется вполне определенной
+командой процессора.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>В зависимости от назначения и способа
+функционирования аппаратуры, она может требовать различных режимов программного
+управления. В основном существуют три режима, или способа взаимодействия
+программы и аппаратуры: режим свободного доступа, режим ожидания готовности и
+режим прерываний.<o:p></o:p></span></p>
+<p style="text-align: center;"><br><b><a name="_T2">Режим</a> свободного доступа </b></p>
+
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Режим свободного доступа используется в
+тех случаях, когда момент обращения к устройству целиком определяется
+программой. Например, регистры, управляющие работой аппаратуры, обычно доступны
+в любой момент времени. Программа может в любой момент прочитать содержимое
+этих регистров и определить по нему текущий режим работы устройства, или,
+наоборот, послать в управляющие регистры требуемую последовательность команд с
+целью изменения рабочего режима.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Режим ожидания готовности необходимо
+использовать в тех случаях, когда после приема некоторой команды устройству
+требуется определенное время для ее выполнения. Например, в последовательный
+порт, через который компьютер связывается с другими компьютерами или телефон
+ной сетью, нельзя посылать следующую порцию информации (байт), пока
+устройствами последовательного интерфейса не будет отправлена в канат связи
+предыдущая порция. Режимом ожидания готовности часто пользуются для приема
+информации из измерительной аппаратуры, если требуется обеспечить максимальную
+скорость ее получения.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Режим прерываний является важнейшим
+способом связи с относительно медленным периферийным оборудованием. В этом
+случае устройство подключается не только к линиям адресов, данных и управления
+системной магистрали компьютера, но и к одной из специально выделенных линий
+прерываний. В режиме прерывания устройство само решает, когда ему требуется
+обслуживание, и посылкой в компьютер сигнала прерывания оповещает об этом
+процессор. Типичным примером является клавиатура, посылающая сигнал прерывания
+каждый раз, когда пользователь нажимает на ту или иную клавишу. Большая часть
+штатных устройств компьютера – <span style='mso-spacerun:yes'> </span>мышь,
+диски, таймер и др. – <span style='mso-spacerun:yes'> </span>используют режим
+прерываний. Типичен этот режим также и для связи с измерительной аппаратурой в
+тех случаях, когда аппаратура регистрирует относительно редкие события, или
+измерительные данные накапливаются в аппаратуре в течение заметного времени и
+затем пересылаются в компьютер сразу целой пачкой.</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>C</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>вязь
+с аппаратными средствами самого компьютера, а также с подключаемыми к нему
+устройствами осуществляется главным образом через адресное пространство
+ввода-вывода. Это значит, что за каждым устройством закрепляется один или,
+чаще, несколько портов, и программирование устройства осуществляется
+исключительно с помощью команд in и out (а также ins и cuts, если
+программируемое устройство может посылать данные потоком).</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>В простейшем случае программирование
+устройства сводится к выполнению единственной команды </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>in</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>
+в случае чтения из устройства, или </span><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>out</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'> в случае записи в
+него. Рассмотрим, например, процедуры маскирования и размаскирования аппаратных
+прерываний. В каждом из двух контроллеров прерываний, включаемых в состав
+компьютера, имеется регистр маски (рис. 6.1). Значение 0 в бите маски разрешает
+прохождение сигнала прерывания, значение 1 запрещает. Пройдя через маску и
+через последующие узлы контроллера прерываний (не показанные на рис. 6.1),
+сигнал прерываний поступает на вход </span><span lang=EN-US style='font-size:
+12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:EN-US'>INT</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'> микропроцессора.
+Программирование регистров маски осуществляется через порт 21</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>h</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif'> для ведущего контроллера и </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>A</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>1</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>h</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif'> для ведомого.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Исходное значение маски устанавливается
+программами начальной загрузки компьютера в зависимости от конфигурации
+вычислительной системы. Типичным является значение </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>A</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>8</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>h</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif'>, показанное на рис. 6.1. При этом значении маски
+размаскированными оказываются системный таймер, клавиатура, мышь, подключенная
+к первому последовательному порту.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>
+<img width=411 height=98
+src="../../images/R2.files/image002.jpg" v:shapes="_x0000_i1025"> <o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>Рисунок
+6.1. – Регистр маски ведущего контроллера прерываний<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>СОМ1, гибкий диск, а также выход от
+ведомого контроллера, подключаемый ко входу IRQ2 ведущего. Замаскированы оба
+параллельного порта (принтер, подключаемый к порту LPT1, обычно не использует
+прерываний, а второй параллельный порт часто просто отсутствует) и второй
+последовательный порт, к которому ничего не подключено. Другими словами,
+размаскировано все нужное, и замаскировано все ненужное.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>В раде случаев возникает необходимость
+замаскировать прерывания от системного таймера, который является единственным
+постоянно активным источником прерываний. Такая ситуация типична, в частности,
+для автоматизированных измерительных систем, в которых недопустимо прерывать
+поток данных, поступающих от измерительной установки в компьютер. Любое
+прерывание процесса приема данных может привесит к потере части принимаемой
+информации и нарушению работы установки. Для запрета прерываний от таймера надо
+выполнить такую последовательность команд:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>in AL,21h ;Чтение регистра маски<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>or AL,1 ;Установка 1 в бите 0<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>out 21h,AL ;Запись нового значения маски<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Восстановление исходного состояния
+вычислительной системы с разрешенными прерываниями от таймера осуществляется
+следующим образом:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>in AL,21h ;Чтение регистра маски<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>and AL, 0FEh ;Установка 0 в бите 0<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>out 21h,AL ;Запись нового значения маски<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Другим примером использования режима
+свободного доступа к устройству является программирование энергонезависимой
+КМОП-микросхемы, включающей в себя часы реального времени. Общий объем
+КМОП-памяти составляет 64 байт (от 00h до 3Fh); доступ к байтам КМОП-памяти
+осуществляется через порты 70h и 71h.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>В КМОП-микросхеме реализован способ
+обращения к ее отдельным ячейкам, широко используемый в микропроцессорной
+технике. Если программировать КМОП-память прямым образом, для обращения к ее 64
+ячейкам в адресном пространстве ввода-вывода пришлось бы выделить 64 адреса.
+Для сокращения числа используемых адресов в состав микросхемы введены два
+служебных регистра - адресный и данных. В адресный регистр (порт 70h) заносится
+номер той ячейки КМОП-памяти, к которой требуется обращение. После этого чтение
+регистра данных (порт 7 Hi) позволяет прочитать содержимое выбранной ячейки, а
+запись в регистр данных выполняет передачу данного в эту ячейку. Приведем
+полный текст программы, которая читает содержимое ячейки с номером 0Dh. В ней
+хранится состояние батареи, питающей КМОП-микросхему. Если бит 7 этой ячейки
+установлен, батарея исправна; если этот бит сброшен, напряжение батареи упало
+ниже допустимого предела, и ее надо менять.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Пример. Чтение ячейки КМОП-микросхемы<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>code segment<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>assume cs:code<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>main proc<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>mov AL,ODh ;</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>Будем</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'> </span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>читать</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'> </span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>ячейку</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'> ODh<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>out 70h,AL ;Задание номера ячейки<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>in AL,71h ;чтение из ячейки<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>test AL,80h ;Проверка бита 7<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>jnz ok ;Бит 7 = 1, перейти на OK<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov AH,02h ;Бит 7=0, питания нет<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov DL,'-' ; Выведем в знак этого<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>int 21h ; Символ минус<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>jmp exit ;Переход на завершение<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>ok: mov АН,02h ;Батарея в порядке,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov DL,'+' ;выведем в знак этого<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>int 21h ;символ плюс<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Завершим программу<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>exit: mov AX,4COOh<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>int 21h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>main endp<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>code ends<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>end main</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'><o:p></o:p></span></p>
+
+<p style="text-align: center;"><br><b><a name="_T3">Режим</a> ожидания готовности </b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Рассмотрим теперь программирование
+периферийного оборудования в режиме ожидания готовности на примере
+параллельного интерфейса. В стандартной конфигурации компьютера к параллельному
+интерфейсу обычно подключается принтер, однако его можно использовать и для
+связи с нестандартным (измерительным или управляющим) оборудованием.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>В компьютерах используется разновидность
+параллельного интерфейса под названием Centronics, отличающаяся относительно
+высокой скоростью передачи данных (до 150 Кбайт/с) и простотой
+программирования. Правда, Centronics позволяет передавать данные только в одном
+направлении - из компьютера в устройство, однако эту проблему можно частично
+решить, если воспользоваться для приема данных линиями состояния интерфейса.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Разумеется, в установке, подключаемой к
+компьютеру через параллельный интерфейс, должно быть предусмотрено устройство
+сопряжения, воспринимающее и вырабатывающее сигналы обмена с интерфейсом.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Интерфейс Centronics подключается к
+периферийному устройству (принтеру) с помощью кабеля, содержащего 17 сигнальных
+линий и несколько линий нуля. Управление интерфейсом осуществляется через три
+закрепленных за ним порта: порта данных с адресом 378h, порта состояния
+принтера с адресом 379h и порта управления принтером с адресом 37Аh. Порты
+фактически представляют собой 8-разрядные регистры, биты которых соответствуют
+сигналам интерфейса. Некоторые из этих сигналов, конкретно, сигналы портов
+данных и управления, являются для интерфейса выходными; их должна устанавливать
+программа, управляющая передачей информации. Другие сигналы, наоборот,
+поступают из периферийного устройства и отображаются в состоянии закрепленных
+за ними битов порта состояния; программа должна читать и анализировать эти
+биты. На рис.<span style='mso-spacerun:yes'>                  </span>6.2–6.4
+показаны порты интерфейса Centronics с указанием сигналов, соответствующим конкретным
+битам.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>
+<img width=304 height=90
+src="../../images/R2.files/image003.jpg" v:shapes="_x0000_i1026"><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>Рисунок
+6.2. – 378h порт данных интерфейса Centronics<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'><img width=383 height=207
+src="../../images/R2.files/image004.jpg" v:shapes="_x0000_i1027"> <o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>Рисунок
+6.3. – 379h порт состояния интерфейса Centronics<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>
+<img width=295 height=179
+src="../../images/R2.files/image006.jpg" v:shapes="_x0000_i1028"> <o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>Рисунок
+6.4. – 37Ah порт управления<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>
+<img width=449 height=187
+src="../../images/R2.files/image007.jpg" v:shapes="_x0000_i1029"> <o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>Рисунок
+6.5. – Протокол передачи данных для интерфейса Centronics<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;text-indent:35.45pt;line-height:normal'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Сигнал BUSY считается активным, когда он
+имеет высокое значение. В противоположность этому активное состояние сигналов
+STROBE' и АСК' низкое, отчего они и обозначаются с тем или иным дополнительным
+значком (с чертой наверху, со знаком минус или с апострофом, как у нас). Прослеживая
+соответствие сигналов интерфейса состоянию битов его портов, необходимо иметь в
+виду, что для некоторых сигналов (SLCT, РЕ, STROBE) в порты записываются их
+прямые значения, а для других (ERROR, АСК, BUSY) - инверсные.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Вывод на принтер каждого байта данных
+состоит из трех этапов. Прежде всего программа должна дождаться неактивного
+состояния сигналов BUSY и АСК (это и есть ожидание готовности устройства).
+Убедившись, что биты 6 и 7 порта состояния 379h установлены в 1 (см. рис. 6.3),
+программа посылает в порт данных 378h байт данных, что приводит к установке
+кода данных на линиях интерфейса D7...D0. Наконец, программа должна установить
+на короткое время сигнал STROBE, что реализуется путем установки и затем сброса
+бита 0 порта управления 37All. Следующие байты посылаются точно таким же
+образом.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Выполняя все эти операции, необходимо
+учитывать временные характеристики интерфейса. Сигнал STROBE можно посылать в
+порт управления не ранее, чем через 0,5 мкс после установки данных, что может
+потребовать введению в программу небольшой программной задержки (одной или
+нескольких команд jmp, см. приведенный ниже текст программы). То же относится и
+к длительности сигнала STROBE, которая не должна быть меньше той же величины
+0,5 мкс. Практически программные задержки часто оказываются не нужны.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Обратимся еще раз к рисунку 6.5. Принтер,
+сняв с линий данных байт данных, и начав его обработку (вывод на печать или
+сохранение во внутренней памяти), устанавливает ответный сигнал BUSY,
+действующий все время, пока принтер занят обработкой байта данных. Закончив
+обработку байта, принтер на некоторое время устанавливает сигнал АСК и
+сбрасывает сигнал BUSY. Окончание сигнала АСК (при сброшенном состоянии сигнала
+BUSY) говорит интерфейсу об окончании данной операции обмена и о возможности
+посылки следующего байта данных. Ввиду краткости сигнала АСК часто оказывается,
+что ожидать его снятия нет необходимости; достаточно дождаться неактивного
+состояния сигнала BUSY (т.е. 1 в бите 7 порта состояния). Вообще следует
+заметить, что различные принтеры могут несколько по-разному выполнять свою
+часть протокола обмена. Рассмотренный ниже пример отлаживался на принтере Epson
+LQ100.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Приведем текст программы, в которой
+принтер программируется, как говорят, на физическом уровне, т.е. путем обращения
+к его портам. Разумеется, в большинстве случаев для вывода на принтер текста из
+выполняемой программы проще воспользоваться функциями DOS. Однако в некоторых
+специальных случаях приходится прибегать и к программированию через порты,
+например, если принтер используется в нестандартном режиме, или параллельный
+интерфейс служит для связи с нестандартным устройством.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>В приведенном примере предполагается, что
+принтер выбран и установлен в исходное рабочее состояние, что обычно
+выполняется автоматически при его включении. Свидетельством этого будут
+установленные биты 2 и 3 (SLCT IN и INIT) в порте управления, а также бит 4
+(SLCT) в порте состояния. В программе не выполняется анализ байта состояния на
+наличие ошибки или конца бумаги, что при работе с принтером, вообще говоря,
+следует предусматривать.<o:p></o:p></span></p>
+
+<p style="text-align: center;"><br><b><a name="_T4">Режим</a> прерываний </b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Третий метод программирования
+периферийного устройства – режим прерываний – рассмотрим на примере обработки
+прерывания от мыши. Как известно, мышь обычно подключается к первому
+последовательному порту СОМ1 и работает в режиме прерываний. Нажатие или
+отпускание любой клавиши, так же, как даже минимальное перемещение по столу,
+вырабатывает сигналы прерываний, сопровождаемые определенными кодами, которые
+поступают в порт данных интерфейса. Написав собственный обработчик прерываний
+для последовательного порта, мы получим возможность выполнять заданные
+действия, например, при нажатии левой и правой клавиш мыши. Следует
+подчеркнуть, что эти действия начнут выполняться практически в тот же момент,
+когда мы нажали на клавишу. В приведенной ниже программе при нажатии левой
+клавиши в центр экрана выводится цветная надпись &quot;Левая!&quot;, а при
+нажатии правой клавиши - надпись &quot;Правая&quot; другого цвета.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Для того, чтобы приведенная программа
+работала, следует загрузить драйвер мыши, который инициализирует
+последовательный интерфейс и саму мышь. В состав этого драйвера входит свой
+обработчик прерываний. Мы замещаем его адрес в векторе 0Ch адресом нашего
+обработчика, и поскольку в программе не предусмотрено сцепление обработчиков,
+на время действия программы стандартная обработка прерываний от мыши
+отключается. Перед завершением программы содержимое вектора 0Сh
+восстанавливается, и мышь опять начинает работать, как обычно.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Каждое нажатие (или отпускание) клавиши
+мыши, так же, как и ее перемещение, в действительности вырабатывают не по
+одному, а по три последовательных прерывания с различными кодами в порте данных
+интерфейса. Так, нажатие левой клавиши мыши дает последовательность кодов 60h,
+0, 0, нажатие правой клавиши – последовательность 50h, 0, 0, отпускание любой
+клавиши - 40h, 0, 0, перемещение вверх - 4Ch, 0, 3Fh, перемещение вниз - 40h,
+0, 1 и т.д. Таким образом, по-настоящему надо было сохранять в обработчике
+прерываний все три кода и затем анализировать всю последовательность. Мы для простоты
+ограничились анализом только первого кода. Как видно из приведенного выше
+перечня, анализ одного кода не дает возможность отличить, например, отпускание
+клавиши от перемещения вниз.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Коды, генерируемые мышью, могут зависеть
+от ее типа, что надо учитывать при подготовке этого примера. Для получения
+значений генерируемых кодов можно предусмотреть в обработчике прерываний вывод
+их на экран с помощью функции прерывания 10h BIOS, как это было сделано,
+например, в примере 3-5, или прямым выводом в видеобуфер. Следует только иметь
+в виду, что перехват любого прерывания от последовательного интерфейса должен
+обязательно сопровождаться чтением из его порта данных, так как интерфейс может
+принять очередной байт данных только после чтения предыдущего и освобождения
+своего регистра данных.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Пример. Программирование мыши в режиме
+прерываний <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>.586 ;Будут команды новых процессоров<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>code segment use16 ;16-разрядное
+приложение<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>assume CS : code,DS:code ;Данные в
+сегменте команд<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>main proc<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>push CS ;</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>Настроим</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'> DS<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>pop DS ;на сегмент команд<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>;Сохраним обработчик прерываний
+последовательного порта <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov AX,350Ch ;Функция 35h, вектор 0Сh<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>int 21h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>mov word ptr old_Oc,BX ;</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif'>Сохраним</span><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;mso-ansi-language:EN-US'> </span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif'>смещение</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov word ptr old_Oc+2,ES ;Сохраним сегмент<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>;Установим наш обработчик прерываний
+последовательного порта <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov AX,25ОСЬ ;Функция 25h, вектор 0Сh<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov DX,offset new_0c ;Адрес нашего
+обработчика <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>int 21h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>;Остановим программу функцией ввода с
+клавиатуры<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov AH,01h <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>int 21h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>;Восстановим исходный обработчик драйвера
+мыши <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov AX,250Ch ;Функция 25h, вектор 0Сh<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Ids DX,old_0c ;Сохраненный адрес <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>int 21h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov AX,4C00h ;Завершим программу <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>int 21h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>main endp<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>new_0c proc<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>pusha ;Сохраним все регистры <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>push DS ;Сегментные регистры не <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>push ES ;сохраняются командой pusha <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov DX,3F8h ;Порт данных <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>in AL,DX ;Прочитаем <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>cmp AL, 60h ;Левая клавиша — код 60h <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>je Ibtn ;Переход на отработку <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>cmp AL, 5Oh ;Правая клавиша — код 5Oh <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>je rbtn ;Переход на отработку<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>;Завершение обработчика прерываний<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>outret:pop ES ;Восстановим сегментные <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>pop DS ;регистры <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov AL,20h ;Команда EOI <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>out 20h,AL ;в контроллер прерываний <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>рора ;Восстановим все регистры <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>iret ;Выход из прерывания<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>;Если нажата левая клавиша мыши<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Ibtn: mov АН, 1Eh ;Атрибут символов желтый
+по<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>; синему<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov SI,offset msgdn ;Адрес выводимой
+строки<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>jmp commn ;Ha общую часть вывода <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>;Если нажата правая клавиша мыши<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>rbtn: mov AH,2Eh ;Атрибут символов желтый
+по<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>;зеленому<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov SI,offset msgdn ;Адрес выводимой
+строки <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>;Общая часть вывода на экран
+диагностической строки <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>commn: mov BX,OB800h ;</span><span style='font-size:12.0pt;font-family:
+"Times New Roman",serif'>Настроим</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;mso-ansi-language:EN-US'> ES<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov ES,BX ;на видеобуфер<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>push CS ;Настроим DS<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>pop DS ;на наш сегмент<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov CX,6 ;Число выводимых символов<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov DI,2000 ;Смещение на экране<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>cld ;Движение вперед <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>scr: lodsb ;АL=очередной символ<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>stosw ;Из АХ на экран<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>loop scr ;Цикл<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>jmp outret ;После вывода завершить<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>;обработку прерывания <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>new_0c endp<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>old_0c dd 0 ;Ячейка для исходного<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>;вектора<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>msgdn db &quot;Левая!&quot; ;Выводимые
+сообщения <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>msgup db &quot;</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>Правая</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-ansi-language:EN-US'>&quot; <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>code ends <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>stk segment stack<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>dw 128 dup(O) <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>stk ends<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>end main<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Приведенный пример с точки зрения его
+структуры построен обычным образом. Исходное содержимое вектора 0Ch сохраняется
+в ячейке old_0c и используется перед завершением программы для восстановления
+вектора. Для упрощения установки обработчика прерываний программа написана без
+сегмента данных; ее немногие данные размещены в сегменте команд. Поскольку в
+начале программы регистр DS настраивается на сегмент команд, адресация к данным
+(в основной программе) возможна через DS. Для того, чтобы можно было наблюдать
+обработку прерываний от мыши, основная программа после выполнения
+инициализирующих действий останавливается с помощью функции 01h DOS ожидания
+ввода символа с клавиатуры. После нажатия любой клавиши программа завершается,
+восстановив предварительно исходное состояние вектора последовательного порта.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Действия, которые должны инициироваться нажатием
+левой или правой клавиш мыши (например, включение или выключение некоторого
+оборудования), в программе заменены выводом на экран коротких диагностических
+сообщений. Вывод осуществляется прямой записью в видеобуфер, поскольку, как уже
+говорилось ранее, в обработчике аппаратных прерываний нельзя использовать
+функции DOS и рискованно - функции BIOS. Вывод на экран с помощью команд
+обработки строк lodsb и stosw требует настройки большого количества регистров -
+в DS:SI должен находиться адрес строки-источника, в ES:DI адрес позиции в
+видеобуфере, в СХ число выводимых символов. Кроме этого, в обработчике
+прерываний используются регистры АХ, ВХ и DX. Для сохранения всех регистров
+общего назначения используется команда pusha, а для их восстановления команда рора.
+Однако эти команды не принимают в расчет сегментные регистры, и их приходится
+сохранять и восстанавливать от дельными командами.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>С восстановлением регистров может
+возникнуть некоторая сложность. Обработчик прерывания должен завершаться
+посылкой в контроллер прерываний команды EOI, а для этого необходим регистр AL.
+Поэтому восстановление регистров, во всяком случае, регистра АХ, необходимо
+выполнять после команды EOI. С другой стороны, команда EOI разблокирует
+нижележащие уровни прерываний в контроллере прерываний (см. гл. 3), что может
+привести к прохождению через контроллер очередного (вложенного в наше)
+прерывания, которое прервет наш обработчик в точке, где еще не восстановлены
+регистры. Это неминуемо приведет к краху системы. Однако в процессоре предусмотрены
+меры устранения этого неприятного явления. Остановимся на них более подробно.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Процессор, приняв любой сигнал прерывания,
+сбрасывает флаг IF в своем регистре флагов, запрещая тем самым все аппаратные
+прерывания. Поэтому вход в обработчик прерываний всегда осуществляется при
+запрещенных прерываниях. Блокировка нижележащих уровней в контроллере
+прерываний просто накладывается на этот общий запрет и новых ограничений не
+вносит.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Если в тексте обработчике прерываний нет
+команды разрешения прерываний sti, то прерывания будут запрещены до самого его
+конца, до завершающей команды iret. Эта команда извлекает из стека и
+восстанавливает исходное содержимое регистров CS:IP, а также регистра флагов. В
+момент прерывания в регистре флагов был безусловно установлен флаг IF, иначе
+прерывание не могло бы возникнуть. Восстановление регистра флагов приводит к
+установке этого флага и разрешению всех аппаратных прерываний, но уже после
+завершения обработчика прерываний. Таким образом, снятие аппаратной блокировки
+прерываний командой EOI в действительности не приводит к разрешению прерываний,
+и любые строки, стоящие после этой команды, выполняются при запрещенных
+прерываниях. В результате никаких проблем с восстановлением регистров после
+команды EOI не возникает.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Обычно, однако, используется другой
+вариант построения обработчика прерываний. В этом варианте в начале программы
+обработчика выполняется команда sti, устанавливающая флаг IF и разрешающая все
+аппаратные прерывания, кроме тех, которые заблокированы в контроллере прерываний.
+В результате программа обработчика может быть прервана любым прерыванием более
+высокого уровня IRQ (т.е. уровня с меньшим номером), но не прерывается
+сигналами прерываний этого же и более низких уровней. Такое построение
+обработчиков прерываний удобно тем, что &quot;более важные&quot; прерывания,
+например, от таймера или клавиатуры, могут быть обработаны без задержки. Для
+того, чтобы исключить возможные неприятности с восстановлением регистра АХ
+после команды EOI, перед ней прерывания запрещаются командой cli и структура
+обработчика прерываний приобретает приблизительно такой вид:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>sti<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>pusha ;Сохранение регистров<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>... ;Тело обработчика<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>cli ;Запрещение всех прерываний<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>mov AL,20h ;Команда EOI<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>out 20h,AL ;контроллеру прерываний<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>рора ;Восстановление регистров<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>iret ;Возврат из обработчика<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif'>Команды рора и iret выполняются в этому
+случае при запрещенных прерываниях, но после отработки команды iret в регистре
+флагов восстанавливается его исходное содержимое (в котором IF = 1), и
+прерывания, таким образом, снова разрешаются.<o:p></o:p></span></p>
+
+ <p style="text-align: center;"><b><a name="_T5"> </a> Литература.</b></p>
+
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+35.45pt;line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>[1]
+</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman"'>[Электронный</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>&nbsp;</span><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman"'>ресурс].</span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>&nbsp;</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman"'>–</span><span lang=EN-US style='font-size:12.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";mso-ansi-language:
+EN-US'>&nbsp;</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman"'>Режим</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
+"Times New Roman";mso-ansi-language:EN-US'>&nbsp;</span><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman"'>доступа:
+</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>http://altcode.ru/assembler/ssm/asm36.php<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;mso-ansi-language:
+EN-US'>[2]&nbsp;</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif'>Дэвид
+Харрис, Сара Харрис. Цифровая схемотехника и архитектура компьютера, 2-е
+издание, перевод командой компаний и университетов России, Украины, США и
+Великобритании, Morgan Kaufman, 2013. – 1621 с.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;text-align:
+justify;text-indent:35.45pt;line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:#252525;background:white;mso-bidi-font-style:
+italic'>[3]</span><span lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white;mso-ansi-language:EN-US;mso-bidi-font-style:
+italic'>&nbsp;</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white;mso-bidi-font-style:italic'>Зубков С. В.</span><span
+class=apple-converted-space><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:#252525;background:white;mso-ansi-language:
+EN-US'>&nbsp;</span></span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white'>Ассемблер для </span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:#252525;
+background:white;mso-ansi-language:EN-US'>DOS</span><span style='font-size:
+12.0pt;font-family:"Times New Roman",serif;color:#252525;background:white'>, </span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white;mso-ansi-language:EN-US'>Windows</span><span
+style='font-size:12.0pt;font-family:"Times New Roman",serif;color:#252525;
+background:white'> и </span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:#252525;background:white;mso-ansi-language:
+EN-US'>UNIX</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white'>.</span><span lang=EN-US style='font-size:12.0pt;
+font-family:"Times New Roman",serif;color:#252525;background:white;mso-ansi-language:
+EN-US'>&nbsp;</span><span style='font-size:12.0pt;font-family:"Times New Roman",serif;
+color:#252525;background:white'>— М. ДМК Пресс; СПб. Питер, 2006.&nbsp;—
+608&nbsp;с.<o:p></o:p></span></p>
+
+
+
+         </div>
+                <p>&nbsp;</p>
+				<A HREF="../../../Теория/theory.html">Содержание</A>
+				<div style="position: fixed; right: 0; bottom: 0">
+	<a href="#" id="toTop"><img src="../../../Оболочка/js/to_top_ye.GIF" width="32" height="32" border="0" align="absmiddle"></a> </div>
+                <p>&nbsp;</p>
+        </div>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><B><strong>(С)  БГУИР</strong></var></td>
+  </tr>
+</table>
+</BODY></HTML>

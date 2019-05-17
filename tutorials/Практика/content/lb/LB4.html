@@ -1,0 +1,2874 @@
+<!-- (C) 2017 04 Rozum Halina, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>LB4 дисциплины  &quot;ОПИС&quot;</title>
+<base target="_top">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr>
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr>
+  <td width="70%" colspan=2 align="center" valign="middle">
+               <H1 align="center">электронный ресурс по учебной дисциплине<BR>
+        &quot;ОСНОВЫ ПРОЕКТИРОВАНИЯ ИНФОРМАЦИОННЫХ СИСТЕМ&quot;<BR>
+         для направления специальности: </H1> 1-40 05 01-09 &quot;Информационные системы и технологии (в обеспечении промышленной безопасности)&quot;
+                </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../index.html">Оглавление</A> |
+  <A HREF="../../../Программа/programm.html" TITLE="Программа курса (Откроется в новом окне)">Программа</A> |
+  <A HREF="../../../Теория/theory.html">Теория</a> |
+              <strong>Практика</strong> |
+  <A HREF="../../../Контроль_знаний/test.html">Контроль знаний</A> |
+  <A HREF="../../../Об авторах/author.html">Об авторах</A></var> </td>
+  <tr>
+</table>
+<table style="margin:0 auto;" width="90%" border="0" cellpadding="0" cellspacing="0">
+<td><A HREF="../../../Практика/practice.html">Практика</A>
+                  <p><b>ЛАБОРАТОРНАЯ  РАБОТА №4</b></p>
+
+<div class=WordSection11>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;line-height:normal'><b><span style='font-size:14.0pt;
+font-family:"Times New Roman","serif";text-transform:uppercase'>РАБОТА С ФАЙЛАМИ. ПАРАМЕТРЫ КОМАНДНОЙ СТРОКИ.</span></b></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'>Цель работы</span></b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-weight:bold;mso-bidi-font-style:
+italic'>: ознакомиться с основными операциями обработки файлов, получить понятие о работе с параметрами командной строки..<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><b><span style='font-size:12.0pt;mso-fareast-font-family:
+Helvetica-BoldOblique;mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:
+italic'>Теоретические сведения<o:p></o:p></span></b></p>
+
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'>Для выполнения работы требуется рассмотреть следующие элементы языка ассемблера и операционной системы:</span></b></p>
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><b><span style='font-size:12.0pt;mso-fareast-font-family:
+Helvetica-BoldOblique;mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:
+italic'>1. Работа с файлами.<o:p></o:p></span></b></p>
+
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'>
+Для работы с файлами в данной лабораторной работе лучше всего использовать функции DOS, которые обращаются к файлу через 16-битный идентификатор (дескриптор) файла. Такой подход более прост, чем использование более старых описателей файла (37-байтного блока управления файлом FCB) или функций низкого уровня доступа к диску (прерывание BIOS 13h).<br>
+
+Первые пять значений идентификаторов такого формата инициализируются системой следующим образом:<br>
+<ul><li>0 – STDIN – стандартное устройство ввода (клавиатура),</li>
+<li>1 – STDOUT – стандартное устройство вывода (экран),
+</li>
+<li>2 – STDERR – устройство вывода сообщений об ошибках (всегда экран),</li>
+<li>3 – AUX – последовательный порт (СОМ1),</li>
+<li>4 – PRN – параллельный порт (LPT1).</li></ul>
+</span></p>
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'>Работа с файлами выполняется через функции DOS в стандартном порядке:
+<ol><li>создание или открытие существующего файла;</li>
+<li>выполнение файловых операций чтения или записи данных;</li>
+<li>закрытие файла.</li></ol>
+
+Дополнительно доступны операции: удаление, поиск и управление.<br>
+
+Для создания или открытия существующего файла рекомендуется использовать функции:<br>
+
+-- Функция DOS 3Ch (INT 21h) – создать файл:<br>
+
+Ввод:<br>
+AH = 3Ch,<br>
+
+СХ = атрибут файла (биты):<br>
+
+-- 7 – файл можно открывать разным процессам,<br>
+
+-- 6 – не используется,<br>
+
+-- 5 – архивный бит (1, если файл не сохранялся),<br>
+
+-- 4 – каталог (должен быть 0 для функции 3Ch),<br>
+
+-- 3 – метка тома (игнорируется функцией 3Ch),<br>
+
+-- 2 – системный файл,<br>
+
+-- 1 – скрытый файл,<br>
+
+-- 0 – файл только для чтения.<br>
+
+DS:DX = адрес ASCIZ-строки с полным именем файла.<br>
+<br>
+Вывод:<br>
+Если CF = 1, то ошибка операции (в AX код ошибки):<br>
+
+-- 03h – путь не найден,<br>
+
+-- 04h – слишком много открытых файлов,<br>
+
+-- 05h – доступ запрещен.<br>
+
+Если CF = 0, то операция выполнена успешно:<br>
+
+АХ = идентификатор файла.<br>
+<br>
+Особенности:<br>
+Если файл уже существует, функция все равно открывает его, присваивая ему нулевую длину.<br>
+
+
+-- Функция DOS 5Bh (INT 21h) – создать и открыть файл:<br>
+<br>
+Ввод:<br>
+AH = 5Bh,<br>
+
+СХ = атрибут файла,<br>
+
+DS:DX = адрес ASCIZ-строки с полным именем файла.<br>
+<br>
+Вывод:<br>
+Если CF = 1, то ошибка операции (в AX код ошибки):<br>
+
+-- 03h – путь не найден,<br>
+
+-- 04h – слишком много открытых файлов,<br>
+
+-- 05h – доступ запрещен,<br>
+
+-- 50h – файл уже существует.<br>
+<br>
+Если CF = 0, то операция выполнена успешно:<br>
+
+АХ = идентификатор файла, открытого для чтения/записи в режиме совместимости.<br>
+
+<br>
+-- Функция DOS 5Ah (INT 21h) – создать и открыть временный файл:<br>
+<br>
+Ввод:<br>
+AH = 5Ah,<br>
+
+СХ = атрибут файла,<br>
+
+DS:DX = адрес ASCIZ-строки с путем, оканчивающимся символом «\», и тринадцатью нулевыми байтами в конце.<br>
+<br>
+Вывод:<br>
+Если CF = 1, то ошибка операции (в AX код ошибки):<br>
+
+-- 03h – путь не найден,<br>
+
+-- 04h – слишком много открытых файлов,<br>
+
+-- 05h – доступ запрещен.<br>
+
+Если CF = 0, то операция выполнена успешно:<br>
+
+АХ = идентификатор файла, открытого для чтения/записи в режиме совместимости (при этом в строку по адресу DS:DX дописывается имя созданного файла).<br>
+<br>
+Особенности:<br>
+Функция создает файл с уникальным именем, который не является на самом деле временным, его следует специально удалять, для чего его имя и записывается в строку в DS:DX.<br>
+<br>
+
+-- Функция DOS 3Dh (INT 21h) – открыть существующий файл:<br>
+
+Ввод:<br>
+AH = 3Dh,<br>
+
+AL = режим доступа (биты):<br>
+
+-- 0 – открыть для чтения,<br>
+
+-- 1 – открыть для записи,<br>
+
+-- 3 – 2 – 00 (резерв),<br>
+
+-- 6 – 4 – режим доступа для других процессов:<br>
+
+000 – режим совместимости,<br>
+
+001 – все операции запрещены,<br>
+
+010 – запись запрещена<br>
+
+011 – чтение запрещено<br>
+
+100 - запрещений нет.<br>
+
+-- 7 – файл не наследуется порождаемыми процессами.<br>
+
+DS:DX = адрес ASCIZ-строки с полным именем файла.<br>
+
+CL = маска атрибутов файла.<br>
+
+Вывод:<br>
+Если CF = 1, то ошибка операции (в AX код ошибки):<br>
+
+-- 02h – файл не найден,<br>
+
+-- 03h – путь не найден,<br>
+
+-- 04h – слишком много открытых файлов,<br>
+
+-- 05h – доступ запрещен,<br>
+
+-- 0Ch – неверный режим доступа.<br>
+
+Если CF = 0, то операция выполнена успешно:<br>
+
+АХ = идентификатор файла.<br>
+
+<br>
+Во всех случаях имя файла (если диск или путь отсутствуют в описании, то системой используются их текущие значения) описывается ASCIZ-строкой (строкой ASCII-символов, оканчивающейся нулем), которая, например, имеет следующий вид:<br>
+<br>
+    filename db 'с:\data\filename.txt',0<br>
+</span></p>
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'>
+Для выполнения файловых операций чтения или записи данных рекомендуется использовать функции:<br>
+<br>
+-- Функция DOS 3Fh (INT 21h) – чтение из файла или устройства:<br>
+<br>
+Ввод:<br><br>
+АН = 3Fh,<br>
+
+ВХ = идентификатор файла,<br>
+
+СХ = число байт для чтения,<br>
+
+DS:DX = адрес буфера для приема данных.<br>
+<br>
+Вывод:<br><br>
+Если CF = 1, то ошибка операции (в AX код ошибки):<br>
+
+-- 05h – доступ запрещен,<br>
+
+-- 06h – неверный идентификатор.<br>
+
+Если CF = 0, то операция выполнена успешно:<br>
+
+АХ = число считанных байт.<br>
+<br>
+Особенности:<br>
+Каждая следующая операция чтения, так же как и записи, начинается не с начала файла, а с того байта, на котором остановилась предыдущая операция чтения/записи.<br>
+
+Если при чтении из файла число фактически считанных байт в АХ меньше, чем заказанное число в СХ, то при чтении был достигнут конец файла.<br>
+<br>
+
+-- Функция DOS 42h (INT 21h) – переместить указатель чтения/записи:<br>
+<br>
+Ввод:<br><br>
+АН = 42h,<br>
+ВХ = идентификатор файла,<br>
+
+CX:DX = расстояние, на которое надо переместить указатель (знаковое число),<br>
+<br>
+AL = перемещение относительно:<br>
+
+0 – начала файла,<br>
+
+1 – текущей позиции,<br>
+
+2 – конца файла.<br>
+<br>
+Вывод:<br><br>
+Если CF = 1, то ошибка операции (в AX код ошибки):<br>
+
+-- 06h – неверный идентификатор.<br>
+
+Если CF = 0, то операция выполнена успешно:<br>
+
+CX:DX = новое значение указателя (в байтах от начала файла).<br>
+<br>
+Особенности:<br>
+Указатель можно установить за реальными пределами файла:<br>
+
+-- если указатель устанавливается в отрицательное число, то следующая операция чтения/записи вызовет ошибку;<br>
+
+-- если указатель устанавливается в положительное число, большее длины файла, следующая операция записи увеличит размер файла.<br>
+
+Эта функция также часто используется для определения длины файла: достаточно вызвать ее с СХ = 0, DX = 0, AL = 2, и в CX:DX будет возвращена длина файла в байтах.<br>
+
+
+-- Функция DOS 40h (INT 21h) – запись в файл или устройство:<br>
+<br>
+Ввод:<br>
+АН = 40h,<br>
+
+ВХ = идентификатор файла,<br>
+
+СХ = число байт для записи,<br>
+
+DS:DX = адрес буфера с данными.<br>
+<br>
+Вывод:<br>
+Если CF = 1, то ошибка операции (в AX код ошибки):<br>
+
+-- 05h – доступ запрещен,<br>
+
+-- 06h – неверный идентификатор.<br>
+
+Если CF = 0, то операция выполнена успешно:<br>
+
+АХ = число записанных байт.<br>
+<br>
+Особенности:<br>
+Если при записи в файл указать СХ = 0, то файл будет обрезан по текущему значению указателя.
+<br>
+При записи в файл на самом деле происходит запись в буфер DOS, данные из которого сбрасываются на диск при закрытии файла или если их количество превышает размер сектора диска.<br>
+
+<br>
+-- Функция DOS 68h (INT 21h) – сброс файловых буферов DOS на диск:<br>
+<br>
+Ввод:<br><br>
+АН = 68h,<br>
+
+ВХ = идентификатор файла.<br>
+<br>
+Вывод:<br>
+Если CF = 1, то ошибка операции (в AX код ошибки).<br>
+
+Если CF = 0, то операция выполнена успешно.<br>
+
+
+-- Функция DOS 0Dh (INT 21h) – сброс всех файловых буферов на диск:<br>
+<br>
+Ввод:<br>
+АН = 0Dh<br>
+
+<br>
+Для закрытия файла рекомендуется использовать следующую функцию:<br>
+
+-- Функция DOS  3Eh (INT 21h) – закрыть файл:<br>
+<br>
+Ввод:<br>
+АН = 3Eh,<br>
+
+ВХ = идентификатор файла.<br>
+<br>
+Вывод:<br>
+Если CF = 1, то ошибка операции (в AX код ошибки):<br>
+
+-- 06h – неверный идентификатор.<br>
+
+Если CF = 0, то операция выполнена успешно.<br>
+<br>
+Особенности:<br>
+Если файл был открыт для записи, то все файловые буферы сбрасываются на диск, устанавливается время модификации файла и записывается его новая длина.<br>
+
+<br>
+Дополнительные операции с файловой системой:<br>
+
+-- Функция DOS 41h (INT 21h) – удалить файл:<br>
+<br>
+Ввод:<br><br>
+АН = 41h,<br>
+
+DS:DX = адрес ASCIZ-строки с полным именем файла.<br>
+<br>
+Вывод:<br><br>
+Если CF = 1, то ошибка операции (в AX код ошибки):<br>
+
+-- 02h – файл не найден,<br>
+
+-- 03h – путь не найден,<br>
+
+-- 05h – доступ запрещен.<br>
+
+Если CF = 0, то операция выполнена успешно.<br>
+<br>
+Особенности:<br>
+Удалить файл можно только после того, как он будет закрыт, так как DOS будет продолжать выполнять запись в несуществующий файл, что может привести к разрушению файловой системы.<br>
+
+Данная функция не позволяет использовать маску имени файла (символы «*» и «?») для удаления сразу нескольких файлов (только с DOS 7.0).<br>
+
+
+-- Функция DOS 4Eh (INT 21h) – найти первый файл:<br>
+<br>
+Ввод:<br><br>
+АН = 4Eh,<br>
+
+AL используется при обращении к функции APPEND,<br>
+
+СХ = атрибуты файла (биты 0 и 5 игнорируются, если бит 3 установлен, то все остальные биты игнорируются),<br>
+
+DS:DX = адрес ASCIZ-строки с именем файла, которое может включать путь и маску для поиска (символы * и ?).<br>
+<br>
+Вывод:<br><br>
+Если CF = 1, то ошибка операции (в AX код ошибки):<br>
+
+-- 02h – файл не найден,<br>
+
+-- 03h – путь не найден,<br>
+
+-- 12h – неверный режим доступа.<br>
+
+Если CF = 0, то операция выполнена успешно и область DTA заполняется данными о найденном файле.<br>
+<br>
+Особенности:<br>
+Вызов этой функции заполняет данными область памяти DTA (область передачи данных), которая начинается по умолчанию со смещения 0080h от начала блока данных PSP (при запуске com- и exe-программ сегменты DS и ES содержат сегментный адрес начала PSP), но ее можно переопределить с помощью функции DOS 1Ah.<br>
+
+Функции поиска файлов заполняют DTA следующим образом:<br>
+
++00h (байт) – биты 0 – 6: ASCII-код буквы диска,<br>
+
+                         бит 7: сетевой диск;<br>
+
++01h (11 байт) – маска поиска (без пути);<br>
+
++0СН (байт) – атрибуты для поиска;<br>
+
++0Dh (слово) – порядковый номер файла в каталоге;<br>
+
++0Fh (слово) – номер кластера начала внешнего каталога;<br>
+
++11h (4 байта) – зарезервировано;<br>
+
++15h (байт) – атрибуты найденного файла;<br>
+
++16h (слово) – время создания файла в формате DOS:<br>
+
+                     биты 15 – 11: час (0 — 23),<br>
+
+                     биты 10 – 05: минута,<br>
+
+                     биты 04 – 00: номер секунды, деленный на 2 (0 – 30).<br>
+
++18h (слово) – дата создания файла в формате DOS:<br>
+
+                     биты 15 – 09: год, начиная с 1980,<br>
+
+                     биты 08 – 05: месяц,<br>
+
+                     биты 04 – 00: день.<br>
+
++1Ah (4 байта) – размер файла;<br>
+
++1Eh (13 байт) - ASCIZ-имя найденного файла (с расширением).<br>
+
+<br>
+-- Функция DOS 1Ah (INT 21h) – установить область DTA:<br>
+<br>
+Ввод:<br>
+АН = 1Ah,<br>
+
+DS:DX = адрес начала DTA (128-байтный буфер).<br>
+
+<br>
+-- Функция DOS 4Fh (INT 21h) – найти следующий файл:<br>
+<br>
+Ввод:<br>
+АН = 4Fh,<br>
+
+DTA должна содержать данные от предыдущего вызова функции 4Е или 4F.<br>
+<br>
+Вывод:<br><br>
+Если CF = 1, то ошибка операции (в AX код ошибки).<br>
+
+Если CF = 0, то операция выполнена успешно и область DTA заполняется данными о следующем найденном файле.<br>
+<br>
+Особенности:<br>
+Для продолжения поиска следует вызывать функцию 4Fh, пока не будет возвращена ошибка.<br>
+
+<br>
+-- Функция DOS 39h (INT 21h) – создать каталог:<br>
+<br>
+Ввод:<br><br>
+АН = 39h,<br>
+
+DS:DX = адрес ASCIZ-строки с путем, в котором все каталоги, кроме последнего, существуют (для версии DOS 3.3 и более ранних длина всей строки не должна превышать 64 байта).<br>
+<br>
+Вывод:<br>
+Если CF = 1, то ошибка операции (в AX код ошибки):<br>
+
+-- 03h – путь не найден,<br>
+
+-- 05h – доступ запрещен.<br>
+
+Если CF = 0, то операция выполнена успешно.<br>
+
+
+-- Функция DOS 3Ah (INT 21h) – удалить каталог:<br>
+<br>
+Ввод:<br>
+АН = 3Ah,<br>
+
+DS:DX = адрес ASCIZ-строки с путем, последний каталог в котором будет удален (только если он пустой, не является текущим, не занят командой SUBST).<br>
+
+Вывод:<br>
+Если CF = 1, то ошибка операции (в AX код ошибки):<br>
+
+-- 03h – путь не найден,<br>
+
+-- 05h – доступ запрещен,<br>
+
+-- 10h – текущий каталог нельзя удалить.<br>
+
+Если CF = 0, то операция выполнена успешно.<br>
+
+<br>
+-- Функция DOS 47h (INT 21h) – определить текущий каталог:<br>
+<br>
+Ввод:<br>
+АН = 47h,<br>
+
+DL = номер диска (00h — текущий, 01h — А: и т.д.),<br>
+
+DS:SI = 64-байтный буфер для текущего пути (ASCIZ-строка без имени диска, первого и последнего символа «\»).<br>
+<br>
+Вывод:<br>
+Если CF = 1, то ошибка операции (в AX код ошибки):<br>
+
+-- 0Fh – указан несуществующий диск.<br>
+
+Если CF = 0 и АХ = 0100h, то операция выполнена успешно.<br>
+<br>
+
+-- Функция DOS 3Bh (INT 21h) – сменить каталог:<br>
+<br>
+Ввод:<br><br>
+АН = 3Bh,<br>
+
+DS:DX = адрес 64-байтного ASCIZ-буфера с путем, который станет текущим каталогом.<br>
+<br>
+Вывод:<br><br>
+Если CF = 1, то ошибка операции (в AX код ошибки):<br>
+
+-- 03h – путь не найден.<br>
+
+Если CF = 0, то операция выполнена успешно.<br>
+
+
+Фрагмент кода для чтения данных из файла и вывода этих данных на экран:<br>
+
+        ...<br>
+
+        f_name db 'c:\data.txt',0 ; имя файла данных<br>
+
+        ...<br>
+
+        ; открытие файла<br>
+
+        mov dx,offset f_name ; адрес ASCIZ-строки с именем файла<br>
+
+        mov ah,3Dh           ; функция DOS 3Dh<br>
+
+        mov al,00h           ; 00 - только чтение<br>
+
+        int 21h              ; открыть файл<br>
+
+        jc exit              ; если ошибка – выход<br>
+
+        mov bx,ax            ; BX = идентификатор файла<br>
+
+        mov di,01            ; DI = идентификатор STDOUT<br>
+
+<br>
+
+        ; чтение данных из файла и запись их в STDOUT<br>
+
+read_data:<br>
+
+        mov cx,1024          ; размер блока для чтения файла<br>
+
+        mov dx,offset buffer ; буфер для данных<br>
+
+        mov ah,3Fh           ; Функция DOS 3Fh<br>
+
+        int 21h              ; прочитать 1024 байта из файла<br>
+
+        jc close_file        ; если ошибка - закрыть файл<br>
+
+        mov cx,ax            ; CX = число прочитанных байт<br>
+
+        jcxz close_file      ; если CX=0 - закрыть файл<br>
+
+        mov ah,40h           ; Функция DOS 40h<br>
+
+        xchg bx,di           ; BX = 1 - устройство STDOUT<br>
+
+        int 21h              ; вывод данных в STDOUT<br>
+
+        xchg di,bx           ; BX = идентификатор файла<br>
+
+        jc close_file        ; если ошибка - закрыть файл<br>
+
+        jmp short read_data  ; вывод следующей порции данных файла<br>
+
+
+
+        ; закрытие файла<br>
+
+close_file:<br>
+
+        mov ah,3Eh           ; функция DOS 3Eh<br>
+
+        int 21h              ; закрыть файл<br>
+
+
+
+        ; завершение программы<br>
+
+exit:<br>
+
+        ...<br>
+
+        ; буфер данных для работы с файлом<br>
+
+buffer:<br>
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'>
+2. Работа с командной строкой.</span></b></p>
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'>
+Передача параметров программы через командную строку при запуске программы – решение, которое позволяет построить гибкую по входным данным программу без дополнительных диалогов с пользователем.<br>
+
+При запуске программы DOS помещает всю командную строку (включая последний символ 0Dh) в блок PSP запущенной программы по смещению 81h и ее длину в байт 80h. Длина командной строки, хранящейся в PSP, не может быть больше 126 символов (командная строка большей длины доступна начиная с DOS 4.0 в переменной среды CMDLINE).<br>
+
+При загрузке программы, в начале отводимого для нее блока памяти, создается структура данных PSP (префикс программного сегмента) размером 256 байт (100h). Затем DOS создает копию текущего окружения для загружаемой программы, помещает полный путь и имя программы в конец окружения, заполняет поля PSP, сама программа записывается в память, начиная с адреса PSP:0100h.<br>
+
+При запуске com-программы регистры устанавливаются следующим образом:<br>
+<ol><li>AL = FFh, если первый параметр командной строки содержит неправильное имя диска (например, z:/something), иначе – AL = 00h.</li>
+<li>АН = FFh, если второй параметр содержит неправильное имя диска, иначе АН = 00h.</li>
+<li>CS = DS = ES = SS = сегментный адрес PSP.</li>
+<li>SP = адрес последнего слова в сегменте (обычно FFFEh или меньше, если не хватает памяти).</li></ol>
+
+При запуске exe-программы регистры SS:SP устанавливаются в соответствии с сегментом стека, определенным в программе.<br>
+
+Затем в стек помещается слово 0000h и выполняется переход на начало программы (PSP:0100h для com, собственная точка входа для exe).<br>
+
+Описание полей блока PSP приведено в таблице 1.<br>
+
+Таблица 1<br>
+
+Формат блока PSP
+
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.4pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>Адрес<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>Блок данных<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>Назначение<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+00h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>слово =</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span lang=EN-US style='font-size:12.0pt;
+  mso-ansi-language:EN-US'><o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span class=SpellE><span style='font-size:
+  12.0pt;font-family:"Courier New"'>CDh</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span lang=EN-US style='font-size:12.0pt;
+  mso-ansi-language:EN-US'>&nbsp;</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>20h</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'><o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>команда </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>INT 20h</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'> – если </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><i style='mso-bidi-font-style:normal'><span
+  lang=EN-US style='font-size:12.0pt;mso-ansi-language:EN-US'>com</span></i></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>-программа
+  завершается командой </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>RETN</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>, то
+  управление передается на эту команду<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+02h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>слово<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>сегментный
+  адрес первого байта после области памяти, выделенной для программы<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+04h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>байт<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>резерв<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+05h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>5 байт =<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span lang=EN-US style='font-size:12.0pt;
+  font-family:"Courier New";mso-ansi-language:EN-US'>9Ah&nbsp;F0h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span class=SpellE><span lang=EN-US
+  style='font-size:12.0pt;font-family:"Courier New";mso-ansi-language:EN-US'>FEh</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span lang=EN-US style='font-size:12.0pt;
+  font-family:"Courier New";mso-ansi-language:EN-US'>&nbsp;1Dh<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span lang=EN-US style='font-size:12.0pt;
+  font-family:"Courier New";mso-ansi-language:EN-US'>F0h</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span lang=EN-US style='font-size:12.0pt;
+  mso-ansi-language:EN-US'>&nbsp;<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>команда </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>CALL FAR</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'> на
+  абсолютный адрес </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>000C0h</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>, записанная
+  так, чтобы второй и третий байты составляли слово, равное размеру первого
+  сегмента для СОМ-файлов (</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>FEF0h</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>)<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+0Ah<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>4 байта<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>адрес
+  обработчика </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>INT&nbsp;22h</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'> (выход из
+  программы)<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+0Eh<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>4 байта<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>адрес
+  обработчика </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>INT&nbsp;23h</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'> (обработчик
+  нажатия <span class=SpellE>Ctrl-Break</span>)<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:7'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+12h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>4 байта<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>адрес
+  обработчика </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>INT&nbsp;24h</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'> (обработчик
+  критических ошибок)<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:8'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+16h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>слово<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>сегментный
+  адрес PSP процесса, из которого был запущен текущий<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:9'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+18h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>20 байт<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>JFT&nbsp;– список
+  открытых идентификаторов, один байт на идентификатор, </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span class=SpellE><span style='font-size:
+  12.0pt;font-family:"Courier New"'>FFh</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>&nbsp;
+  означает конец списка<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:10'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+2Ch<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>слово<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>сегментный
+  адрес копии окружения для процесса<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:11'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+2Eh<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>2 слова<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>SS:SP
+  процесса при последнем вызове </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>INT&nbsp;21h</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'><o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:12'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+32h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>слово<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>число
+  элементов JFT (по умолчанию 20)<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:13'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+34h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>4 байта<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>дальний
+  адрес JFT (по умолчанию PSP:0018)<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:14'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+38h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>4 байта<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>дальний
+  адрес предыдущего PSP<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:15'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+3Ch<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>байт<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>флаг,
+  указывающий, что консоль находится в состоянии ввода 2-байтного символа<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:16'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+3Dh<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>байт<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>флаг,
+  устанавливаемый функцией </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>В711h</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'> прерывания </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>2Fh</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'> (при
+  следующем вызове </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>INT&nbsp;21h</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'> для работы
+  с файлом имя файла будет замечено на полное)<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:17'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+3Eh<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>слово<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>резерв<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:18'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+40h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>слово<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>версия DOS,
+  которую вернет функция DOS </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>30h </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>(DOS 5.0+)<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:19'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+42h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>12 байт<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>резерв<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:20'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+50h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>2 байта =</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span lang=EN-US style='font-size:12.0pt;
+  mso-ansi-language:EN-US'><o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span class=SpellE><span style='font-size:
+  12.0pt;font-family:"Courier New"'>CDh</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>&nbsp;21h</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'><o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>команда </span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>INT</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span lang=EN-US style='font-size:12.0pt;
+  font-family:"Courier New";mso-ansi-language:EN-US'>&nbsp;</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>21h</span></span></span></span></span></span></span></span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'><o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:21'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+54h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>7 байт<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>область для
+  расширения первого FCB<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:22'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+5Ch<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>16 байт<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>первый FCB,
+  заполняемый из первого аргумента командной строки<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:23'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+6Ch<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>16 байт<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>второй FCB,
+  заполняемый из второго аргумента командной строки<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:24'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+7Ch<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>4 байта<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>резерв<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:25;mso-yfti-lastrow:yes'>
+  <td width=57 valign=top style='width:42.55pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt;font-family:
+  "Courier New"'>+80h<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>128 байт<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+  <td width=539 valign=top style='width:404.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify;mso-pagination:none'><span
+  style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'><span style='font-size:12.0pt'>командная
+  строка и область DTA по умолчанию<o:p></o:p></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc56245447'><span style='mso-bookmark:_Toc56245525'><span
+  style='mso-bookmark:_Toc56245603'><span style='mso-bookmark:_Toc56245789'><span
+  style='mso-bookmark:_Toc56255981'><span style='mso-bookmark:_Toc57576213'><span
+  style='mso-bookmark:_Toc57576310'><span style='mso-bookmark:_Toc64662662'><span
+  style='mso-bookmark:_Toc64662813'><span style='mso-bookmark:_Toc64663193'><span
+  style='mso-bookmark:_Toc69892571'><span style='mso-bookmark:_Toc69892935'><span
+  style='mso-bookmark:_Toc70013334'></span></span></span></span></span></span></span></span></span></span></span></span></span>
+ </tr>
+</table>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'><b>
+Ниже приводится фрагмент com-программы для работы с командной строкой:<br></b>
+
+        .model tiny<br>
+
+        .code<br>
+
+        org 80h            ; смещение 80h от начала PSP<br>
+
+cmd_length db ?            ; длина командной строки<br>
+
+cmd_line   db ?            ; сама командная строка<br>
+
+        org 100h           ; начало программы 100h от начала PSP<br>
+
+start:<br>
+
+        cld                ; для команд строковой обработки<br>
+
+        mov bp,sp          ; сохранить текущую вершину стека в ВР<br>
+
+
+
+        mov cl,cmd_length<br>
+
+        cmp cl,1           ; проверка длины командной строки<br>
+
+        jle exit           ; выход из программы<br>
+
+
+
+        ; преобразовать список параметров в PSP так, чтобы<br>
+
+        ; каждый параметр заканчивался нулем (ASCIZ-строка)<br>
+
+        ; адреса всех параметров поместить в стек<br>
+
+        ; в переменную argc записать число параметров<br>
+
+
+
+        mov cx,-1          ; для команд работы со строками<br>
+
+        mov di,offset cmd_line ; начало командной строки в ES:DI<br>
+
+
+
+find_param:<br>
+
+        mov al,' '         ; AL = пробел<br>
+
+        repz scasb         ; искать не пробел<br>
+
+        dec di             ; DI = адрес начала параметра<br>
+
+        push di            ; сохранить адрес в стек<br>
+
+        inc word ptr argc  ; увеличить argc на 1<br>
+
+        mov si,di          ; SI = DI для следующей команды lodsb<br>
+
+
+
+scan_params:<br>
+
+        lodsb              ; прочитать символ из параметра<br>
+
+        cmp al,0Dh         ; если 0Dh - последний параметр<br>
+
+        je params_ended    ; параметры закончились<br>
+
+        cmp al,20h           ; сравнение с пробелом<br>
+
+        jne scan_params      ; текущий параметр не закончился<br>
+
+
+
+        dec si               ; SI = первый байт после параметра<br>
+
+        mov byte ptr [si],0  ; записать в него 0<br>
+
+        mov di,si            ; DI = SI для команды scasb<br>
+
+        inc di               ; DI = следующий после нуля символ<br>
+
+        jmp short find_param ; продолжить разбор командной строки<br>
+
+
+
+params_ended:<br>
+
+        dec si               ; SI = первый байт после конца<br>
+
+                             ;      последнего параметра<br>
+
+        mov byte ptr [si],0  ; записать в него 0<br>
+
+
+
+        ; работа с параметрами<br>
+
+        ...<br>
+
+exit:<br>
+
+        ret                  ; конец программы<br>
+
+        ; данные программы<br>
+
+argc dw 0 ; число параметров<br>
+
+        end start<br>
+
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'>
+Контрольные вопросы</span></b>
+<ol><li>Создание, открытие и закрытия файла.</li>
+<li>Работа с данными файла. Указатель чтения/записи.</li>
+<li>Поиск файлов.</li>
+<li>Работа с каталогами.</li>
+<li> Работа с командной строкой.</li></ol></p>
+
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'>
+Дополнительные требования к выполнению работы</span></b>
+<ol><li>Параметры обработки (включая описание путей к файлам) передавать в программу через параметры командной строки.</li>
+<li>Буфер для обработки данных должен быть меньше обрабатываемого файла.</li>
+<li>Под словом будем понимать набор символов ограниченный пробелами, табуляциями, границами строки; максимальный размер слова – 50 символов.</li>
+<li>Алгоритм обработки должен выполнять проверку на возникновение ошибок.</li>
+<li>Старт программы, ввод-вывод данных и обработку ошибок оформлять выводом в консоли </li>
+<li>Для тестирования программы подготовить файл размером больше 64 Кб.</li></ol></p>
+
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'>
+Варианты заданий<br></span></b>
+<ol><li>
+1.     Подсчитать число всех строк в файле.</li>
+<li>Подсчитать число пустых строк в файле.</li>
+<li>Подсчитать число не пустых строк в файле.</li>
+<li>Подсчитать число строк с длиной менее указанного значения в файле.</li>
+<li>Подсчитать число строк с длиной более указанного значения в файле.</li>
+<li>Подсчитать число строк в файле, в которых есть все указанные символы.</li>
+<li>Подсчитать число строк в файле, в которых есть указанное слово.</li>
+<li>Подсчитать число строк в файле, в которых нет указанного слова.</li>
+<li>В выходной файл поместить только те строки входного файла, которые содержат указанное слово.</li>
+<li>В выходной файл поместить только те строки входного файла, которые не содержат указанное слово.</li>
+<li>В выходной файл поместить только те строки входного файла, которые содержат все указанные символы.</li>
+<li>В выходной файл поместить только те строки входного файла, которые не содержат все указанные символы.
+</li>
+<li> Заменить во всем файле заданное слово на другое заданное слово.</li>
+<li>Заменить во всем файле заданную подстроку на другую заданную подстроку.</li>
+<li>Инвертировать файл по строкам.</li>
+<li>Удалить в строках файла все четные слова.</li>
+<li>Удалить в строках файла все нечетные слова.</li>
+<li>Удалить в строках файла все N-е слова.</li>
+<li>Удалить в строках файла все слова, которые совпадают с заданным.</li>
+<li>Удалить в файле все неинформативные (пустые) строки.</li>
+<li>Удалить в файле строки все информативные (не пустые) строки.</li>
+<li>Удалить в файле каждую N строку.</li>
+<li>Удалить в файле все строки содержащие указанное слово.</li>
+<li>Написать программу-просмотрщик (viewer) содержимого файла в виде текста.</li>
+<li>Написать программу-просмотрщик (viewer) содержимого файла в виде 16-ричных кодов.</li>
+<li>Написать программу-просмотрщик (viewer) содержимого оперативной памяти с сохранением избранных фрагментов в файл.</li>
+<li> Написать программу-редактор текстового файла.</li>
+<li>Написать программу-редактор бинарного файла.</li>
+<li>Написать программу поиска файлов в указанном каталоге по заданному шаблону имени файла.</li>
+<li>Написать программу поиска файлов в указанном каталоге, которые содержат заданную подстроку.</li>
+<li>Написать программу сравнения файлов по размеру.</li>
+<li>Написать программу сравнения текстовых файлов по содержимому.</li>
+<li>Написать программу сравнения бинарных файлов по содержимому.</li>
+<li>Написать программу сравнения каталогов по содержащимся в них наборах файлов.</li>
+<li>Написать программу сравнения каталогов по содержащимся в них наборах файлов, а также по содержимому одноименных файлов.</li></ol></p>
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>Задание на лабораторную работу<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt;mso-bidi-font-family:"Times New Roman"'>Для получения
+задания на лабораторную работу обратиться к преподавателю.<o:p></o:p></span></p>
+
+
+
+</div>
+
+<A HREF="../../../Практика/practice.html">Практика</A>
+        <div style="position: fixed; right: 0; bottom: 0">
+  <a href="#" id="toTop"><img src="../../../Оболочка/js/to_top_ye.GIF" width="32" height="32" border="0" align="absmiddle"></a> </div>
+                <p>&nbsp;</p>
+        </table>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><B><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</BODY></HTML>

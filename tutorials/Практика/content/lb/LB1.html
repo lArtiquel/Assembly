@@ -1,0 +1,242 @@
+<!-- (C) 2017 04 Rozum Halina, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>LB1 дисциплины  &quot;ОПИС&quot;</title>
+<base target="_top">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr>
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr>
+  <td width="70%" colspan=2 align="center" valign="middle">
+               <H1 align="center">электронный ресурс по учебной дисциплине<BR>
+        &quot;ОСНОВЫ ПРОЕКТИРОВАНИЯ ИНФОРМАЦИОННЫХ СИСТЕМ&quot;<BR>
+         для направления специальности: </H1> 1-40 05 01-09 &quot;Информационные системы и технологии (в обеспечении промышленной безопасности)&quot;
+                </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal"><A HREF="../../../index.html">Оглавление</A> |
+  <A HREF="../../../Программа/programm.html" TITLE="Программа курса (Откроется в новом окне)">Программа</A> |
+  <A HREF="../../../Теория/theory.html">Теория</a> |
+              <strong>Практика</strong> |
+  <A HREF="../../../Контроль_знаний/test.html">Контроль знаний</A> |
+  <A HREF="../../../Об авторах/author.html">Об авторах</A></var> </td>
+  <tr>
+</table>
+<table style="margin:0 auto;" width="90%" border="0" cellpadding="0" cellspacing="0">
+<td><A HREF="../../../Практика/practice.html">Практика</A>
+                  <p><b>ЛАБОРАТОРНАЯ  РАБОТА №1</b></p>
+
+<div class=WordSection11>
+
+<p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;line-height:normal'><b><span style='font-size:14.0pt;
+font-family:"Times New Roman","serif";text-transform:uppercase'>СИСТЕМА ПРОГРАММИРОВАНИЯ TURBO ASSEMBLER. ЭЛЕМЕНТАРНЫЕ ОПЕРАЦИИ.</span></b></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:italic'>Цель работы</span></b><span
+style='font-size:12.0pt;mso-fareast-font-family:Helvetica-BoldOblique;
+mso-bidi-font-family:"Times New Roman";mso-bidi-font-weight:bold;mso-bidi-font-style:
+italic'>: Ознакомиться с программным обеспечением, предназначенным для сборки, отладки и запуска программ на языке ассемблера. Ознакомиться с основными особенностями архитектуры процессора и общей структурой программы.
+.<o:p></o:p></span></p>
+
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><b><span style='font-size:12.0pt;mso-fareast-font-family:
+Helvetica-BoldOblique;mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:
+italic'>Теоретические сведения<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Helvetica-BoldOblique;mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:
+italic'> Ассемблер – это программа, которая переводит мнемонические текстовые команды в машинный код. Для формирования программ на языке ассемблера можно использовать разные среды разработки:
+<ol><li>
+TASM (turbo assembler) – система программирования фирмы Borland, предназначенная для создания 16-битных программ для DOS и процессоров семейства Intel x86.</li>
+
+TASM включает в себя следующие основные компоненты:
+<ul><li>
+компилятор языка ассемблер – tasm.exe – программа, предназначенная для компиляции файла написанного на языке ассемблера (.asm) в объектные модули (.obj).</li>
+<li>
+компоновщик (linker) – tlink.exe – программа, предназначенная для сборки исполняемого файла из объектных модулей и библиотек.</li>
+<li>
+отладчик (debugger) – td.exe – программа, предназначенная для отладки, созданных исполняемых файлов.</li>
+</ul>
+Все указанные выше программы получают опции через командную строку (все доступные функции можно получить, запустив программу без параметров). Кроме этого, Borland предоставляет интегрированную среду асемблера ta.exe – программу, объединяющую текстовый редактор и указанные выше компоненты и похожую по своим функциональным возможностям на среду «Turbo C».
+<li>
+MASM –система программирования от Microsoft, схожая с TASM.</li>
+<li>
+FASM (flat assembler) – свободно распространяемый многопроходной ассемблер.</li>
+<li>
+Эмулятор Emu8086 – система программирования, предназначенная для создания и отладки ассемблерных программ под Windows, имеет более дружественный интерфейс, чем DOS-среды, но работает достаточно медленно, а также имеет некоторые ограничения на работу с ресурсами.</li>
+<li>
+Среда разработки программ для языка C\С++ (например, Borland C++ или MS Visual Studio) – в таких средах можно использовать команды встроенного ассемблера, что позволит изучить некоторые аспекты программирования на ассемблере без создания полноценной программы полностью на ассемблере.</li>
+</ol>
+Также следует понимать, что создание программ на ассемблере должно в требуемой мере использовать ресурсы и возможности операционной системы для взаимодействия с аппаратными средствами компьютера. Для лабораторных работ актуально использование операционной системы MS-DOS или FreeDOS – это будет актуально при работе с DOS-средами разработки ассемблерных программ, а также для создания резидентных программ. Для того чтобы не устанавливать отдельно DOS на компьютере c Windows (Unix) можно воспользоваться виртуальной машиной (например, Oracle VM VirtualBox) или средой DOSBox.<br>
+
+Для создания простейших программ на языке ассемблера требуется знание следующих понятий:<br>
+<ol><li>
+
+<b>Регистры процессора.</b>
+
+В состав процессора Intel 8086 входят 16-ти битовые регистры:
+<ul><li>
+общего назначения – АХ (аккумулятор), ВХ (база), СХ (счетчик), DX (данные), также можно обращаться отдельно к их старшей или младшей 8-ми битовой половине: AH, AL, BH, BL, CH, CL, DH и DL;</li>
+<li>
+сегментные – CS (кода), DS (данных), SS (стека) и ES (расширенных данных);</li>
+<li>
+адресные – SI (индекс источника), DI (индекс приемника) и BP (указатель базы); также к ним относят и регистр BX (база);</li>
+<li>
+указатель стека – SP;</li>
+<li>
+указатель команд – IP;</li>
+<li>
+регистр флагов – FLAGS (биты признаков, см. рисунок 1).</li>
+
+<div width="90%"> <p style="text-align: center;">
+<span align=center style='text-align:center;'>
+<img border=0
+src="../../images/lb/image101.jpg" v:shapes="_x0000_i1030"> <o:p></o:p><br>
+
+Рисунок 1 – Формат регистра флагов</span></p></div>
+</span>
+Важные флаги:
+<li>
+CF – флаг переноса;</li>
+<li>
+ZF – флаг нуля;</li>
+<li>
+SF – флаг знака;</li>
+<li>
+OF – флаг переполнения.</li>
+</ul>
+<li>
+<b>Сегментная адресация памяти.</b></li>
+
+Для адресации памяти процессор Intel 8086 использует 16-разрядные адресные регистры, что обеспечивает доступ к 64 Кбайт (000016–FFFF16) основной памяти. Т.к. все возможное адресное пространство памяти данного процессора составляет 1 Мбайт (0000016–FFFFF16), то при этом память приходится делить на сегменты объемом 64 Кбайт. Каждый сегмент начинается на границе параграфа (16 байт) от начала памяти, поэтому стартовыми для сегментов могут быть следующие адреса памяти – 0000016, 0001016, 0002016, …, FFFE016, FFFF016. Физический адрес байта памяти (20 бит) определяется суммой значения, заданного в сегментном регистре (16-бит) и умноженного на 16, со значением смещения (16-бит).<br>
+
+Существуют три основных типа сегментов:<br>
+<ul><li>
+сегмент кода (.code) – набор команд (CS:IP);</li>
+<li>
+сегмент данных (.data) – данные программы ((DS | ES):(BX | SI | DI));</li>
+<li>
+сегмент стека (.stack) – временные данные (SS:(BP | SP)).</li>
+</ul>
+<li>
+<b>Структура программы.</b></li>
+
+Программа на языке ассемблера состоит из строк общего формата:<br>
+
+метка   команда/директива операнды   ; комментарий<br>
+
+Метка может быть любой комбинацией букв английского алфавита, цифр и символов «_», «$», «@», «?», при этом цифра не может быть первым символом метки, а символы «$» и «?» иногда имеют специальные значения и не рекомендуются к использованию. Регистр символов по умолчанию не различается.<br>
+
+<b>Команда процессора </b>– мнемоника, которая транслируется в исполняемый код. Директива – мнемоника, которая не приводит к появлению нового кода, а управляет работой самого ассемблера. В поле операндов располагаются требуемые командой или директивой операнды (то есть нельзя указать операнды и не указать команду или директиву).<br>
+
+Метка, стоящая перед командой, всегда заканчивается символом «:» (двоеточие) и фактически представляет собой адрес данной команды в программе. Метка, стоящая перед директивой, является одним из операндов директивы и символа двоеточия не имеет.<br>
+
+<b>Комментарий </b>– текст от символа «;» до конца строки, который не анализируется ассемблером.<br>
+
+Метки и комментарии в строке программы могут отсутствовать.<br>
+<li>
+<b>Программные вызовы прерываний.</b></li>
+
+<b>Прерывание</b> – это системная функция, которая обычно обеспечивает доступ к ресурсам компьютера и операционной системы (работа с вводом-выводом данных, переключение режимов, завершение программы и т.п.). Прерывания делятся на BIOS-прерывания (низкий уровень) и DOS-прерывания (высокий уровень). Для вызова прерывания внутри программы используется команда INT число.<br>
+<li>
+<b>Расположение директив и форматы исполняемых файлов.</b></li></ol>
+
+Основные два формата исполняемых файлов в DOS — com и exe.<br>
+
+Файлы типа com содержат только скомпилированный код без какой-либо дополнительной информации о программе. Весь код, данные и стек такой программы располагаются в одном сегменте и не могут превышать 64 килобайта.<br>
+
+Файлы типа exe содержат заголовок, в котором описывается размер файла, требуемый объем памяти, список команд в программе, использующих абсолютные адреса, которые зависят от расположения программы в памяти, и т.д. Размер exe-файла может быть значительно больше com-файла, за счет использования нескольких сегментов памяти.<br>
+
+Ниже приведены два примера программ «Hello, world!» с использованием упрощенных директив описания сегментов, поясненных в комментариях, которые демонстрируют общую структуру программ написанных полностью на языке ассемблера.<br>
+<br>
+<b>Пример программы типа com:</b><br>
+; hello1.asm; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>выводит на экран сообщение "Hello World!"</i><br>
+        .model  tiny          ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>модель памяти для СОМ</i><br>
+        .code                 ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>начало сегмента кода</i><br>
+        org 100h              ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>начальное значение IP = 100h</i><br>
+start:  mov ah,9              ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>номер функции DOS - в АН</i><br>
+        mov dx,offset message ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>адрес строки - в DX</i><br>
+        int 21h               ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>вызов системной функции DOS</i><br>
+        ret                   ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>завершение СОМ-программы</i><br>
+message db "Hello World!",0Dh,0Ah,'$' ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>строка для вывода</i><br>
+        end start             ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>конец программы</i><br>
+
+Для формирования com программы в среде программирования TASM используйте команды:<br>
+     tasm.exe hello1.asm hello1.obj<br>
+     tlink.exe /t hello1.obj<br>
+
+Пример программы типа exe:<br>
+; hello2.asm; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>выводит на экран сообщение "Hello World!"</i><br>
+        .model small          ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>модель памяти для ЕХЕ</i><br>
+        .stack 100h           ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>сегмент стека размером в 256 байт</i><br>
+        .code                 ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>сегмент кода</i><br>
+start:  mov ax,DGROUP         ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>адрес сегмента данных</i><br>
+        mov ds,ax             ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>помещается в DS</i><br>
+        mov dx,offset message</li><br>
+        mov ah,9</ol><br>
+        int 21h               ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>функция DOS "вывод строки"</i><br>
+        mov ax,4C00h</span><br>
+        int 21h               ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>функция DOS "завершить программу"</i><br>
+        .data                 ; <i><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>сегмент данных</i><br>
+message db "Hello World!",0Dh,0Ah,'$'<br>
+        end start<br>
+<br>
+Для формирования exe программы в среде программирования TASM используйте команды:<br>
+     tasm.exe hello2.asm hello2.obj<br>
+     tlink.exe hello2.obj<br>
+</li></ol></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;mso-layout-grid-align:
+none;text-autospace:none'><span style='font-size:12.0pt;mso-fareast-font-family:
+Helvetica-BoldOblique;mso-bidi-font-family:"Times New Roman";mso-bidi-font-style:
+italic'> Контрольные вопросы
+<ol> <li>
+Регистры процессора Intel 8086.</li>
+<li>
+Сегментная адресация памяти.</li>
+<li>Основные элементы программы на языке ассемблера.</li>
+<li>Правила оформления ассемблерной программы типа com.</li>
+<li>Правила оформления ассемблерной программы типа exe.</li></ol>
+<br>
+Дополнительные требования к выполнению работы<br>
+<ol><li>
+При выполнении работы рассмотреть как можно больше доступных программных сред для формирования и сборки ассемблерной программы.</li>
+<li>Создать ассемблерные программы для двух вариантов исполняемых модулей (com и exe).
+</li></ol>
+
+<p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+none;text-autospace:none'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:12.0pt;mso-fareast-font-family:Times-Roman;mso-bidi-font-family:
+"Times New Roman"'>
+Варианты заданий</span></b></p>
+<ol><li>
+Написать программу «Hello, world!».</li>
+<li>Написать программу для вывода на экран строки символов.</li>
+<li>Написать программу для вывода на экран нескольких строк символов.</li>
+<li>Написать программу для вывода на экран строки символов, который будет сопровождаться звуковым сигналом.</li></ol>
+
+
+</span></p>
+
+</div>
+
+<A HREF="../../../Практика/practice.html">Практика</A>
+        <div style="position: fixed; right: 0; bottom: 0">
+  <a href="#" id="toTop"><img src="../../../Оболочка/js/to_top_ye.GIF" width="32" height="32" border="0" align="absmiddle"></a> </div>
+                <p>&nbsp;</p>
+        </td></table>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><B><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</BODY></HTML>
